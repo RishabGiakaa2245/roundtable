@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Global Colors */
+    --global-bg-1: #000000;
+    --global-bg-2: #c9c9c9;
+    --global-bg-3: #ffb11b;
+    --global-bg-4: #ffffff;
+    --global-bg-5: #ffffff33;
+    --global-bg-6: #ffffff8e;
+    --global-text-1: #000000;
+    --global-text-2: #0575e6;
+    --global-text-3: #22242e;
+    --global-text-4: #ffdf01;
+    --global-text-5: #ffffff;
+
+    /* Footer Colors */
+    --footer-bg-1: #22242e;
+    --footer-text-1: #fffefecc;
+  }
+}
+
+@layer utilities {
+  /* Global */
+  .bg-global-1 {
+    background-color: var(--global-bg-1);
+  }
+  .bg-global-2 {
+    background-color: var(--global-bg-2);
+  }
+  .bg-global-3 {
+    background-color: var(--global-bg-3);
+  }
+  .bg-global-4 {
+    background-color: var(--global-bg-4);
+  }
+  .bg-global-5 {
+    background-color: var(--global-bg-5);
+  }
+  .bg-global-6 {
+    background-color: var(--global-bg-6);
+  }
+  .text-global-1 {
+    color: var(--global-text-1);
+  }
+  .text-global-2 {
+    color: var(--global-text-2);
+  }
+  .text-global-3 {
+    color: var(--global-text-3);
+  }
+  .text-global-4 {
+    color: var(--global-text-4);
+  }
+  .text-global-5 {
+    color: var(--global-text-5);
+  }
+
+  /* Smooth scrolling for the container */
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+/* Custom animation for fade effects */
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-slide {
+  animation: fadeInSlide 0.5s ease-out;
+}
+
+  /* Footer */
+  .bg-footer-1 {
+    background-color: var(--footer-bg-1);
+  }
+  .text-footer-1 {
+    color: var(--footer-text-1);
+  }
+
+  @keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scrollRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-scroll-left {
+  animation: scrollLeft 20s linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scrollRight 20s linear infinite;
+}
+
+}
