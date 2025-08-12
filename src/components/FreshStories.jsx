@@ -14,14 +14,14 @@ const FreshStories = () => {
     },
     {
       id: 2,
-      imageUrl: '/images/img_rectangle_160945.png',
+      imageUrl: '/images/Rectangle 160945.png',
       title: 'Over 10,000 Jobs Lost as Automation Reshapes the',
       date: 'July 15',
       link: '#',
     },
     {
       id: 3,
-      imageUrl: '/images/img_rectangle_160945.png',
+      imageUrl: '/images/Rectangle 160945-1.png',
       title: 'Over 10,000 Jobs Lost as Automation Reshapes the',
       date: 'July 15',
       link: '#',

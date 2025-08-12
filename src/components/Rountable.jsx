@@ -99,16 +99,16 @@ const RoundtableCard = ({ roundtable }) => {
       <div className="flex flex-col justify-between w-full shadow-[0px_4px_25px_#888888ff] bg-[linear-gradient(90deg,#0575e6_0%,#5336f8_50%,#00f260_100%)] rounded-[10px] md:rounded-[20px] p-[6px] md:p-[12px] -mt-[30px] md:-mt-[40px] relative z-10 flex-1">
         <div className="flex flex-col w-full shadow-[0px_4px_100px_#888888ff] bg-[#ffffff33] border border-[#ffffff] rounded-[10px] md:rounded-[20px] p-[15px] md:p-[20px] h-full">
           <div className="flex flex-col gap-[8px] md:gap-[12px] justify-between h-full">
-            <h3 className="text-[16px] md:text-[20px] lg:text-[22px] font-lufga font-medium leading-[20px] md:leading-[24px] lg:leading-[26px] text-left text-[#ffffff] line-clamp-3 min-h-[60px] md:min-h-[72px]">
+            <h3 className="text-[24px] md:text-[24px] lg:text-[26px] font-lufga font-medium leading-[26px] md:leading-[26px] lg:leading-[27px] text-left text-[#ffffff] line-clamp-3 min-h-[60px] md:min-h-[72px]">
               {title}
             </h3>
             <div className="flex flex-col gap-[8px] md:gap-[12px] justify-center items-start flex-1">
-              <div className="flex gap-[6px] md:gap-[8px] w-full">
+              <div className="flex justify-start items-center gap-[6px] md:gap-[8px] w-full">
                 <InfoItem icon={timeIcon} text={time} alt="Time Icon" />
-                <InfoItem icon={locationIcon} text={location} alt="Location Icon" />
+                <InfoItem icon={locationIcon} text={location} alt="Location Icon" /> 
                 <InfoItem icon={dateIcon} text={date} alt="Date Icon" />
               </div>
-              <Button variant="secondary" size="md" className="w-1/2 mt-auto">
+              <Button variant="secondary" size="md" className="w-1/2">
                 Request for Invite
               </Button>
             </div>
@@ -121,7 +121,7 @@ const RoundtableCard = ({ roundtable }) => {
 
 // Reusable InfoItem component for time, location, date
 const InfoItem = ({ icon, text, alt }) => (
-  <div className="flex flex-row gap-[4px] md:gap-[6px] justify-start items-center w-full">
+  <div className="flex flex-row gap-[4px] md:gap-[6px] justify-start items-center w-fit">
     <Image
       src={icon}
       alt={alt}
@@ -142,11 +142,9 @@ const Roundtable = ({ data = roundtableData }) => {
         {/* Section Header */}
         <div className="text-center mb-[30px] md:mb-[60px]">
           <p className="text-[16px] md:text-[20px] font-lufga font-bold leading-[21px] md:leading-[27px] text-center uppercase text-[#0575e6]">
-            Our Roundtables
-          </p>
-          <h2 className="text-[32px] md:text-[64px] font-lufga font-medium leading-[42px] md:leading-[84px] text-center text-[#22242e] mt-[16px] md:mt-[32px]">
-            Select a Roundtable Among All
-          </h2>
+Giakaa Capital Roundtables          </p>
+          <h2 className="text-[32px] md:text-[64px] font-lufga font-medium leading-[42px] md:leading-[84px] text-center text-[#22242e] mt-[6px] md:mt-[8px]">
+India’s Digital Finance Tracks          </h2>
         </div>
 
         {/* Roundtable Grid */}

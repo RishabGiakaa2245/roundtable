@@ -100,7 +100,7 @@ const EventHighlights = React.memo(() => {
           <p className="text-[16px] md:text-[20px] font-lufga font-bold leading-[21px] md:leading-[27px] text-center uppercase text-[#0575e6]">
             Highlights
           </p>
-          <h2 className="text-[32px] md:text-[64px] font-lufga font-medium leading-[42px] md:leading-[84px] text-center text-[#22242e] mt-[16px] md:mt-[32px]">
+          <h2 className="text-[32px] md:text-[64px] font-lufga font-medium leading-[42px] md:leading-[84px] text-center text-[#22242e] mt-[6px] md:mt-[8px]">
             Event Highlights & Connections
           </h2>
         </header>

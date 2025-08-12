@@ -7,82 +7,42 @@ const speakersData = [
   {
     name: 'B. Shanker Jaiswal',
     title: 'Joint CP, Technology & Project Implementation and Licensing in Delhi Police',
-    imageUrl: '/images/img_rectangle_160878.png',
+    imageUrl: '/images/Rectangle 160878-1.png',
   },
   {
-    name: 'B. Shanker Jaiswal',
-    title: 'Joint CP, Technology & Project Implementation and Licensing in Delhi Police',
-    imageUrl: '/images/img_rectangle_160878.png',
+    name: 'Arvind Kumar',
+    title: 'Director General, Software Technology Parks of India (STPI)',
+    imageUrl: '/images/img.png',
   },
   {
-    name: 'B. Shanker Jaiswal',
-    title: 'Joint CP, Technology & Project Implementation and Licensing in Delhi Police',
-    imageUrl: '/images/img_rectangle_160878.png',
+    name: 'Ashima Batra IRS',
+    title: 'Additional Director, Financial Intelligence Unit India',
+    imageUrl: '/images/img-1.png',
   },
   {
-    name: 'B. Shanker Jaiswal',
-    title: 'Joint CP, Technology & Project Implementation and Licensing in Delhi Police',
-    imageUrl: '/images/img_rectangle_160878.png',
+    name: 'Suresh Khadakbhavi',
+    title: 'CEO, Digi Yatra Foundation',
+    imageUrl: '/images/img-2.png',
   },
   {
-    name: 'B. Shanker Jaiswal',
-    title: 'Joint CP, Technology & Project Implementation and Licensing in Delhi Police',
-    imageUrl: '/images/img_rectangle_160878.png',
+    name: 'Sandeep',
+    title: 'Founder, Impact',
+    imageUrl: '/images/Rectangle 1051.png',
   },
   {
-    name: 'B. Shanker Jaiswal',
-    title: 'Joint CP, Technology & Project Implementation and Licensing in Delhi Police',
-    imageUrl: '/images/img_rectangle_160878.png',
+    name: 'Golok Kumar Simli',
+    title: 'Principal Advisor & CTO Passport Seva Programme, Ministry of External Affairs, Government of India',
+    imageUrl: '/images/img-3.png',
   },
   {
-    name: 'B. Shanker Jaiswal',
-    title: 'Joint CP, Technology & Project Implementation and Licensing in Delhi Police',
-    imageUrl: '/images/img_rectangle_160878.png',
+    name: 'Dr. Satya N Gupta',
+    title: 'NGNguru, Chairman - Blockchain For Productivity Forum (BPF)',
+    imageUrl: '/images/KMM_5236.png',
   },
   {
-    name: 'B. Shanker Jaiswal',
-    title: 'Joint CP, Technology & Project Implementation and Licensing in Delhi Police',
-    imageUrl: '/images/img_rectangle_160878.png',
-  },
-  {
-    name: 'B. Shanker Jaiswal',
-    title: 'Joint CP, Technology & Project Implementation and Licensing in Delhi Police',
-    imageUrl: '/images/img_rectangle_160878.png',
-  },
-  {
-    name: 'B. Shanker Jaiswal',
-    title: 'Joint CP, Technology & Project Implementation and Licensing in Delhi Police',
-    imageUrl: '/images/img_rectangle_160878.png',
-  },
-  {
-    name: 'B. Shanker Jaiswal',
-    title: 'Joint CP, Technology & Project Implementation and Licensing in Delhi Police',
-    imageUrl: '/images/img_rectangle_160878.png',
-  },
-  {
-    name: 'B. Shanker Jaiswal',
-    title: 'Joint CP, Technology & Project Implementation and Licensing in Delhi Police',
-    imageUrl: '/images/img_rectangle_160878.png',
-  },
-  {
-    name: 'B. Shanker Jaiswal',
-    title: 'Joint CP, Technology & Project Implementation and Licensing in Delhi Police',
-    imageUrl: '/images/img_rectangle_160878.png',
-  },
-  {
-    name: 'B. Shanker Jaiswal',
-    title: 'Joint CP, Technology & Project Implementation and Licensing in Delhi Police',
-    imageUrl: '/images/img_rectangle_160878.png',
-  },
-  {
-    name: 'B. Shanker Jaiswal',
-    title: 'Joint CP, Technology & Project Implementation and Licensing in Delhi Police',
-    imageUrl: '/images/img_rectangle_160878.png',
-  },
-  {
-    name: 'B. Shanker Jaiswal',
-    title: 'Joint CP, Technology & Project Implementation and Licensing in Delhi Police',
-    imageUrl: '/images/img_rectangle_160878.png',
+    name: 'Nitin Mishra',
+    title: 'Chief Technology Officer, Open Network for Digital Commerce (ONDC)',
+    imageUrl: '/images/Rectangle 160878.png',
   },
 ];
 
@@ -127,7 +87,7 @@ const Visionary = () => {
             <p className="text-center font-lufga text-[16px] font-bold uppercase leading-[21px] text-[#0575e6] md:text-[20px] md:leading-[27px]">
               Past Speakers
             </p>
-            <h2 className="mt-[16px] text-center font-lufga text-[32px] font-normal leading-[42px] text-[#000000] md:mt-[32px] md:text-[64px] md:leading-[84px]">
+            <h2 className="mt-[6px] text-center font-lufga text-[32px] font-normal leading-[42px] text-[#000000] md:mt-[8px] md:text-[64px] md:leading-[84px]">
               Meet Our Visionary Leaders
             </h2>
           </div>

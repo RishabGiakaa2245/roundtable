@@ -163,7 +163,7 @@ const PostEventHighlights = () => {
   )
 
   return (
-    <section className="w-full bg-[linear-gradient(90deg,#0575e6_0%,#5336f8_50%,#00f260_100%)] px-4 sm:px-6 lg:px-8 py-16 md:py-14 mt-16 md:mt-24">
+    <section className="w-[100vw] bg-[linear-gradient(90deg,#0575e6_0%,#5336f8_50%,#00f260_100%)] px-4 sm:px-6 lg:px-8 py-16 md:py-14 mt-16 md:mt-24">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
@@ -175,34 +175,30 @@ const PostEventHighlights = () => {
           </h2>
         </div>
 
-        {/* Scrollable Image Gallery */}
-        <div className="relative mb-8 md:mb-4">
-          <div 
-            ref={scrollContainerRef}
-            className="flex gap-3 md:gap-5 overflow-x-hidden scroll-smooth"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
-            <style jsx>{`
-              div::-webkit-scrollbar {
-                display: none;
-              }
-            `}</style>
-            {mainGalleryImages.map((image) => (
-              <div 
-                key={image.id} 
-                className="relative flex-shrink-0 overflow-hidden rounded-lg md:rounded-2xl animate-fade-in-slide"
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={200}
-                  height={150}
-                  className="w-32 h-24 sm:w-40 sm:h-28 md:w-56 md:h-40 lg:w-64 lg:h-44 object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+    {/* Scrollable Image Gallery */}
+<div className="relative mb-4 md:mb-4 overflow-hidden">
+  <div
+    className="flex gap-3 md:gap-5 animate-scroll-left-past"
+    style={{ width: 'max-content' }}
+  >
+    {/* Repeat the gallery twice for seamless infinite scroll */}
+    {[...mainGalleryImages, ...mainGalleryImages].map((image, index) => (
+      <div
+        key={`${image.id}-${index}`}
+        className="relative flex-shrink-0 overflow-hidden rounded-lg md:rounded-2xl"
+      >
+        <Image
+          src={image.src}
+          alt={image.alt}
+          width={200}
+          height={150}
+          className="w-32 h-24 sm:w-40 sm:h-28 md:w-56 md:h-40 lg:w-64 lg:h-44 object-cover"
+        />
+      </div>
+    ))}
+  </div>
+</div>
+
 
         {/* Navigation Controls */}
         {/* <div className="flex justify-center mb-12 md:mb-16">

@@ -15,11 +15,14 @@ export const metadata = {
   },
 };
 
+import ClientLayout from './client-layout';
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Frishabsa3431back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
-</body>
+      <body>
+        <ClientLayout>{children}</ClientLayout>
+      </body>
     </html>
   );
 }

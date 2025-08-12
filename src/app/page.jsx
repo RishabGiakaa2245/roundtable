@@ -16,24 +16,40 @@ import GlobalCompanies from '@/components/GlobalCompanies';
 import FreshStories from '@/components/FreshStories';
 const HomePage = () => {
   return (
-    <div className="flex flex-col justify-start items-center w-full bg-[#ffffff]">
+    <div data-scroll-section className="flex flex-col justify-start items-center w-full bg-[#ffffff]">
       <Hero />
       {/* Statistics and Unite Section */}
-      <Statistics />
+      <div data-scroll data-scroll-speed="0.4">
+        <Statistics />
+      </div>
       {/* Tracks at Roundtable Section */} 
-      <TracksAtRountable />
+      <div data-scroll data-scroll-speed="0.4">
+        <TracksAtRountable />
+      </div>
       {/* Select Roundtable Section */}
-      <Rountable />
+      <div data-scroll data-scroll-speed="0.4">
+        <Rountable />
+      </div>
       {/* Event Highlights Section */}
-      <EventHighlights />
+      <div data-scroll data-scroll-speed="0.4">
+        <EventHighlights />
+      </div>
       {/* Past Event Highlights Section */}
-      <PostEventHighlights />
+      <div data-scroll data-scroll-speed="0.4">
+        <PostEventHighlights />
+      </div>
       {/* Visionary Leaders Section */}
-      <Visionary />
+      <div data-scroll data-scroll-speed="0.4">
+        <Visionary />
+      </div>
       {/* Global Companies Section */}
-      <GlobalCompanies />
+      <div data-scroll data-scroll-speed="0.4">
+        <GlobalCompanies />
+      </div>
       {/* Fresh Stories Section */}
-      <FreshStories />
+      <div data-scroll data-scroll-speed="0.4">
+        <FreshStories />
+      </div>
       {/* Footer */}
       <Footer />
     </div>

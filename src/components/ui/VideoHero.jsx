@@ -48,11 +48,11 @@ const VideoHero = () => {
 
         {/* Multi-layer gradient effects for better blending */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#E2EDF4]/90 via-transparent to-[#E2EDF4]/90" />
+          {/* <div className="absolute inset-0 bg-gradient-to-r from-[#2146be]/90 via-transparent to-[#1e7a85]/90" />
           
-          <div className="absolute inset-0 bg-gradient-to-t from-[#E2EDF4]/90 via-transparent to-[#E2EDF4]/90" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#3e32bc]/90 via-transparent to-[#3e32bc]/90" />
           
-          <div className="absolute inset-0 bg-radial-fade pointer-events-none" />
+          <div className="absolute inset-0 bg-radial-fade pointer-events-none" /> */}
         </div>
       </div>
     </div>

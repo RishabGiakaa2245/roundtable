@@ -12,7 +12,7 @@ module.exports = {
           '0%': { transform: 'translateY(-50%)' },
           '100%': { transform: 'translateY(0)' }
         },
-        scrollright: {
+        scrollright: { 
           '0%': { transform: 'translateX(-50%)' },
           '100%': { transform: 'translateX(0)' }
         },

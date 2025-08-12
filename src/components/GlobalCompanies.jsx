@@ -16,43 +16,44 @@ const CompanyCard = ({ imgSrc }) => (
 const GlobalCompanies = () => {
   // Object-based arrays for partners and media partners
   const partnersRow1 = [
-    { img: "/images/sia 1.png" },
-    { img: "/images/sia 1.png" },
-    { img: "/images/sia 1.png" },
-    { img: "/images/sia 1.png" },
-    { img: "/images/sia 1.png" },
-    { img: "/images/sia 1.png" },
-    { img: "/images/sia 1.png" },
-  ];
+  { img: "/images/cropped-ABA-logo 1.png" },
+  { img: "/images/dea 1.png" },
+  { img: "/images/fisme 1.png" },
+  { img: "/images/gba 1.png" },
+  { img: "/images/gcpit 3.png" },
+  { img: "/images/Group 1261154156.png" },
+  { img: "/images/Group 1261154362.png" },
+];
 
-  const partnersRow2 = [
-    { img: "/images/sia 1.png" },
-    { img: "/images/sia 1.png" },
-    { img: "/images/sia 1.png" },
-    { img: "/images/sia 1.png" },
-    { img: "/images/sia 1.png" },
-    { img: "/images/sia 1.png" },
-    { img: "/images/sia 1.png" },
-  ];
+const partnersRow2 = [
+  { img: "/images/iba 1.png" },
+  { img: "/images/micci 1.png" },
+  { img: "/images/sia 1.png" },
+  { img: "/images/wicci 1.png" },
+  { img: "/images/cropped-ABA-logo 1.png" },
+  { img: "/images/dea 1.png" },
+  { img: "/images/fisme 1.png" },
+];
 
-  const mediaRow = [
-    { img: "/images/sia 1.png" },
-    { img: "/images/sia 1.png" },
-    { img: "/images/sia 1.png" },
-    { img: "/images/sia 1.png" },
-    { img: "/images/sia 1.png" },
-    { img: "/images/sia 1.png" },
-  ];
+const mediaRow = [
+  { img: "/images/gba 1.png" },
+  { img: "/images/gcpit 3.png" },
+  { img: "/images/Group 1261154156.png" },
+  { img: "/images/Group 1261154362.png" },
+  { img: "/images/iba 1.png" },
+  { img: "/images/micci 1.png" },
+];
+
 
   return (
-    <section className="w-full bg-[linear-gradient(90deg,#0575e6_0%,#5336f8_50%,#00f260_100%)] px-4 sm:px-6 lg:px-8 py-[33px] md:py-[66px] mt-[60px] md:mt-[120px]">
+    <section className="w-[100vw] bg-[linear-gradient(90deg,#0575e6_0%,#5336f8_50%,#00f260_100%)] px-4 sm:px-6 lg:px-8 py-[33px] md:py-[66px] mt-[60px] md:mt-[120px]">
       <div className="w-full max-w-[1440px] mx-auto">
         
         {/* Past Partners Heading */}
         <p className="text-[16px] md:text-[20px] font-lufga font-bold text-center uppercase text-white">
           Past Partners
         </p>
-        <h2 className="text-[32px] md:text-[64px] font-lufga font-normal text-center text-white mt-[16px] md:mt-[32px] w-full sm:w-[54%] mx-auto">
+        <h2 className="text-[32px] md:text-[64px] font-lufga font-normal text-center text-white mt-[6px] md:mt-[8px] w-full sm:w-[54%] mx-auto">
           Global Companies Attending our Events
         </h2>
 

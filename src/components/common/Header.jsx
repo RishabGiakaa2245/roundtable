@@ -6,9 +6,9 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="w-full overflow-hidden z-50 ">
+    <header data-scroll-section data-scroll-speed="0.4" className="w-full overflow-hidden z-50">
       <div className="w-full max-w-[1440px] flex justify-center mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row justify-center items-start w-full lg:w-[74%] mt-[10px] md:mt-[20px]">
+        <div  className="flex flex-col lg:flex-row justify-center items-start w-full lg:w-[74%] mt-[10px] md:mt-[20px]">
           {/* Main Header Row */}
           <div className="flex flex-row justify-between items-center w-full lg:w-[72%] bg-[#ffffff] rounded-[14px] md:rounded-[28px] px-[20px] md:px-[40px] py-[6px] md:py-[12px] shadow-[0_0_80px_rgba(0,0,0,0.10)]">
             {/* Logo */}

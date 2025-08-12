@@ -7,6 +7,103 @@ const TracksAtRountable = () => {
   const scrollContainerRef = useRef(null);
   const totalSlides = 3;
 
+const trackData = [
+  // Grid 1
+  [
+    [
+      {
+        icon: '/images/Vector.png',
+        title: 'Smart Capital',
+        description:
+          'What PE, family offices, and institutions are thinking, how they differ, and why.',
+      },
+      {
+        icon: '/images/Vector-1.png',
+        title: 'RegTech & AI',
+        description:
+          'Turn DDP and KYC norms into an edge with predictable models and audit-ready data.',
+      },
+    ],
+    [
+      {
+        icon: '/images/Vector-2.png',
+        title: 'Fintech 2030',
+        description:
+          'Align DPI, consumer protection, DPRM, and new frameworks with resilient business models.',
+      },
+      {
+        icon: '/images/Vector-11.png',
+        title: 'Cashflow Credit',
+        description:
+          'Use OCEN, AA data, and ONDC to underwrite and collect profitably at scale.',
+      },
+    ],
+  ],
+  // Grid 2
+  [
+    [
+      {
+        icon: '/images/Vector-3.png',
+        title: 'Inclusive Insurance',
+        description:
+          'Micro-agents, embedded distribution, and digital claims for the next 500 million.',
+      },
+      {
+        icon: '/images/Vector-5.png',
+        title: 'Global UPI',
+        description:
+          'Link corridors, expand RuPay, and export Indian fintech with compliant operations.',
+      },
+    ],
+    [
+      {
+        icon: '/images/Vector-6.png',
+        title: 'UPI Security',
+        description:
+          'Detect frauds and deepfakes with device integrity, tokenization, and real-time fraud controls.',
+      },
+      {
+        icon: '/images/Vector-7.png',
+        title: 'Embedded Finance',
+        description:
+          'Move beyond MRs, PaaS, interchange, credit on UPI, and SaaS-led monetization.',
+      },
+    ],
+  ],
+  // Grid 3
+  [
+    [
+      {
+        icon: '/images/Vector-8.png',
+        title: '2025 Valuations',
+        description:
+          'Razor growth versus profitability, cost of capital, secondaries, and realisable exits.',
+      },
+      {
+        icon: '/images/Vector-9.png',
+        title: 'Bank–Fintech Partnerships',
+        description:
+          'Co-create FIDC, API, and playbooks that share risk and engineer compliance.',
+      },
+    ],
+    [
+      {
+        icon: '/images/Vector-10.png',
+        title: 'Reaching Bharat',
+        description:
+          'Scale digital payments beyond metros with offline, vernacular, low-cost, and sustainable economics.',
+      },
+      {
+        icon: '/images/Vector-4.png',
+        title: 'India Stack',
+        description:
+          'Mandate AA, OCEN, eKYC, and credit on UPI with developer-first infrastructure.',
+      },
+    ],
+  ],
+];
+
+
   // Check if screen is mobile
   useEffect(() => {
     const checkMobile = () => {
@@ -20,100 +117,7 @@ const TracksAtRountable = () => {
   }, []);
 
   // Track data based on the provided image
-  const trackData = [
-    // Grid 1
-    [
-      [
-        {
-          icon: '/images/img_frame.svg',
-          title: 'Smart Capital',
-          description:
-            'What the family offices and institutions are thinking, how they are thinking about it.',
-        },
-        {
-          icon: '/images/img_frame.svg',
-          title: 'RegTech & AI',
-          description:
-            'Turn GDPR and RBI norms into an edge. More algorithmic markets and smarter trading starts.',
-        },
-      ],
-      [
-        {
-          icon: '/images/img_frame.svg',
-          title: 'Fintech 2030',
-          description:
-            'Alan Lohi: consumer protection, bringing responsibility with resilient and representative ecosystem.',
-        },
-        {
-          icon: '/images/img_frame.svg',
-          title: 'Cashflow Credit',
-          description:
-            'Uber SBI, AXA data, and OCEN to boost MSME and enhance profitability at scale.',
-        },
-      ],
-    ],
-    // Grid 2
-    [
-      [
-        {
-          icon: '/images/img_frame.svg',
-          title: 'Inclusive Insurance',
-          description:
-            'Micro-agents, embedded distribution, and digital claims for the next 500 million Indians.',
-        },
-        {
-          icon: '/images/img_frame.svg',
-          title: 'Global UPI',
-          description:
-            'Link corridors, expand RuPay and export Indian fintech IP with Government operations.',
-        },
-      ],
-      [
-        {
-          icon: '/images/img_frame.svg',
-          title: 'UPI Security',
-          description:
-            'Detect fraud and deceptions with device integrity, tokenisation, and cross border security.',
-        },
-        {
-          icon: '/images/img_frame.svg',
-          title: 'Embedded Finance',
-          description:
-            'Move beyond MERs, PINS, interchange, flows, and FinTech can reduce top monetisation.',
-        },
-      ],
-    ],
-    // Grid 3
-    [
-      [
-        {
-          icon: '/images/img_frame.svg',
-          title: '2025 Valuations',
-          description:
-            'Sweat equity, growth vs profitability, cost of capital, secondaries, and structured finance.',
-        },
-        {
-          icon: '/images/img_frame.svg',
-          title: 'Bank-Fintech Partnerships',
-          description: 'Collaborative RDC and technologies that share risk and speed compliance.',
-        },
-      ],
-      [
-        {
-          icon: '/images/img_frame.svg',
-          title: 'Reaching Bharat',
-          description:
-            'Scale direct payments beyond metros with offline APIs, vernacular UX, GenAI and last mile finance.',
-        },
-        {
-          icon: '/images/img_frame.svg',
-          title: 'India Stack',
-          description:
-            'Mandate AXA, OCEN, e-kyc and credit with stack developer-first infrastructure.',
-        },
-      ],
-    ],
-  ];
+  
 
   // Auto-scroll functionality
   useEffect(() => {
@@ -140,9 +144,9 @@ const TracksAtRountable = () => {
           alt="Track Icon"
           width={42}
           height={42}
-          className="w-[21px] h-[21px] md:w-[42px] md:h-[42px] flex-shrink-0"
+          className="w-[21px] h-auto md:w-[42px]  flex-shrink-0"
         />
-        <h3 className="text-[14px] md:text-[24px] font-lufga font-semibold leading-[18px] md:leading-[32px] text-left text-[#ffffff] flex-shrink-0">
+        <h3 className="text-[14px] md:text-[18px] font-lufga font-semibold leading-[18px] md:leading-[32px] text-left text-[#ffffff] flex-shrink-0">
           {track.title}
         </h3>
         <p className="text-[10px] md:text-[14px] font-lufga font-extralight leading-[12px] md:leading-[18px] text-left text-[#ffffff] w-full flex-1">
@@ -154,11 +158,11 @@ const TracksAtRountable = () => {
 
   return (
     <>
-      <section className="w-full bg-[linear-gradient(-90deg,#0575e6_0%,#5336f8_50%,#00f260_100%)] px-4 sm:px-6 lg:px-8 mt-[43px] md:mt-[86px] -mt-[26px] md:-mt-[52px] relative overflow-hidden">
+      <section className="w-[100vw] bg-[linear-gradient(-90deg,#0575e6_0%,#5336f8_50%,#00f260_100%)] px-4 sm:px-6 lg:px-8 mt-[43px] md:mt-[86px] -mt-[26px] md:-mt-[52px] relative overflow-hidden">
         <div className="w-full max-w-[1440px] mx-auto">
           <div className="flex flex-col justify-start items-start w-full">
             {/* Decorative Element */}
-            <div className="flex flex-col lg:flex-row justify-start items-end w-full px-[12px] md:px-[24px]">
+            <div className="flex flex-col lg:flex-row justify-start w-full px-[12px] md:px-[24px]">
               {/* Left Side - Technology Image */}
               <div className="w-full lg:w-[44%] mr-[12px] md:mr-[24px] mt-[28px] md:mt-[56px]">
                 <div
@@ -176,11 +180,11 @@ const TracksAtRountable = () => {
               </div>
 
               {/* Right Side - Content */}
-              <div className="flex flex-col justify-start items-start w-full lg:w-[47%] mt-8 mb-8 lg:mt-0 lg:mb-8">
-                <p className="text-[16px] md:text-[20px] font-lufga font-bold leading-[21px] md:leading-[27px] text-left uppercase text-[#ffffff]">
+              <div className="flex flex-col justify-start items-start w-full lg:w-[47%] mt-8 mb-8 lg:mt-[75px] lg:mb-8">
+                <p className="text-[16px] md:text-[20px] font-lufga font-bold pl-5 leading-[21px] md:leading-[27px] text-left uppercase text-[#ffffff]">
                   Events Topics
                 </p>
-                <h2 className="text-[32px] md:text-[64px] font-lufga font-medium leading-[42px] md:leading-[84px] text-left text-[#ffffff] ">
+                <h2 className="text-[32px] md:text-[64px] font-lufga font-medium pl-5 leading-[42px] md:leading-[84px] text-left text-[#ffffff] ">
                   Tracks at Roundtable
                 </h2>
 

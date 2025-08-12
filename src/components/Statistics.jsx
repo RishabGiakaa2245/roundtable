@@ -45,26 +45,26 @@ const Statistics = () => {
 
           {/* Unite Transform Card - Spans 2 columns, 4 rows */}
           <div className="col-span-2 md:col-span-2 row-span-4 row-start-2 relative bg-[linear-gradient(135deg,#0575e6_0%,#18afff_100%)] rounded-[10px] md:rounded-[20px] overflow-hidden">
-            <div className="absolute bottom-[16px] md:bottom-[32px] left-[18px] md:left-[36px] z-10">
+            <div className="absolute bottom-[16px] md:bottom-[32px] right-[18px] md:right-[36px] z-10">
               <button className="bg-[#ffffff] text-[#000000] rounded-[11px] md:rounded-[22px] px-[12px] md:px-[24px] py-[5px] md:py-[10px] text-[12px] md:text-[16px] font-bold leading-[16px] md:leading-[21px]">
                 Explore
               </button>
             </div>
-            <div className="absolute top-[18px] md:top-[36px] pl-[18px] md:pl-[36px] flex flex-col justify-start items-start w-[80%]">
-              <div className=" w-full text-[24px] md:text-[48px] font-medium leading-[31px] md:leading-[62px] text-left uppercase text-[#ffffff]">
-                <span className="font-medium block">Unite</span>
-                <span className="font-[100] block italic">Inspire</span>
+            <div className="absolute top-[18px] md:top-[36px] pl-[18px] md:pl-[36px] flex flex-col justify-start items-start w-[60%]">
+              <div className=" w-full text-[30px] md:text-[78px] font-medium leading-[31px] md:leading-[92px] text-left uppercase text-[#ffffff]">
+                <span className="font-medium mr-4">Unite</span>
+                <span className="font-[100] italic">Inspire</span>
                 <span className="font-medium block border-b-[1px] border-white pb-6">Transform</span>
               </div>
               <div className="flex flex-row justify-start items-start w-full -mt-[43px] md:-mt-[86px]">
                 
-                <p className="text-[12px] md:text-[16px] font-normal leading-[15px] md:leading-[20px] text-left text-[#ffffff] sm:w-[45%] mt-[63px] md:mt-[126px] z-20">
+                <p className="text-[10px] md:text-[16px] font-normal leading-[15px] md:leading-[20px] text-left text-[#ffffff] sm:w-[100%] mt-[63px] md:mt-[126px] z-20">
                   Our event is dedicated to driving bold conversations that shape the future of innovation.
                 </p>
                 
               </div>
             </div>
-            <div className="absolute bottom-0 right-0 w-[186px] md:w-[412px] ml-[-24px] md:ml-[-48px] self-center">
+            <div className="absolute bottom-0  w-full md:w-full  self-center">
                   <Image
                     src="/images/33034375 3.png"
                     alt="Hero Background"
@@ -122,7 +122,7 @@ const Statistics = () => {
           
           <div className=" col-span-1 row-span-2 sm:row-span-1 col-start-3 sm:col-start-4 row-start-6 sm:row-start-5">
             <Image
-              src="/images/img_rectangle_160947.png"
+              src="/images/Rectangle 1609501.png"
               alt="Meeting Room 3"
               width={320}
               height={180}

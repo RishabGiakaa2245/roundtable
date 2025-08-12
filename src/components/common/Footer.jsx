@@ -5,7 +5,7 @@ import Button from '../ui/Button';
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-footer-1 rounded-t-[20px] md:rounded-t-[40px] pt-[39px] md:pt-[78px] pb-[39px] md:pb-[78px] mt-[208px]">
+    <footer className="w-full bg-footer-1 rounded-t-[20px] md:rounded-t-[40px] pt-[39px] md:pt-[78px] pb-[39px] md:pb-[78px] mt-[70px]">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-[31px] md:gap-[62px] justify-start items-center w-full max-w-[1300px] mx-auto">
           
