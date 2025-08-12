@@ -69,7 +69,7 @@ const Statistics = () => {
                     src="/images/33034375 3.png"
                     alt="Hero Background"
                     width={372}
-                    height={462}
+                    height={462} 
                     className="w-full h-auto rounded-[10px] md:rounded-[20px]"
                   />
                 </div>
