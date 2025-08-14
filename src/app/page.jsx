@@ -1,8 +1,6 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import Header from '@/components/common/Header';
-import Footer from '@/components/common/Footer';
 import Button from '@/components/ui/Button';
 import VideoHero from '@/components/ui/VideoHerobackground';
 import TracksAtRountable from '@/components/TracksAtRountable';
@@ -16,10 +14,10 @@ import GlobalCompanies from '@/components/GlobalCompanies';
 import FreshStories from '@/components/FreshStories';
 const HomePage = () => {
   return (
-    <div data-scroll-section className="flex flex-col justify-start items-center w-full bg-[#ffffff]">
+    <div className="flex flex-col justify-start items-center w-full bg-[#ffffff]">
       <Hero />
       {/* Statistics and Unite Section */}
-      <div data-scroll data-scroll-speed="0.4">
+      <div data-scroll data-scroll-speed="2">
         <Statistics />
       </div>
       {/* Tracks at Roundtable Section */} 
@@ -51,7 +49,6 @@ const HomePage = () => {
         <FreshStories />
       </div>
       {/* Footer */}
-      <Footer />
     </div>
   );
 };

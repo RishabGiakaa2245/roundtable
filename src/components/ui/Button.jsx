@@ -14,11 +14,12 @@ const Button = ({
   ...props
 }) => {
   const variants = {
-    primary: 'bg-[linear-gradient(90deg,#0575e6_0%,#5336f8_50%,#00f260_100%)] hover:bg-[linear-gradient(270deg,#0575e6_0%,#5336f8_50%,#00f260_100%)] text-white rounded-[25px] md:rounded-[30px] transition-all duration-500 ease-in-out focus:ring-blue-500',
+    primary: 'bg-[linear-gradient(90deg,#0575e6_0%,#5336f8_50%,#00f260_100%)] text-white rounded-[25px] md:rounded-[30px] transition-all duration-500 ease-in-out focus:ring-blue-500',
     secondary: 'bg-[#ffffff] text-[#000000] font-extrabold rounded-[11px] md:rounded-[22px] hover:bg-[#000000] hover:text-[#0575e6] transition-all duration-300 focus:ring-blue-500',
     outline: 'border border-gray-300 text-gray-700 bg-transparent hover:bg-gray-50 active:bg-gray-100 focus:ring-gray-300',
     ghost: 'text-gray-700 bg-transparent hover:bg-gray-100 active:bg-gray-200 focus:ring-gray-300',
-    danger: 'bg-red-600 text-white hover:bg-red-700 active:bg-red-800 focus:ring-red-500'
+    danger: 'bg-red-600 text-white hover:bg-red-700 active:bg-red-800 focus:ring-red-500',
+    ternary: ' bg-transparent border border-white rounded-[25px] md:rounded-[30px] hover:bg-white hover:text-black  transition-all duration-500 ease-in-out'
   };
 
   const sizes = {
@@ -32,7 +33,7 @@ const Button = ({
   };
 
   // Use custom border radius for secondary and primary variants, default for others
-  const responsiveRadius = (variant === 'secondary' || variant === 'primary') ? '' : 'rounded sm:rounded-md md:rounded-lg';
+  const responsiveRadius = (variant === 'secondary' || variant === 'primary' || variant === 'ternary' ) ? '' : 'rounded sm:rounded-md md:rounded-lg';
   const responsiveFocus = 'focus:ring-2 sm:focus:ring-2 md:focus:ring-4';
 
   const LoadingSpinner = () => (

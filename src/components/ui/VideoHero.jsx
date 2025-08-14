@@ -30,12 +30,12 @@ const VideoHero = () => {
   }, []);
 
   return (
-    <div className="relative w-[376px] md:w-[800px] aspect-video overflow-hidden z-[0]">
+    <div className="relative w-[376px] md:w-[800px] aspect-video overflow-hidden z-[0] rounded-xl border-2">
       {/* Video Container with Mask */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 rounded-xl">
         <video
           ref={videoRef}
-          className="w-full h-full object-cover scale-105"
+          className="w-full h-full object-cover rounded-xl scale-105"
           autoPlay
           muted
           loop
@@ -47,7 +47,7 @@ const VideoHero = () => {
         </video>
 
         {/* Multi-layer gradient effects for better blending */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 rounded-xl">
           {/* <div className="absolute inset-0 bg-gradient-to-r from-[#2146be]/90 via-transparent to-[#1e7a85]/90" />
           
           <div className="absolute inset-0 bg-gradient-to-t from-[#3e32bc]/90 via-transparent to-[#3e32bc]/90" />

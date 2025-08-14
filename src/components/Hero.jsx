@@ -9,16 +9,15 @@ const Hero = () => {
   return (
     <>
         {/* Hero Section with Background */}
-      <section data-scroll-section data-scroll-speed="0.2"  className="relative w-full h-[85vh] sm:h-[80vh] overflow-hidden">
+      <section    className="relative w-full h-[85vh] sm:h-[80vh] overflow-hidden">
         {/* Video Background */}
           <VideoHerobackground />
 
 
         <div className="absolute inset-0 w-full h-full z-10">
           {/* Header */}
-          <Header />
           {/* Left Side Images */}
-          <div  className="absolute left-[0] md:left-[80px] top-[13%] sm:top-0  w-[100vw] sm:w-[210px] h-[155px] sm:h-[80vh] overflow-hidden z-20">
+          <div  className="hidden sm:block absolute left-[0] md:left-[80px] top-[13%] sm:top-0  w-[100vw] sm:w-[210px] h-[155px] sm:h-[80vh] overflow-hidden z-20">
             <div className="animate-scroll-right sm:animate-scroll-up flex flex-row sm:flex-col gap-[12px] md:gap-[24px] justify-start items-center">
               <Image
                 src="/images/img_rectangle_160866.png"
@@ -65,7 +64,7 @@ const Hero = () => {
             </div>
           </div>
           {/* Right Side Images */}
-          <div className="absolute right-[0] md:right-[80px] bottom-0 sm:top-0  w-[100vw] sm:w-[105px] md:w-[210px] h-[155px] sm:h-[85vh] md:h-[80vh] overflow-hidden z-20">
+          <div className="hidden sm:block absolute right-[0] md:right-[80px] bottom-0 sm:top-0  w-[100vw] sm:w-[105px] md:w-[210px] h-[155px] sm:h-[85vh] md:h-[80vh] overflow-hidden z-20">
             <div className="animate-scroll-left sm:animate-scroll-down flex flex-row sm:flex-col gap-[12px] md:gap-[24px] justify-start items-center">
               <Image
                 src="/images/img_rectangle_160947.png"
@@ -113,9 +112,9 @@ const Hero = () => {
           </div>
           {/* Center Content */}
           <div className="relative inset-0 flex flex-col justify-center items-center pt-[73%] sm:pt-[11%] px-4 sm:px-6 lg:px-8">
-            <div className="absolute top-[40%] sm:top-[10%] flex flex-col justify-start items-center w-full max-w-[720px] z-2">
+            <div className="absolute top-[40%] sm:top-[15%] flex flex-col justify-start items-center w-full max-w-[720px] z-2">
               {/* Date and Location */}
-              <div data-scroll data-scroll-speed="1" className="flex flex-row gap-[6px] md:gap-[12px] justify-center items-center">
+              <div data-scroll className="flex flex-row gap-[6px] md:gap-[12px] justify-center items-center">
                 <p className="text-[14px] md:text-[18px] font-lufga font-semibold leading-[18px] md:leading-[24px] text-center text-[#ffffff] drop-shadow-lg">
                   7-9 October 2025
                 </p>
@@ -126,11 +125,11 @@ const Hero = () => {
 Trident Hotel, BKC, Mumbai                </p>
               </div>
               {/* Main Title */}
-              <h1 data-scroll data-scroll-speed="1" className="text-[24px] md:text-[36px] font-lufga font-medium leading-[28px] md:leading-[40px] text-center text-[#ffffff] max-w-[800px] drop-shadow-lg">
+              <h1 data-scroll className="text-[24px] md:text-[36px] font-lufga font-medium leading-[28px] md:leading-[40px] text-center text-[#ffffff] max-w-[800px] drop-shadow-lg">
                 The Giakaa Capital Fintech Leadership Roundtable Series
               </h1>
               {/* CTA Button */}
-              <Button data-scroll data-scroll-speed="1"
+              <Button data-scroll
                 variant="primary"
                 className="rounded-[25px] px-[12px] md:px-[24px] py-[6px] md:py-[12px] text-[12px] md:text-[16px] font-lufga font-bold leading-[16px] md:leading-[21px] mt-[17px] z-10"
               >
@@ -138,7 +137,7 @@ Trident Hotel, BKC, Mumbai                </p>
               </Button>
             </div>
             {/* Hero Video */}
-            <div data-scroll data-scroll-speed="1" className="w-[376px] md:w-[800px] z-0">
+            <div  className="w-[376px] md:w-[800px] z-0 sm:mt-[5%]">
               <VideoHero />
             </div>
           </div>
@@ -154,7 +153,7 @@ Trident Hotel, BKC, Mumbai                </p>
         </div>
       </section>
       {/* Organized By Section */}
-      <section data-scroll-section data-scroll-speed="0.2" className="w-full px-4 sm:px-6 lg:px-8 mt-[20px] md:mt-[30px]">
+      <section  className="w-full px-4 sm:px-6 lg:px-8 mt-[20px] md:mt-[30px]">
         <div className="w-full max-w-[1440px] mx-auto">
           <div className="flex flex-row justify-center items-start w-full max-w-[490px] mx-auto">
             {/* Organized By */}

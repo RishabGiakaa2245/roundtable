@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Button from './ui/Button';
+import { motion } from 'framer-motion';
 
 const FreshStories = () => {
   // Stories data array - can be moved to props or external data source
@@ -28,154 +29,206 @@ const FreshStories = () => {
     },
   ];
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const headerVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: -30 
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 60,
+      scale: 0.95
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.7,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    }
+  };
+
+  const imageVariants = {
+    hover: {
+      scale: 1.05,
+      transition: {
+        duration: 0.4,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    }
+  };
+
+  const cardContentVariants = {
+    hover: {
+      y: -8,
+      transition: {
+        duration: 0.3,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    }
+  };
+
+  const glassCardVariants = {
+    hover: {
+      backdropFilter: 'blur(20px)',
+      background: 'rgba(255, 255, 255, 0.25)',
+      scale: 1.02,
+      transition: {
+        duration: 0.3,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    }
+  };
+
   return (
-    <section className="w-full px-8 mt-[96px]">
+    <motion.section 
+      className="w-full px-8 mt-[96px]"
+      data-scroll
+      data-scroll-speed="0.1"
+    >
       <div className="w-full max-w-[1440px] mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-[40px]">
-          <p className="text-[16px] lg:text-[20px] font-lufga font-bold leading-[21px] lg:leading-[27px] text-center uppercase text-[#0575e6]">
+        <motion.div 
+          className="text-center mb-[40px]"
+          variants={headerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.p 
+            className="text-[16px] lg:text-[20px] font-lufga font-bold leading-[21px] lg:leading-[27px] text-center uppercase text-[#0575e6]"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            data-scroll
+            data-scroll-speed="0.2"
+          >
             News Feed
-          </p>
-          <h2 className="text-[32px] lg:text-[64px] font-lufga font-normal leading-[42px] lg:leading-[84px] text-center text-[#000000] mt-[16px] lg:mt-[32px]">
+          </motion.p>
+          <motion.h2 
+            className="text-[32px] lg:text-[64px] font-lufga font-normal leading-[42px] lg:leading-[84px] text-center text-[#000000] mt-[16px] lg:mt-[32px]"
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+            data-scroll
+            data-scroll-speed="0.3"
+          >
             Stay Updated by Fresh Stories
-          </h2>
-        </div>
+          </motion.h2>
+        </motion.div>
 
         {/* Stories Grid */}
-        <div className="flex flex-col lg:flex-row gap-[20px] w-full justify-center items-center">
+        <motion.div 
+          className="flex flex-col lg:flex-row gap-[20px] w-full justify-center items-center"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {stories.map((story, index) => (
-            <div
-              key={story.id} // Using unique story ID as key
+            <motion.div
+              key={story.id}
               className="flex w-full lg:w-[420px] flex-col items-center justify-start"
+              variants={cardVariants}
+              whileHover="hover"
+              data-scroll
+              data-scroll-speed={`${0.1 + index * 0.05}`}
             >
-              <Image
-                src={story.imageUrl}
-                alt={story.title}
-                width={210}
-                height={120}
-                className="h-[240px] w-full object-cover rounded-[20px]"
-              />
-              <div className="-mt-[22px] flex w-full h-[184px] flex-row items-start justify-start bg-[linear-gradient(90deg,#0575e6_0%,#5336f8_50%,#00f260_100%)] px-[16px] py-0 shadow-[0px_4px_25px_#888888ff] rounded-[20px]">
-                <div className="-mt-[16px] w-full h-full border border-[#ffffff] backdrop-blur-md bg-white/20 p-[22px] shadow-[0px_4px_100px_#888888ff] rounded-[20px]">
+              <motion.div
+                className="relative overflow-hidden rounded-[20px] w-full z-10"
+                variants={imageVariants}
+              >
+                <Image
+                  src={story.imageUrl}
+                  alt={story.title}
+                  width={210}
+                  height={120}
+                  className="h-[240px] w-full object-cover rounded-[20px]"
+                />
+                <motion.div
+                  className="absolute inset-0 bg-black/20 opacity-0 rounded-[20px]"
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.div>
+              
+              <motion.div 
+                className="-mt-[22px] flex w-full h-[184px] flex-row items-start justify-start bg-[linear-gradient(90deg,#0575e6_0%,#5336f8_50%,#00f260_100%)] px-[16px] py-0 shadow-[0px_4px_25px_#888888ff] rounded-[20px] z-20"
+                variants={cardContentVariants}
+                whileHover={{
+                  y: -8,
+                  boxShadow: "0px 8px 40px rgba(136, 136, 136, 0.8)",
+                  transition: { duration: 0.3 }
+                }}
+              >
+                <motion.div 
+                  className="-mt-[16px] w-full h-full border z-20 border-[#ffffff] backdrop-blur-md bg-white/20 p-[22px] shadow-[0px_4px_100px_#888888ff] rounded-[20px]"
+                  variants={glassCardVariants}
+                >
                   <div className="flex w-full h-full flex-col items-start justify-between gap-[12px] mt-[6px]">
                     <div className="flex flex-col gap-[2px] justify-start items-start w-full">
-                      <h3 className="text-[18px] lg:text-[24px] font-lufga font-semibold leading-[23px] lg:leading-[31px] text-left text-[#ffffff] w-full">
+                      <motion.h3 
+                        className="text-[18px] lg:text-[24px] font-lufga font-semibold leading-[23px] lg:leading-[31px] text-left text-[#ffffff] w-full"
+                        whileHover={{ x: 5 }}
+                        transition={{ duration: 0.2 }}
+                      >
                         {story.title}
-                      </h3>
-                      <p className="text-[14px] lg:text-[16px] font-lufga font-medium leading-[18px] lg:leading-[21px] text-left text-[#ffffff]">
+                      </motion.h3>
+                      <motion.p 
+                        className="text-[14px] lg:text-[16px] font-lufga font-medium leading-[18px] lg:leading-[21px] text-left text-[#ffffff]"
+                        whileHover={{ x: 5 }}
+                        transition={{ duration: 0.2, delay: 0.05 }}
+                      >
                         {story.date}
-                      </p>
+                      </motion.p>
                     </div>
-                    <a
+                    <motion.a
                       href={story.link}
                       className="text-[14px] lg:text-[16px] font-lufga font-bold leading-[18px] lg:leading-[21px] text-center underline text-[#ffdf01] hover:text-[#ffb11b] transition-colors"
+                      whileHover={{ 
+                        scale: 1.05,
+                        color: "#ffb11b",
+                        transition: { duration: 0.2 }
+                      }}
+                      whileTap={{ scale: 0.95 }}
                     >
                       Read More
-                    </a>
+                    </motion.a>
                   </div>
-                </div>
-              </div>
-            </div>
+                </motion.div>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
-
-        {/* Contact Section */}
-        <div className="w-full mt-[60px] lg:mt-[80px]">
-          <div className="bg-[#1D1D2B] rounded-[24px] p-[40px] lg:p-[60px] flex flex-col lg:flex-row items-center gap-28 relative overflow-hidden">
-            {/* Left Content */}
-            <div className=" z-10">
-              <p className="text-[14px] lg:text-[16px] font-lufga font-bold text-[#ffffff] mb-[12px] uppercase tracking-wider">
-                CONTACT
-              </p>
-              <h3 className="text-[32px] lg:text-[48px] font-lufga font-semibold text-[#ffffff] leading-[40px] lg:leading-[56px] mb-[40px] lg:mb-[60px] max-w-[500px]">
-                Reach Out - We're Ready to Connect
-              </h3>
-            </div>
-
-            {/* Right Content - Contact Info */}
-            <div className="flex flex-col gap-[16px] z-10">
-              <div className="flex items-center gap-[12px] min-w-[300px]">
-                <div className="w-[48px] h-[48px] bg-white rounded-[12px] flex items-center justify-center">
-                  <svg
-                    className="w-[24px] h-[24px] text-[#1D1D2B]"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
-                <div className="flex-1 bg-white/20 border backdrop-blur-md px-[20px] py-[12px] rounded-[12px]">
-                  <span className="text-[16px] font-lufga font-medium text-[#ffffff]">
-                    Omika Dubey
-                  </span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-[12px] min-w-[300px]">
-                <div className="w-[48px] h-[48px] bg-white rounded-[12px] flex items-center justify-center">
-                  <svg
-                    className="w-[24px] h-[24px] text-[#1D1D2B]"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                  </svg>
-                </div>
-                <div className="flex-1 bg-white/20 border backdrop-blur-md px-[20px] py-[12px] rounded-[12px]">
-                  <span className="text-[16px] font-lufga font-medium text-[#ffffff]">
-                    12345 67890
-                  </span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-[12px] min-w-[300px]">
-                <div className="w-[48px] h-[48px] bg-white rounded-[12px] flex items-center justify-center">
-                  <svg
-                    className="w-[24px] h-[24px] text-[#1D1D2B]"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                  </svg>
-                </div>
-                <div className="flex-1 bg-white/20 border backdrop-blur-md px-[20px] py-[12px] rounded-[12px]">
-                  <span className="text-[16px] font-lufga font-medium text-[#ffffff]">
-                    Omika@gmail.com
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Image */}
-            <div className="absolute right-0 bottom-0 z-1">
-              <Image
-                src="/images/2151876479 1.png"
-                alt="Contact illustration"
-                width={300}
-                height={300}
-                className="object-contain"
-              />
-            </div>
-
-            {/* Arrow SVG */}
-            <div className="absolute top-[10px] left-[500px] z-20 hidden lg:block">
-              <Image
-                src="/images/Vector.svg"
-                alt="Arrow"
-                width={100}
-                height={60}
-                className="w-[60px] lg:w-[120px] h-[40px] lg:h-[100px]"
-              />
-            </div>
-          </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

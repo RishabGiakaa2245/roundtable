@@ -1,6 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Button from './ui/Button';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
 // Add these Tailwind custom utilities to your global CSS or component
 const customStyles = `
@@ -82,84 +84,370 @@ const roundtableData = [
   },
 ];
 
-// Reusable RoundtableCard component
-const RoundtableCard = ({ roundtable }) => {
+// Reusable RoundtableCard component with animations
+const RoundtableCard = ({ roundtable, index }) => {
   const { title, time, location, date, image, timeIcon, locationIcon, dateIcon } = roundtable;
+  const cardRef = useRef(null);
+  const isInView = useInView(cardRef, { once: true, amount: 0.2 });
+
+  const cardVariants = {
+    hidden: {
+      opacity: 0,
+      y: 60,
+      scale: 0.9,
+      rotateY: -15
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      rotateY: 0,
+      transition: {
+        duration: 0.8,
+        delay: index * 0.15,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const imageVariants = {
+    hidden: { scale: 1.05, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        duration: 1,
+        delay: index * 0.15 + 0.3,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const contentVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        delay: index * 0.15 + 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const infoItemVariants = {
+    hidden: { x: -20, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
 
   return (
-    <div className="flex flex-col justify-start items-center w-full h-full">
-      <div className="relative w-full aspect-[412/280] mb-4">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className="object-cover rounded-[10px] md:rounded-[20px]"
-        />
-      </div>
-      <div className="flex flex-col justify-between w-full shadow-[0px_4px_25px_#888888ff] bg-[linear-gradient(90deg,#0575e6_0%,#5336f8_50%,#00f260_100%)] rounded-[10px] md:rounded-[20px] p-[6px] md:p-[12px] -mt-[30px] md:-mt-[40px] relative z-10 flex-1">
-        <div className="flex flex-col w-full shadow-[0px_4px_100px_#888888ff] bg-[#ffffff33] border border-[#ffffff] rounded-[10px] md:rounded-[20px] p-[15px] md:p-[20px] h-full">
+    <motion.div 
+      ref={cardRef}
+      className="flex flex-col justify-start items-center w-full h-full"
+      variants={cardVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      whileHover={{
+        y: -15,
+        scale: 1.03,
+        transition: { duration: 0.3, ease: "easeOut" }
+      }}
+      style={{ perspective: 1000 }}
+    >
+      <motion.div 
+        className="relative w-full aspect-[412/280] mb-4"
+        whileHover={{
+          scale: 1.05,
+          boxShadow: "0 25px 50px rgba(0,0,0,0.15)"
+        }}
+        transition={{ duration: 0.3 }}
+      >
+        <motion.div
+          variants={imageVariants}
+          className="w-full h-full"
+        >
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover rounded-[10px] md:rounded-[20px]"
+          />
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-[10px] md:rounded-[20px]"
+            initial={{ opacity: 0 }}
+            whileHover={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          />
+        </motion.div>
+      </motion.div>
+
+      <motion.div 
+        className="flex flex-col justify-between w-full shadow-[0px_4px_25px_#888888ff] bg-[linear-gradient(90deg,#0575e6_0%,#5336f8_50%,#00f260_100%)] rounded-[10px] md:rounded-[20px] p-[6px] md:p-[12px] -mt-[30px] md:-mt-[40px] relative z-10 flex-1"
+        whileHover={{
+          boxShadow: "0px 8px 40px rgba(5, 117, 230, 0.4)",
+          scale: 1.02
+        }}
+        transition={{ duration: 0.3 }}
+        style={{
+          backgroundSize: "200% 200%",
+        }}
+        animate={{
+          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+        }}
+       
+      >
+        <motion.div 
+          className="flex flex-col w-full shadow-[0px_4px_100px_#888888ff] bg-[#ffffff33] border border-[#ffffff] rounded-[10px] md:rounded-[20px] p-[15px] md:p-[20px] h-full"
+          variants={contentVariants}
+          whileHover={{
+            backdropFilter: "blur(20px)",
+            backgroundColor: "rgba(255, 255, 255, 0.4)"
+          }}
+          transition={{ duration: 0.3 }}
+        >
           <div className="flex flex-col gap-[8px] md:gap-[12px] justify-between h-full">
-            <h3 className="text-[24px] md:text-[24px] lg:text-[26px] font-lufga font-medium leading-[26px] md:leading-[26px] lg:leading-[27px] text-left text-[#ffffff] line-clamp-3 min-h-[60px] md:min-h-[72px]">
+            <motion.h3 
+              className="text-[24px] md:text-[24px] lg:text-[26px] font-lufga font-medium leading-[26px] md:leading-[26px] lg:leading-[27px] text-left text-[#ffffff] line-clamp-3 min-h-[60px] md:min-h-[72px]"
+              whileHover={{
+                scale: 1.02,
+                textShadow: "0 0 20px rgba(255,255,255,0.8)"
+              }}
+              transition={{ duration: 0.3 }}
+            >
               {title}
-            </h3>
+            </motion.h3>
+            
             <div className="flex flex-col gap-[8px] md:gap-[12px] justify-center items-start flex-1">
-              <div className="flex justify-start items-center gap-[6px] md:gap-[8px] w-full">
-                <InfoItem icon={timeIcon} text={time} alt="Time Icon" />
-                <InfoItem icon={locationIcon} text={location} alt="Location Icon" /> 
-                <InfoItem icon={dateIcon} text={date} alt="Date Icon" />
-              </div>
-              <Button variant="secondary" size="md" className="w-1/2">
-                Request for Invite
-              </Button>
+              <motion.div 
+                className="flex justify-start items-center gap-[6px] md:gap-[8px] w-full"
+                variants={{
+                  visible: {
+                    transition: {
+                      staggerChildren: 0.1
+                    }
+                  }
+                }}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+              >
+                <motion.div variants={infoItemVariants}>
+                  <InfoItem icon={timeIcon} text={time} alt="Time Icon" />
+                </motion.div>
+                <motion.div variants={infoItemVariants}>
+                  <InfoItem icon={locationIcon} text={location} alt="Location Icon" />
+                </motion.div>
+                <motion.div variants={infoItemVariants}>
+                  <InfoItem icon={dateIcon} text={date} alt="Date Icon" />
+                </motion.div>
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.5, delay: index * 0.15 + 0.8 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button variant="secondary" size="md" className="">
+                  Request for Invite
+                </Button>
+              </motion.div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 };
 
-// Reusable InfoItem component for time, location, date
+// Enhanced InfoItem component with animations
 const InfoItem = ({ icon, text, alt }) => (
-  <div className="flex flex-row gap-[4px] md:gap-[6px] justify-start items-center w-fit">
-    <Image
-      src={icon}
-      alt={alt}
-      width={12}
-      height={12}
-      className="w-[12px] h-[12px] md:w-[16px] md:h-[16px] flex-shrink-0"
-    />
-    <p className="text-[10px] md:text-[12px] font-lufga font-medium leading-[12px] md:leading-[16px] text-left text-[#ffffff] truncate">
+  <motion.div 
+    className="flex flex-row gap-[4px] md:gap-[6px] justify-start items-center w-fit"
+    whileHover={{ 
+      scale: 1.1,
+      x: 2
+    }}
+    transition={{ duration: 0.2 }}
+  >
+    <motion.div
+      whileHover={{ 
+        rotate: 10,
+        scale: 1.2
+      }}
+      transition={{ duration: 0.3 }}
+    >
+      <Image
+        src={icon}
+        alt={alt}
+        width={12}
+        height={12}
+        className="w-[12px] h-[12px] md:w-[16px] md:h-[16px] flex-shrink-0"
+      />
+    </motion.div>
+    <motion.p 
+      className="text-[10px] md:text-[12px] font-lufga font-medium leading-[12px] md:leading-[16px] text-left text-[#ffffff] truncate"
+      whileHover={{ 
+        textShadow: "0 0 10px rgba(255,255,255,0.6)"
+      }}
+    >
       {text}
-    </p>
-  </div>
+    </motion.p>
+  </motion.div>
 );
 
 const Roundtable = ({ data = roundtableData }) => {
+  const sectionRef = useRef(null);
+  const headerRef = useRef(null);
+  const isHeaderInView = useInView(headerRef, { once: true, amount: 0.5 });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const headerVariants = {
+    hidden: { opacity: 0, y: -30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: 30, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        delay: 0.2,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const gridVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.4
+      }
+    }
+  };
+
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-8 mt-[39px] md:mt-[78px]">
+    <motion.section 
+      ref={sectionRef}
+      className="w-full px-4 sm:px-6 lg:px-8 mt-[39px] md:mt-[78px]"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+    >
       <div className="w-full max-w-[1440px] mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-[30px] md:mb-[60px]">
-          <p className="text-[16px] md:text-[20px] font-lufga font-bold leading-[21px] md:leading-[27px] text-center uppercase text-[#0575e6]">
-Giakaa Capital Roundtables          </p>
-          <h2 className="text-[32px] md:text-[64px] font-lufga font-medium leading-[42px] md:leading-[84px] text-center text-[#22242e] mt-[6px] md:mt-[8px]">
-India’s Digital Finance Tracks          </h2>
-        </div>
+        <motion.div 
+          ref={headerRef}
+          className="text-center mb-[30px] md:mb-[60px]"
+          variants={{
+            visible: {
+              transition: {
+                staggerChildren: 0.2
+              }
+            }
+          }}
+          initial="hidden"
+          animate={isHeaderInView ? "visible" : "hidden"}
+        >
+          <motion.p 
+            className="text-[16px] md:text-[20px] font-lufga font-bold leading-[21px] md:leading-[27px] text-center uppercase text-[#0575e6]"
+            variants={headerVariants}
+            whileHover={{
+              scale: 1.05,
+              textShadow: "0 0 20px rgba(5, 117, 230, 0.6)"
+            }}
+          >
+            Giakaa Capital Roundtables
+          </motion.p>
+          <motion.h2 
+            className="text-[32px] md:text-[64px] font-lufga font-medium leading-[42px] md:leading-[84px] text-center text-[#22242e] mt-[6px] md:mt-[8px]"
+            variants={titleVariants}
+            whileHover={{
+              scale: 1.02,
+              textShadow: "0 0 30px rgba(34, 36, 46, 0.3)"
+            }}
+          >
+            India's Digital Finance Tracks
+          </motion.h2>
+        </motion.div>
 
         {/* Roundtable Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[20px] md:gap-[30px] lg:gap-[40px] px-[20px] md:px-[40px] lg:px-[78px]">
-          {data.map((roundtable) => (
-            <div
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[20px] md:gap-[30px] lg:gap-[40px] px-[20px] md:px-[40px] lg:px-[78px]"
+          variants={gridVariants}
+        >
+          {data.map((roundtable, index) => (
+            <motion.div
               key={roundtable.id}
               className="h-full min-h-[400px] md:min-h-[450px] lg:min-h-[500px]"
+              layout
             >
-              <RoundtableCard roundtable={roundtable} />
-            </div>
+              <RoundtableCard roundtable={roundtable} index={index} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
+
+        {/* Floating decorative elements */}
+        <motion.div
+          className="absolute top-0 left-0 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full opacity-20"
+          animate={{
+            x: [0, 100, 0],
+            y: [0, -50, 0],
+            scale: [1, 1.5, 1]
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute top-1/2 right-0 w-6 h-6 bg-gradient-to-r from-green-400 to-blue-500 rounded-full opacity-15"
+          animate={{
+            x: [0, -80, 0],
+            y: [0, 60, 0],
+            rotate: [0, 180, 360]
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
       </div>
-    </section>
+    </motion.section>
   );
 };
 
