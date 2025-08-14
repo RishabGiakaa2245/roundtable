@@ -121,13 +121,14 @@ const Cards = () => {
     }
   ];
 
-  // Simplified animation variants
+  // Enhanced animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.15,
+        delayChildren: 0.1
       }
     }
   };
@@ -135,8 +136,62 @@ const Cards = () => {
   const cardVariants = {
     hidden: { 
       opacity: 0, 
-      y: 50
+      y: 80,
+      scale: 0.95
     },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1],
+        type: "spring",
+        stiffness: 100,
+        damping: 15
+      }
+    }
+  };
+
+  // Image animation variants
+  const imageVariants = {
+    initial: {
+      scale: 1,
+      rotateY: 0,
+      z: 0
+    },
+    hover: {
+      scale: 1.05,
+      rotateY: 5,
+      z: 20,
+      transition: {
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1]
+      }
+    }
+  };
+
+  // Content card animation variants
+  const contentCardVariants = {
+    initial: {
+      scale: 1,
+      rotateX: 0,
+      z: 0
+    },
+    hover: {
+      scale: 1.02,
+      rotateX: -2,
+      z: 10,
+      transition: {
+        duration: 0.5,
+        ease: [0.16, 1, 0.3, 1]
+      }
+    }
+  };
+
+  // Text animation variants
+  const textVariants = {
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
@@ -147,7 +202,44 @@ const Cards = () => {
     }
   };
 
-  // Single Card Component
+  const staggeredTextVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  // Button animation variants
+  const buttonContainerVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1],
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const buttonVariants = {
+    hidden: { opacity: 0, scale: 0.8, y: 20 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: [0.16, 1, 0.3, 1]
+      }
+    }
+  };
+
+  // Single Card Component with enhanced animations
   const EventCard = ({ cardData, index }) => {
     const handleCTAClick = () => {
       console.log(`${cardData.ctaText} clicked for: ${cardData.title}`);
@@ -160,60 +252,177 @@ const Cards = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
+        style={{ perspective: '1000px' }}
       >
-        {/* Image Section */}
+        {/* Image Section with 3D hover effects */}
         <motion.div 
           className="w-full lg:w-[30%] flex-shrink-0 rounded-2xl sm:rounded-3xl overflow-hidden"
+          variants={imageVariants}
+          initial="initial"
+          whileHover="hover"
         >
-          <motion.img
-            src={cardData.imagePath}
-            alt={cardData.title}
-            className="w-full h-[280px] sm:h-[360px] lg:h-[440px] border-2 border-[#cacac9] rounded-2xl sm:rounded-3xl object-cover transition-transform duration-500 ease-out hover:scale-105"
-          />
+          <motion.div
+            className="relative overflow-hidden rounded-2xl sm:rounded-3xl"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            <motion.img
+              src={cardData.imagePath}
+              alt={cardData.title}
+              className="w-full h-[280px] sm:h-[360px] lg:h-[440px] border-2 border-[#cacac9] rounded-2xl sm:rounded-3xl object-cover"
+              initial={{ scale: 1.1, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ scale: 1.1 }}
+            />
+            
+            {/* Animated overlay gradient */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0"
+              whileHover={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            />
+
+            {/* Floating particles effect on hover */}
+            <motion.div
+              className="absolute inset-0 pointer-events-none"
+              initial={{ opacity: 0 }}
+              whileHover={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              {[...Array(6)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-2 h-2 bg-white/30 rounded-full"
+                  style={{
+                    left: `${20 + i * 15}%`,
+                    top: `${30 + (i % 3) * 20}%`
+                  }}
+                  animate={{
+                    y: [-10, -20, -10],
+                    opacity: [0.3, 0.7, 0.3],
+                    scale: [1, 1.2, 1]
+                  }}
+                  transition={{
+                    duration: 2 + i * 0.3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: i * 0.2
+                  }}
+                />
+              ))}
+            </motion.div>
+          </motion.div>
         </motion.div>
 
-        {/* Content Section */}
+        {/* Content Section with enhanced animations */}
         <motion.div 
-          className="w-full lg:w-[70%] flex-shrink-0 transition-all duration-300 ease-out hover:shadow-xl"
-          style={{
-            '--shadow-color': `${cardData.borderColor}20`
-          }}
+          className="w-full lg:w-[70%] flex-shrink-0"
+          variants={contentCardVariants}
+          initial="initial"
+          whileHover="hover"
+          style={{ perspective: '1000px' }}
         >
           <motion.div 
-            className="h-[280px] sm:h-[360px] lg:h-[440px] rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 relative overflow-hidden transition-all duration-300 ease-out"
+            className="h-[280px] sm:h-[360px] lg:h-[440px] rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 relative overflow-hidden transition-all duration-500 ease-out"
             style={{
               backgroundColor: cardData.bgColor,
               borderColor: cardData.borderColor,
             }}
+            whileHover={{
+              boxShadow: `0 25px 50px -12px ${cardData.borderColor}40, 0 0 0 1px ${cardData.borderColor}20`,
+              scale: 1.01
+            }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
+            {/* Animated background pattern */}
+            <motion.div
+              className="absolute inset-0 opacity-5"
+              style={{
+                background: `radial-gradient(circle at 20% 80%, ${cardData.borderColor} 0%, transparent 50%),
+                           radial-gradient(circle at 80% 20%, ${cardData.borderColor} 0%, transparent 50%),
+                           radial-gradient(circle at 40% 40%, ${cardData.borderColor} 0%, transparent 50%)`
+              }}
+              animate={{
+                scale: [1, 1.1, 1],
+                rotate: [0, 5, 0]
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+
             <motion.div 
               className="flex flex-col justify-between h-full gap-6 sm:gap-8 relative z-10"
+              variants={staggeredTextVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
             >
-              {/* Title and Description */}
+              {/* Title and Description with staggered animations */}
               <div className="flex flex-col gap-4 sm:gap-6">
                 <motion.h2 
-                  className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-semibold leading-tight text-black transition-transform duration-200 ease-out hover:translate-x-1"
+                  className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-semibold leading-tight text-black"
+                  variants={textVariants}
+                  whileHover={{ 
+                    x: 5,
+                    color: cardData.borderColor,
+                    transition: { duration: 0.2 }
+                  }}
                 >
-                  {cardData.title}
+                  {cardData.title.split(' ').map((word, wordIndex) => (
+                    <motion.span
+                      key={wordIndex}
+                      className="inline-block mr-2"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.5,
+                        delay: wordIndex * 0.1,
+                        ease: [0.16, 1, 0.3, 1]
+                      }}
+                      whileHover={{ 
+                        y: -2,
+                        transition: { duration: 0.2 }
+                      }}
+                    >
+                      {word}
+                    </motion.span>
+                  ))}
                 </motion.h2>
+
                 <motion.p 
-                  className="text-sm sm:text-base lg:text-lg font-normal leading-relaxed text-black opacity-75 transition-opacity duration-200 ease-out hover:opacity-90"
+                  className="text-sm sm:text-base lg:text-lg font-normal leading-relaxed text-black opacity-75"
+                  variants={textVariants}
+                  whileHover={{ 
+                    opacity: 0.9,
+                    x: 3,
+                    transition: { duration: 0.2 }
+                  }}
                 >
                   {cardData.description}
                 </motion.p>
               </div>
 
-              {/* Buttons Section */}
-              <div className="flex flex-col gap-4 sm:gap-6">
-                {/* Info Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              {/* Buttons Section with enhanced animations */}
+              <motion.div 
+                className="flex flex-col gap-4 sm:gap-6"
+                variants={buttonContainerVariants}
+              >
+                {/* Info Buttons with individual animations */}
+                <motion.div 
+                  className="flex flex-col sm:flex-row gap-3 sm:gap-4"
+                  variants={staggeredTextVariants}
+                >
                   {cardData.buttons.map((btn, btnIndex) => {
                     const IconComponent = iconComponents[btn.icon];
                     
                     return (
-                      <button
+                      <motion.button
                         key={btn.icon}
-                        className={`group relative flex items-center gap-3 px-4 sm:px-6 py-2 sm:py-3 border-2 rounded-xl font-medium text-sm sm:text-base transition-all duration-200 ease-out hover:scale-[1.02] hover:-translate-y-0.5 active:scale-[0.98] overflow-hidden ${
+                        className={`group relative flex items-center gap-3 px-4 sm:px-6 py-2 sm:py-3 border-2 rounded-xl font-medium text-sm sm:text-base transition-all duration-300 ease-out overflow-hidden ${
                           btnIndex === 0 ? 'min-w-fit' : ''
                         }`}
                         style={{
@@ -221,48 +430,115 @@ const Cards = () => {
                           color: cardData.textColor,
                           borderColor: cardData.borderColor,
                         }}
+                        variants={buttonVariants}
+                        whileHover={{ 
+                          scale: 1.05,
+                          y: -3,
+                          boxShadow: `0 10px 25px -5px ${cardData.borderColor}40`
+                        }}
+                        whileTap={{ 
+                          scale: 0.98,
+                          y: 0
+                        }}
+                        transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                       >
-                        {/* Default state content */}
-                        <div className="flex items-center gap-3 transition-opacity duration-200 ease-out group-hover:opacity-0">
-                          <div className="transition-transform duration-200 ease-out group-hover:scale-110">
+                        {/* Default state content with micro-animations */}
+                        <motion.div 
+                          className="flex items-center gap-3 transition-opacity duration-300 ease-out group-hover:opacity-0"
+                        >
+                          <motion.div 
+                            className="transition-transform duration-300 ease-out"
+                            whileHover={{ rotate: 360, scale: 1.1 }}
+                            transition={{ duration: 0.6 }}
+                          >
                             <IconComponent />
-                          </div>
+                          </motion.div>
                           <span>{btn.text}</span>
-                        </div>
+                        </motion.div>
                         
-                        {/* Hover background */}
-                        <div 
-                          className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-out"
-                          style={{ backgroundColor: cardData.borderColor }}
+                        {/* Hover background with smooth gradient */}
+                        <motion.div 
+                          className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100"
+                          style={{ 
+                            background: `linear-gradient(135deg, ${cardData.borderColor}, ${cardData.borderColor}dd)`
+                          }}
+                          initial={{ scale: 0.8 }}
+                          whileHover={{ scale: 1 }}
+                          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                         />
                         
-                        {/* Hover state content - white text and icons */}
-                        <div className="absolute inset-0 flex items-center gap-3 px-4 sm:px-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-out">
-                          <div className="transition-transform duration-200 ease-out group-hover:scale-110">
+                        {/* Hover state content with enhanced animations */}
+                        <motion.div 
+                          className="absolute inset-0 flex items-center gap-3 px-4 sm:px-6 text-white opacity-0 group-hover:opacity-100"
+                          initial={{ y: 10 }}
+                          whileHover={{ y: 0 }}
+                          transition={{ duration: 0.2, delay: 0.1 }}
+                        >
+                          <motion.div 
+                            className="transition-transform duration-300 ease-out"
+                            animate={{ rotate: 0 }}
+                            whileHover={{ rotate: 360, scale: 1.1 }}
+                            transition={{ duration: 0.6 }}
+                          >
                             <IconComponent />
-                          </div>
-                          <span>{btn.text}</span>
-                        </div>
-                      </button>
+                          </motion.div>
+                          <motion.span
+                            initial={{ opacity: 0, x: -5 }}
+                            whileHover={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.2, delay: 0.1 }}
+                          >
+                            {btn.text}
+                          </motion.span>
+                        </motion.div>
+
+                        {/* Ripple effect on click */}
+                        <motion.div
+                          className="absolute inset-0 rounded-xl pointer-events-none"
+                          style={{ backgroundColor: cardData.borderColor }}
+                          initial={{ scale: 0, opacity: 0.5 }}
+                          whileTap={{ 
+                            scale: 1.5, 
+                            opacity: 0,
+                            transition: { duration: 0.4 }
+                          }}
+                        />
+                      </motion.button>
                     );
                   })}
-                </div>
+                </motion.div>
 
-                {/* CTA Button */}
-                <Button
-                  onClick={handleCTAClick}
-                  variants='primary'
-                  className="w-fit"
-                 
+                {/* CTA Button with enhanced animations */}
+                <motion.div
+                  variants={buttonVariants}
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  <motion.span
-                    whileHover={{ x: 3 }}
-                    transition={{ duration: 0.2 }}
+                  <Button
+                    onClick={handleCTAClick}
+                    variants='primary'
+                    className="w-fit relative overflow-hidden"
                   >
-                    {cardData.ctaText}
-                  </motion.span>
-                </Button>
-              </div>
+                    <motion.span
+                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.2 }}
+                      className="relative z-10"
+                    >
+                      {cardData.ctaText}
+                    </motion.span>
+                    
+                    {/* Animated background on CTA */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                      initial={{ x: '-100%', opacity: 0 }}
+                      whileHover={{ 
+                        x: '100%', 
+                        opacity: 1,
+                        transition: { duration: 0.6, ease: "easeInOut" }
+                      }}
+                    />
+                  </Button>
+                </motion.div>
+              </motion.div>
             </motion.div>
           </motion.div>
         </motion.div>
@@ -272,8 +548,39 @@ const Cards = () => {
 
   return (
     <div className="relative w-full px-4 sm:px-6 lg:px-8 my-16 sm:my-20 lg:my-24">
+      {/* Background animated elements */}
       <motion.div 
-        className="max-w-[1280px] mx-auto"
+        className="absolute inset-0 pointer-events-none overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2 }}
+      >
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-32 h-32 rounded-full bg-gradient-to-br from-blue-400/5 to-purple-400/5"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`
+            }}
+            animate={{
+              x: [0, 100, 0],
+              y: [0, -100, 0],
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.1, 0.3]
+            }}
+            transition={{
+              duration: 10 + i * 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.5
+            }}
+          />
+        ))}
+      </motion.div>
+
+      <motion.div 
+        className="max-w-[1280px] mx-auto relative z-10"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
