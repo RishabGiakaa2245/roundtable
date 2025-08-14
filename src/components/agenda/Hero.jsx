@@ -235,6 +235,7 @@ const Hero = () => {
                     whileTap="tap"
                     data-scroll
                     data-scroll-speed="0.6"
+                    className='mt-6'
                   >
                     <motion.div
                       variants={floatingVariants}

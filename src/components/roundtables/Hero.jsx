@@ -178,11 +178,11 @@ const Hero = () => {
                       data-scroll
                       data-scroll-speed="0.3"
                     >
-                      2025 Agenda
+                      2025 Roundtables
                     </motion.p>
 
                     <motion.h1 
-                      className="text-[24px] sm:text-[36px] md:text-[48px] font-lufga font-normal leading-[31px] sm:leading-[46px] md:leading-[62px] text-left text-[#ffffff] w-full sm:w-[46%] md:w-[70%]"
+                      className="text-[24px] sm:text-[36px] md:text-[48px] font-lufga font-normal leading-[31px] sm:leading-[46px] md:leading-[62px] text-left text-[#ffffff] w-full sm:w-[46%] md:w-[60%]"
                       variants={textVariants}
                       whileHover={{
                         scale: 1.02,
@@ -196,7 +196,7 @@ const Hero = () => {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5, duration: 0.8 }}
                       >
-                        Your Agenda: Networking, Discussions & More
+                        Choose your table, join the conversation
                       </motion.span>
                     </motion.h1>
 
@@ -235,6 +235,7 @@ const Hero = () => {
                     whileTap="tap"
                     data-scroll
                     data-scroll-speed="0.6"
+                    className='mt-6'
                   >
                     <motion.div
                       variants={floatingVariants}

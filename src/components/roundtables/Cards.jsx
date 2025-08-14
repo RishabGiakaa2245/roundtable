@@ -239,6 +239,68 @@ const Cards = () => {
     }
   };
 
+  // Enhanced button animation variants
+  const infoButtonVariants = {
+    initial: {
+      scale: 1,
+      y: 0,
+      rotateY: 0
+    },
+    hover: {
+      scale: 1.08,
+      y: -6,
+      rotateY: 10,
+      transition: {
+        duration: 0.3,
+        ease: [0.16, 1, 0.3, 1]
+      }
+    },
+    tap: {
+      scale: 0.95,
+      y: 0,
+      transition: {
+        duration: 0.1
+      }
+    }
+  };
+
+  // Individual icon animations based on type
+  const getIconAnimation = (iconType) => {
+    switch (iconType) {
+      case 'clock':
+        return {
+          initial: { rotate: 0 },
+          hover: { 
+            rotate: 360,
+            transition: { duration: 0.8, ease: "easeInOut" }
+          }
+        };
+      case 'location':
+        return {
+          initial: { y: 0, scale: 1 },
+          hover: { 
+            y: -3,
+            scale: 1.2,
+            transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] }
+          }
+        };
+      case 'calendar':
+        return {
+          initial: { rotateX: 0, scale: 1 },
+          hover: { 
+            rotateX: 15,
+            scale: 1.1,
+            transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
+          }
+        };
+      default:
+        return {
+          initial: { scale: 1 },
+          hover: { scale: 1.1 }
+        };
+    }
+  };
+
   // Single Card Component with enhanced animations
   const EventCard = ({ cardData, index }) => {
     const handleCTAClick = () => {
@@ -317,14 +379,14 @@ const Cards = () => {
 
         {/* Content Section with enhanced animations */}
         <motion.div 
-          className="w-full lg:w-[70%] flex-shrink-0"
+          className="w-full lg:w-[70%] lg:h-auto flex-shrink-0"
           variants={contentCardVariants}
           initial="initial"
           whileHover="hover"
           style={{ perspective: '1000px' }}
         >
           <motion.div 
-            className="h-[280px] sm:h-[360px] lg:h-[440px] rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 relative overflow-hidden transition-all duration-500 ease-out"
+            className="h-[570px] sm:h-[360px] lg:h-[440px] rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 relative overflow-hidden transition-all duration-500 ease-out"
             style={{
               backgroundColor: cardData.bgColor,
               borderColor: cardData.borderColor,
@@ -411,95 +473,139 @@ const Cards = () => {
                 className="flex flex-col gap-4 sm:gap-6"
                 variants={buttonContainerVariants}
               >
-                {/* Info Buttons with individual animations */}
+                {/* Info Buttons with completely redesigned animations */}
                 <motion.div 
                   className="flex flex-col sm:flex-row gap-3 sm:gap-4"
                   variants={staggeredTextVariants}
                 >
                   {cardData.buttons.map((btn, btnIndex) => {
                     const IconComponent = iconComponents[btn.icon];
+                    const iconAnimation = getIconAnimation(btn.icon);
                     
                     return (
                       <motion.button
                         key={btn.icon}
-                        className={`group relative flex items-center gap-3 px-4 sm:px-6 py-2 sm:py-3 border-2 rounded-xl font-medium text-sm sm:text-base transition-all duration-300 ease-out overflow-hidden ${
+                        className={`group relative flex items-center gap-3 px-4 sm:px-6 py-3 sm:py-4 border-2 rounded-2xl font-medium text-sm sm:text-base backdrop-blur-sm overflow-hidden ${
                           btnIndex === 0 ? 'min-w-fit' : ''
                         }`}
                         style={{
-                          backgroundColor: cardData.bgColor,
+                          backgroundColor: `${cardData.bgColor}80`,
                           color: cardData.textColor,
-                          borderColor: cardData.borderColor,
+                          borderColor: `${cardData.borderColor}40`,
+                          backdropFilter: 'blur(10px)',
                         }}
-                        variants={buttonVariants}
-                        whileHover={{ 
-                          scale: 1.05,
-                          y: -3,
-                          boxShadow: `0 10px 25px -5px ${cardData.borderColor}40`
-                        }}
-                        whileTap={{ 
-                          scale: 0.98,
-                          y: 0
-                        }}
-                        transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                        variants={infoButtonVariants}
+                        initial="initial"
+                        whileHover="hover"
+                        whileTap="tap"
                       >
-                        {/* Default state content with micro-animations */}
-                        <motion.div 
-                          className="flex items-center gap-3 transition-opacity duration-300 ease-out group-hover:opacity-0"
-                        >
-                          <motion.div 
-                            className="transition-transform duration-300 ease-out"
-                            whileHover={{ rotate: 360, scale: 1.1 }}
-                            transition={{ duration: 0.6 }}
-                          >
-                            <IconComponent />
-                          </motion.div>
-                          <span>{btn.text}</span>
-                        </motion.div>
-                        
-                        {/* Hover background with smooth gradient */}
-                        <motion.div 
-                          className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100"
-                          style={{ 
-                            background: `linear-gradient(135deg, ${cardData.borderColor}, ${cardData.borderColor}dd)`
+                        {/* Gradient background that appears on hover */}
+                        <motion.div
+                          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100"
+                          style={{
+                            background: `linear-gradient(135deg, ${cardData.borderColor}15, ${cardData.borderColor}25)`
                           }}
-                          initial={{ scale: 0.8 }}
-                          whileHover={{ scale: 1 }}
                           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                         />
                         
-                        {/* Hover state content with enhanced animations */}
+                        {/* Shimmer effect on hover */}
+                        <motion.div
+                          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100"
+                          style={{
+                            background: `linear-gradient(45deg, transparent 30%, ${cardData.borderColor}20 50%, transparent 70%)`
+                          }}
+                          initial={{ x: '-100%' }}
+                          whileHover={{
+                            x: '100%',
+                            transition: { duration: 0.6, ease: "easeInOut" }
+                          }}
+                        />
+
+                        {/* Content container */}
                         <motion.div 
-                          className="absolute inset-0 flex items-center gap-3 px-4 sm:px-6 text-white opacity-0 group-hover:opacity-100"
-                          initial={{ y: 10 }}
-                          whileHover={{ y: 0 }}
-                          transition={{ duration: 0.2, delay: 0.1 }}
+                          className="flex items-center gap-3 relative z-10"
+                          initial={{ opacity: 1 }}
+                          whileHover={{ opacity: 1 }}
                         >
+                          {/* Enhanced Icon Animation */}
                           <motion.div 
-                            className="transition-transform duration-300 ease-out"
-                            animate={{ rotate: 0 }}
-                            whileHover={{ rotate: 360, scale: 1.1 }}
-                            transition={{ duration: 0.6 }}
+                            className="relative"
+                            variants={iconAnimation}
+                            initial="initial"
+                            whileHover="hover"
+                            style={{ perspective: '100px' }}
                           >
-                            <IconComponent />
+                            {/* Icon glow effect */}
+                            <motion.div
+                              className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100"
+                              style={{
+                                background: `radial-gradient(circle, ${cardData.borderColor}30, transparent)`
+                              }}
+                              animate={{
+                                scale: [1, 1.5, 1],
+                              }}
+                              transition={{
+                                duration: 1.5,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                              }}
+                            />
+                            
+                            <motion.div
+                              whileHover={{
+                                filter: `drop-shadow(0 0 8px ${cardData.borderColor}60)`
+                              }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <IconComponent />
+                            </motion.div>
                           </motion.div>
+
+                          {/* Enhanced Text Animation */}
                           <motion.span
-                            initial={{ opacity: 0, x: -5 }}
-                            whileHover={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.2, delay: 0.1 }}
+                            className="font-medium"
+                            whileHover={{
+                              letterSpacing: '0.05em',
+                              transition: { duration: 0.2 }
+                            }}
                           >
-                            {btn.text}
+                            {btn.text.split('').map((char, charIndex) => (
+                              <motion.span
+                                key={charIndex}
+                                className="inline-block"
+                                whileHover={{
+                                  y: -2,
+                                  transition: { 
+                                    duration: 0.2, 
+                                    delay: charIndex * 0.02 
+                                  }
+                                }}
+                              >
+                                {char === ' ' ? '\u00A0' : char}
+                              </motion.span>
+                            ))}
                           </motion.span>
                         </motion.div>
 
-                        {/* Ripple effect on click */}
+                        {/* Border glow effect */}
                         <motion.div
-                          className="absolute inset-0 rounded-xl pointer-events-none"
+                          className="absolute inset-0 rounded-2xl border-2 opacity-0 group-hover:opacity-100 pointer-events-none"
+                          style={{
+                            borderColor: cardData.borderColor,
+                            boxShadow: `0 0 20px ${cardData.borderColor}40, inset 0 0 20px ${cardData.borderColor}20`
+                          }}
+                          transition={{ duration: 0.3 }}
+                        />
+
+                        {/* Pulse effect on hover */}
+                        <motion.div
+                          className="absolute inset-0 rounded-2xl pointer-events-none"
                           style={{ backgroundColor: cardData.borderColor }}
-                          initial={{ scale: 0, opacity: 0.5 }}
-                          whileTap={{ 
-                            scale: 1.5, 
-                            opacity: 0,
-                            transition: { duration: 0.4 }
+                          initial={{ scale: 1, opacity: 0 }}
+                          whileHover={{
+                            scale: [1, 1.05, 1],
+                            opacity: [0, 0.1, 0],
+                            transition: { duration: 0.8, repeat: Infinity }
                           }}
                         />
                       </motion.button>
