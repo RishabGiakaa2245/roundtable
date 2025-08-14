@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Button from '@/components/ui/Button'
 
-const Hero = () => {
+const Hero = ({ onSelectOne, onContactUs }) => {
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },

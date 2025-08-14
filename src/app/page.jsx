@@ -34,6 +34,29 @@ const HomePage = () => {
   // useParallax(companiesRef, 0.04);
   // useParallax(storiesRef, 0.04);
 
+  const handleExploreMoreHero = () => {
+    if (typeof window !== 'undefined' && window.lenisScroll) {
+      const statistics = document.getElementById('statistics-section');
+      if (statistics) {
+        window.lenisScroll(statistics, {
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        });
+      }
+    }
+  };
+  const handleExploreMoreStat = () => {
+    if (typeof window !== 'undefined' && window.lenisScroll) {
+      const statistics = document.getElementById('Tracks-section');
+      if (statistics) {
+        window.lenisScroll(statistics, {
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        });
+      }
+    }
+  };
+
   return (
     // <div className="flex flex-col justify-start items-center w-full bg-[#ffffff]">
     //   <Hero />
@@ -63,24 +86,35 @@ const HomePage = () => {
     //   </div>
     // </div>
 
-     <div className="flex flex-col justify-start items-center w-full bg-[#ffffff]">
-      <Hero />
-      {/* Statistics and Unite Section */}
-        <Statistics />
-      {/* Tracks at Roundtable Section */} 
+    <div className="flex flex-col justify-start items-center w-full bg-[#ffffff]">
+      <Hero onExploreMore={handleExploreMoreHero} />
+      {/* statistics */}
+      <div id="statistics-section" >
+        <Statistics onExploreMore={handleExploreMoreStat}/>
+      </div>
+      {/* Tracks at Roundtable Section */}
+      <div id="Tracks-section" >
         <TracksAtRountable />
+      </div>
       {/* Select Roundtable Section */}
-        <Rountable />
+      <Rountable />
       {/* Event Highlights Section */}
+      <div id="highlights-section">
         <EventHighlights />
+      </div>
       {/* Past Event Highlights Section */}
         <PostEventHighlights />
+      
       {/* Visionary Leaders Section */}
-        <Visionary />
-      {/* Global Companies Section */}
+      <Visionary />
+      {/* Global Companies and Partners Section */}
+      <div id="partner-section">
         <GlobalCompanies />
+      </div>
       {/* Fresh Stories Section */}
+      <div id="news-section">
         <FreshStories />
+      </div>
       {/* Footer */}
     </div>
   );

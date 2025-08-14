@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Button from '@/components/ui/Button'
 
-const Hero = () => {
+const Hero = ({ onContactUs }) => {
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -225,7 +225,7 @@ const Hero = () => {
                     >
                      
                       <Button
-                        onClick={() => console.log('Contact Us clicked')}
+                        onClick={onContactUs}
                         variant='ternary'
 
                         className="relative overflow-hidden group text-white "

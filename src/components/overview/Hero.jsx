@@ -152,7 +152,7 @@ const Hero = ({ content }) => {
           />
         ))}
 
-        <div className="w-full bg-[url('/images/agenda/img_image1_1.png')] bg-cover bg-center">
+        <div className="w-full  bg-cover bg-center"   style={{ backgroundImage: `url(${content.thumbnail})` }}>
           <motion.div 
             className="w-full bg-[url('/images/agenda/img_vector_60.png')] bg-cover bg-center"
           >

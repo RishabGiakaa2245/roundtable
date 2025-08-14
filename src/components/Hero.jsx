@@ -6,7 +6,7 @@ import Header from './common/Header'
 import Image from 'next/image'
 import { useParallax } from '@/hooks/useParallax'
 
-const Hero = () => {
+const Hero = ({ onExploreMore }) => {
   return (
     <>
         {/* Hero Section with Background */}
@@ -130,7 +130,8 @@ Trident Hotel, BKC, Mumbai                </p>
                 The Giakaa Capital Fintech Leadership Roundtable Series
               </h1>
               {/* CTA Button */}
-              <Button data-scroll
+              <Button
+                onClick={onExploreMore}
                 variant="primary"
                 className="rounded-[25px] px-[12px] md:px-[24px] py-[6px] md:py-[12px] text-[12px] md:text-[16px] font-lufga font-bold leading-[16px] md:leading-[21px] mt-[17px] z-10"
               >

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Button from './ui/Button';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-
+import { useRouter } from 'next/navigation';
 // Add these Tailwind custom utilities to your global CSS or component
 const customStyles = `
   .line-clamp-3 {
@@ -86,7 +86,8 @@ const roundtableData = [
 
 // Reusable RoundtableCard component with animations
 const RoundtableCard = ({ roundtable, index }) => {
-  const { title, time, location, date, image, timeIcon, locationIcon, dateIcon } = roundtable;
+  const router = useRouter();
+  const {id , title, time, location, date, image, timeIcon, locationIcon, dateIcon } = roundtable;
   const cardRef = useRef(null);
   const isInView = useInView(cardRef, { once: true, amount: 0.2 });
 
@@ -256,7 +257,7 @@ const RoundtableCard = ({ roundtable, index }) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button variant="secondary" size="md" className="">
+                <Button  onClick={() => router.push(`/overview/${id}`)} variant="secondary" size="md" className="">
                   Request for Invite
                 </Button>
               </motion.div>

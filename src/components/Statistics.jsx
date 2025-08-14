@@ -4,7 +4,7 @@ import Button from './ui/Button'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
-const Statistics = () => {
+const Statistics = ({onExploreMore}) => {
   // Refs for counting animation
   const statsRef = useRef(null)
   const isInView = useInView(statsRef, { once: true, amount: 0.5 })
@@ -263,6 +263,7 @@ const Statistics = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <motion.button 
+                onClick={onExploreMore}
                   className="bg-[#ffffff] text-[#000000] rounded-[11px] md:rounded-[22px] px-[12px] md:px-[24px] py-[5px] md:py-[10px] text-[12px] md:text-[16px] font-bold leading-[16px] md:leading-[21px]"
                   whileHover={{
                     boxShadow: "0 8px 25px rgba(0,0,0,0.2)",

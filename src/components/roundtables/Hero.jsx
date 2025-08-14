@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Button from '@/components/ui/Button'
 
-const Hero = () => {
+const Hero = ({ onSelectOne, onContactUs }) => {
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -243,7 +243,7 @@ const Hero = () => {
                       className='flex gap-3'
                     >
                       <Button
-                        onClick={() => console.log('Contact Us clicked')}
+                        onClick={onSelectOne}
                         variant="secondary" 
                         size="md"
                         className="relative overflow-hidden group"
@@ -258,7 +258,7 @@ const Hero = () => {
                         <span className="relative z-10">Select One</span>
                       </Button>
                       <Button
-                        onClick={() => console.log('Contact Us clicked')}
+                        onClick={onContactUs}
                         variant='ternary'
 
                         className="relative overflow-hidden group text-white "

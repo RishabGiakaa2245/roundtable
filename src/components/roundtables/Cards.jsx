@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import Button from '../ui/Button';
 
 const Cards = () => {
+  const router = useRouter();
 
   // Icon components map - now accepts currentColor for hover responsiveness
   const iconComponents = {
@@ -42,7 +44,6 @@ const Cards = () => {
         { icon: 'location', text: 'Mumbai, India' },
         { icon: 'calendar', text: '9 Sept. 2025' }
       ],
-      ctaText: "Request to invite"
     },
     {
       id: 2,
@@ -57,7 +58,6 @@ const Cards = () => {
         { icon: 'location', text: 'Delhi, India' },
         { icon: 'calendar', text: '15 Sept. 2025' }
       ],
-      ctaText: "Request to invite"
     },
     {
       id: 3,
@@ -72,7 +72,6 @@ const Cards = () => {
         { icon: 'location', text: 'Bangalore, India' },
         { icon: 'calendar', text: '22 Sept. 2025' }
       ],
-      ctaText: "Request to invite"
     },
     {
       id: 4,
@@ -87,7 +86,6 @@ const Cards = () => {
         { icon: 'location', text: 'Pune, India' },
         { icon: 'calendar', text: '28 Sept. 2025' }
       ],
-      ctaText: "Request to invite"
     },
     {
       id: 5,
@@ -102,7 +100,6 @@ const Cards = () => {
         { icon: 'location', text: 'Chennai, India' },
         { icon: 'calendar', text: '5 Oct. 2025' }
       ],
-      ctaText: "Request to invite"
     },
     {
       id: 6,
@@ -117,7 +114,6 @@ const Cards = () => {
         { icon: 'location', text: 'Hyderabad, India' },
         { icon: 'calendar', text: '12 Oct. 2025' }
       ],
-      ctaText: "Request to invite"
     }
   ];
 
@@ -620,7 +616,7 @@ const Cards = () => {
                   whileTap={{ scale: 0.98 }}
                 >
                   <Button
-                    onClick={handleCTAClick}
+                    onClick={() => router.push(`/overview/${cardData.id}`)}
                     variants='primary'
                     className="w-fit relative overflow-hidden"
                   >
@@ -629,7 +625,7 @@ const Cards = () => {
                       transition={{ duration: 0.2 }}
                       className="relative z-10"
                     >
-                      {cardData.ctaText}
+                    Request to invite
                     </motion.span>
                     
                     {/* Animated background on CTA */}
