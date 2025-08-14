@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Button from './ui/Button'
 import VideoHerobackground from './ui/VideoHerobackground'
 import VideoHero from './ui/VideoHero'
 import Header from './common/Header'
 import Image from 'next/image'
+import { useParallax } from '@/hooks/useParallax'
 
 const Hero = () => {
   return (

@@ -368,7 +368,7 @@ const EventHighlights = React.memo(() => {
   return (
     <motion.section 
       ref={sectionRef}
-      className="w-full px-4 sm:px-6 lg:px-8 mt-[58px] md:mt-[116px] relative overflow-hidden"
+      className="w-full px-4 sm:px-6 lg:px-8 mt-[58px] py-20 md:mt-[116px] relative overflow-hidden"
       variants={sectionVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}

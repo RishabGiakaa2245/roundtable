@@ -79,7 +79,7 @@ export default function LocomotiveLayout({ children }) {
 
   return (
     <main 
-      data-scroll-container 
+      // data-scroll-container 
       ref={containerRef} 
       className="relative min-h-screen w-full"
     >

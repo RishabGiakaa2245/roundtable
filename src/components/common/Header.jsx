@@ -13,18 +13,18 @@ const Header = () => {
   const { scrollY } = useScroll();
 
   const scrollToSection = (sectionId) => {
-   if (typeof window !== 'undefined' && window.__locomotiveScroll) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      window.__locomotiveScroll.scrollTo(section, {
-        duration: 1200,                    // 1.2 second smooth scroll
-        easing: [0.25, 0.0, 0.35, 1.0]    // Custom cubic-bezier easing
-      });
+    if (typeof window !== 'undefined' && window.lenisScroll) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        window.lenisScroll(section, {
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        });
+      }
     }
-  }
-  // Method 2: Fallback for when Locomotive isn't ready
-  else if (typeof window !== 'undefined') {
-    const section = document.querySelector(`[data-scroll-to="${sectionId}"]`) || document.getElementById(sectionId);
+    // Fallback for when Lenis isn't ready
+    else if (typeof window !== 'undefined') {
+      const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ 
         block: 'start' 

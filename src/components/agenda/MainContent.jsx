@@ -429,7 +429,7 @@ const FilterSidebar = ({ selectedDate, setSelectedDate, selectedRoundtable, setS
             >
               ROUNDTABLE:
             </motion.h3>
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="sync">
               <motion.div 
                 key={selectedDate}
                 className="grid grid-cols-2 lg:flex lg:flex-wrap gap-2"
@@ -566,7 +566,7 @@ const AgendaSection = ({ filteredData }) => {
       data-scroll-speed="0.05"
     >
       <div className="space-y-16">
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="sync">
           {filteredData.map((dayData, dayIndex) => (
             <motion.div 
               key={`${dayData.dateValue}-${dayIndex}`}
