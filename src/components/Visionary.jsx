@@ -130,7 +130,7 @@ const Visionary = () => {
 
   useEffect(() => {
     if (isMobile) {
-      setNumVisibleSpeakers(8);
+      setNumVisibleSpeakers(4);
     } else {
       setNumVisibleSpeakers(8);
     }
