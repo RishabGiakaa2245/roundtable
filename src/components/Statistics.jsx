@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Button from './ui/Button'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import Link from 'next/link'
 
 const Statistics = ({onExploreMore}) => {
   // Refs for counting animation
@@ -262,8 +263,10 @@ const Statistics = ({onExploreMore}) => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
+                              <Link href="/roundtables" className="z-10">
+
                 <motion.button 
-                onClick={onExploreMore}
+                // onClick={onExploreMore}
                   className="bg-[#ffffff] text-[#000000] rounded-[11px] md:rounded-[22px] px-[12px] md:px-[24px] py-[5px] md:py-[10px] text-[12px] md:text-[16px] font-bold leading-[16px] md:leading-[21px]"
                   whileHover={{
                     boxShadow: "0 8px 25px rgba(0,0,0,0.2)",
@@ -273,6 +276,7 @@ const Statistics = ({onExploreMore}) => {
                 >
                   Explore
                 </motion.button>
+                </Link>
               </motion.div>
               <motion.div 
                 className="absolute top-[18px] md:top-[36px] pl-[18px] md:pl-[36px] flex flex-col justify-start items-start w-[60%]"

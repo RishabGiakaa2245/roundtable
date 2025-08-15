@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, Clock, MapPin, ChevronDown, Users, Building } from 'lucide-react';
 import Button from '../ui/Button';
 import Image from 'next/image';
+import { generateSlug } from '@/helper/utils';
 import { useRouter } from 'next/navigation';
 
 // UI Components with Motion
@@ -50,448 +51,500 @@ const CardContent = ({ className, children, ...props }) => (
 );
 
 // Data (keeping original data structure)
-const agendaData = [
-  {
-    date: 'Tuesday, 7 October',
-    dateValue: '7 Oct',
-    events: [
-      {
-        id: 1,
-        time: '4:30 - 6:30 PM',
-        location: 'Trident Hotel, BKC, Mumbai',
-        eventDate: '7 Sept. 2025',
-        title: 'Financial Inclusion Through Digital Payments: Reaching Bharat',
-        type: 'Roundtable',
-        roundtableId: 'Roundtable 1',
-        bgColor: 'bg-[#deefff]',
-        borderColor: 'border-blue-500',
-        textColor: 'text-[#0575e6]',
-        hasAgenda: true,
-        speakers: [
-          {
-            name: 'Rajesh Kumar',
-            role: 'CEO',
-            company: 'PayTech India',
-            email: 'rajesh@paytech.in',
-            phone: '+91-9876543210',
-          },
-          {
-            name: 'Priya Sharma',
-            role: 'Head of Digital Banking',
-            company: 'HDFC Bank',
-            email: 'priya.sharma@hdfc.com',
-            phone: '+91-9876543211',
-          },
-          {
-            name: 'Amit Patel',
-            role: 'VP Strategy',
-            company: 'PhonePe',
-            email: 'amit.patel@phonepe.com',
-            phone: '+91-9876543212',
-          },
-        ],
-        capacity: 25,
-        registered: 18,
-        agenda: [
-          {
-            time: '4:30 - 4:40 PM',
-            title: 'Registration & Networking High Tea',
-            icon: '/images/agenda/vector.svg',
-          },
-          {
-            time: '4:40 - 4:50 PM',
-            title: 'Opening Remarks by Giakaa Capital',
-            icon: '/images/agenda/vector2.svg',
-          },
-          {
-            time: '4:50 - 5:00 PM',
-            title: 'Partner Introduction',
-            icon: '/images/agenda/vector3.svg',
-          },
-          {
-            time: '5:00 - 5:40 PM',
-            title: 'Discussion Points',
-            icon: '/images/agenda/vector4.svg',
-          },
-          {
-            time: '5:40 - 5:50 PM',
-            title: 'Group Photo & Thankyou Note',
-            icon: '/images/agenda/vector5.svg',
-          },
-          {
-            time: '5:50 - 6:30 PM',
-            title: 'Networking & Refreshments',
-            icon: '/images/agenda/vector6.svg',
-          },
-        ],
-      },
-      {
-        id: 2,
-        time: '6:30 - 8:30 PM',
-        location: 'Trident Hotel, BKC, Mumbai',
-        eventDate: '7 Sept. 2025',
-        title: 'Fintech Valuations in 2025: Navigating Market Corrections & Realistic Pricing',
-        type: 'Roundtable',
-        roundtableId: 'Roundtable 2',
-        bgColor: 'bg-[#ffdcdc]',
-        borderColor: 'border-red-500',
-        textColor: 'text-[#ff5b5b]',
-        hasAgenda: false,
-        speakers: [
-          {
-            name: 'Vikram Singh',
-            role: 'Managing Partner',
-            company: 'Sequoia Capital',
-            email: 'vikram@sequoia.com',
-            phone: '+91-9876543213',
-          },
-          {
-            name: 'Meera Jain',
-            role: 'Investment Director',
-            company: 'Tiger Global',
-            email: 'meera@tiger.com',
-            phone: '+91-9876543214',
-          },
-          {
-            name: 'Arjun Malhotra',
-            role: 'CFO',
-            company: 'Razorpay',
-            email: 'arjun@razorpay.com',
-            phone: '+91-9876543215',
-          },
-        ],
-        capacity: 20,
-        registered: 15,
-        agenda: [
-          {
-            time: '6:30 - 6:40 PM',
-            title: 'Registration & Networking High Tea',
-            icon: '/images/agenda/vector.svg',
-          },
-          {
-            time: '6:40 - 6:50 PM',
-            title: 'Opening Remarks by Giakaa Capital',
-            icon: '/images/agenda/vector2.svg',
-          },
-          {
-            time: '6:50 - 7:00 PM',
-            title: 'Partner Introduction',
-            icon: '/images/agenda/vector3.svg',
-          },
-          {
-            time: '7:00 - 7:40 PM',
-            title: 'Valuation Discussion Points',
-            icon: '/images/agenda/vector4.svg',
-          },
-          {
-            time: '7:40 - 7:50 PM',
-            title: 'Group Photo & Thankyou Note',
-            icon: '/images/agenda/vector5.svg',
-          },
-          {
-            time: '7:50 - 8:30 PM',
-            title: 'Networking & Refreshments',
-            icon: '/images/agenda/vector6.svg',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    date: 'Wednesday, 8 October',
-    dateValue: '8 Oct',
-    events: [
-      {
-        id: 3,
-        time: '4:30 - 6:30 PM',
-        location: 'Trident Hotel, BKC, Mumbai',
-        eventDate: '8 Sept. 2025',
-        title: "India Stack Opportunities: Building on UPI's $990B Market Potential",
-        type: 'Roundtable',
-        roundtableId: 'Roundtable 1',
-        bgColor: 'bg-[#e5e1ff]',
-        borderColor: 'border-purple-500',
-        textColor: 'text-[#5336f8]',
-        hasAgenda: false,
-        speakers: [
-          {
-            name: 'Nandan Nilekani',
-            role: 'Co-founder',
-            company: 'Infosys',
-            email: 'nandan@infosys.com',
-            phone: '+91-9876543216',
-          },
-          {
-            name: 'Dilip Asbe',
-            role: 'CEO',
-            company: 'NPCI',
-            email: 'dilip@npci.org.in',
-            phone: '+91-9876543217',
-          },
-          {
-            name: 'Sameer Nigam',
-            role: 'Founder',
-            company: 'PhonePe',
-            email: 'sameer@phonepe.com',
-            phone: '+91-9876543218',
-          },
-        ],
-        capacity: 30,
-        registered: 22,
-        agenda: [
-          {
-            time: '6:30 - 6:40 PM',
-            title: 'Registration & Networking High Tea',
-            icon: '/images/agenda/vector.svg',
-          },
-          {
-            time: '6:40 - 6:50 PM',
-            title: 'Opening Remarks by Giakaa Capital',
-            icon: '/images/agenda/vector2.svg',
-          },
-          {
-            time: '6:50 - 7:00 PM',
-            title: 'Partner Introduction',
-            icon: '/images/agenda/vector3.svg',
-          },
-          {
-            time: '7:00 - 7:40 PM',
-            title: 'Valuation Discussion Points',
-            icon: '/images/agenda/vector4.svg',
-          },
-          {
-            time: '7:40 - 7:50 PM',
-            title: 'Group Photo & Thankyou Note',
-            icon: '/images/agenda/vector5.svg',
-          },
-          {
-            time: '7:50 - 8:30 PM',
-            title: 'Networking & Refreshments',
-            icon: '/images/agenda/vector6.svg',
-          },
-        ],
-      },
-      {
-        id: 4,
-        time: '6:30 - 8:30 PM',
-        location: 'Trident Hotel, BKC, Mumbai',
-        eventDate: '8 Sept. 2025',
-        title: 'Bank-Fintech Partnerships: Creating Win-Win Collaboration Models',
-        type: 'Roundtable',
-        roundtableId: 'Roundtable 2',
-        bgColor: 'bg-[#ffe3cd]',
-        borderColor: 'border-orange-500',
-        textColor: 'text-[#ff7a1b]',
-        hasAgenda: false,
-        speakers: [
-          {
-            name: 'Shikha Sharma',
-            role: 'Former CEO',
-            company: 'Axis Bank',
-            email: 'shikha@axis.com',
-            phone: '+91-9876543219',
-          },
-          {
-            name: 'Harshil Mathur',
-            role: 'CEO',
-            company: 'Razorpay',
-            email: 'harshil@razorpay.com',
-            phone: '+91-9876543220',
-          },
-          {
-            name: 'Ashneer Grover',
-            role: 'Former MD',
-            company: 'BharatPe',
-            email: 'ashneer@bharatpe.com',
-            phone: '+91-9876543221',
-          },
-        ],
-        capacity: 25,
-        registered: 20,
-        agenda: [
-          {
-            time: '6:30 - 6:40 PM',
-            title: 'Registration & Networking High Tea',
-            icon: '/images/agenda/vector.svg',
-          },
-          {
-            time: '6:40 - 6:50 PM',
-            title: 'Opening Remarks by Giakaa Capital',
-            icon: '/images/agenda/vector2.svg',
-          },
-          {
-            time: '6:50 - 7:00 PM',
-            title: 'Partner Introduction',
-            icon: '/images/agenda/vector3.svg',
-          },
-          {
-            time: '7:00 - 7:40 PM',
-            title: 'Valuation Discussion Points',
-            icon: '/images/agenda/vector4.svg',
-          },
-          {
-            time: '7:40 - 7:50 PM',
-            title: 'Group Photo & Thankyou Note',
-            icon: '/images/agenda/vector5.svg',
-          },
-          {
-            time: '7:50 - 8:30 PM',
-            title: 'Networking & Refreshments',
-            icon: '/images/agenda/vector6.svg',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    date: 'Thursday, 9 October',
-    dateValue: '9 Oct',
-    events: [
-      {
-        id: 5,
-        time: '4:30 - 6:30 PM',
-        location: 'Trident Hotel, BKC, Mumbai',
-        eventDate: '9 Sept. 2025',
-        title:
-          "Building India's Sustainable Digital Financial Ecosystem 2030: A Multi-Stakeholder Blueprint for Inclusive Growth",
-        type: 'Roundtable',
-        roundtableId: 'Roundtable 1',
-        bgColor: 'bg-[#d9f2ff]',
-        borderColor: 'border-cyan-500',
-        textColor: 'text-[#18afff]',
-        hasAgenda: false,
-        speakers: [
-          {
-            name: 'Raghuram Rajan',
-            role: 'Former RBI Governor',
-            company: 'University of Chicago',
-            email: 'raghuram@uchicago.edu',
-            phone: '+91-9876543222',
-          },
-          {
-            name: 'Uday Kotak',
-            role: 'Executive Chairman',
-            company: 'Kotak Mahindra Bank',
-            email: 'uday@kotak.com',
-            phone: '+91-9876543223',
-          },
-          {
-            name: 'Kunal Shah',
-            role: 'Founder',
-            company: 'CRED',
-            email: 'kunal@cred.club',
-            phone: '+91-9876543224',
-          },
-        ],
-        capacity: 35,
-        registered: 28,
-        agenda: [
-          {
-            time: '6:30 - 6:40 PM',
-            title: 'Registration & Networking High Tea',
-            icon: '/images/agenda/vector.svg',
-          },
-          {
-            time: '6:40 - 6:50 PM',
-            title: 'Opening Remarks by Giakaa Capital',
-            icon: '/images/agenda/vector2.svg',
-          },
-          {
-            time: '6:50 - 7:00 PM',
-            title: 'Partner Introduction',
-            icon: '/images/agenda/vector3.svg',
-          },
-          {
-            time: '7:00 - 7:40 PM',
-            title: 'Valuation Discussion Points',
-            icon: '/images/agenda/vector4.svg',
-          },
-          {
-            time: '7:40 - 7:50 PM',
-            title: 'Group Photo & Thankyou Note',
-            icon: '/images/agenda/vector5.svg',
-          },
-          {
-            time: '7:50 - 8:30 PM',
-            title: 'Networking & Refreshments',
-            icon: '/images/agenda/vector6.svg',
-          },
-        ],
-      },
-      {
-        id: 6,
-        time: '6:30 - 8:30 PM',
-        location: 'Trident Hotel, BKC, Mumbai',
-        eventDate: '9 Sept. 2025',
-        title:
-          "Asset Allocators, PE, Family Offices & Institutional Investors Shaping India's Fintech Future",
-        type: 'Roundtable',
-        roundtableId: 'Roundtable 2',
-        bgColor: 'bg-[#d8ffe7]',
-        borderColor: 'border-green-500',
-        textColor: 'text-[#00b648',
-        hasAgenda: false,
-        speakers: [
-          {
-            name: 'Ravi Adusumalli',
-            role: 'Founder',
-            company: 'Elevation Capital',
-            email: 'ravi@elevation.capital',
-            phone: '+91-9876543225',
-          },
-          {
-            name: 'Binny Bansal',
-            role: 'Co-founder',
-            company: 'Flipkart',
-            email: 'binny@flipkart.com',
-            phone: '+91-9876543226',
-          },
-          {
-            name: 'Anand Piramal',
-            role: 'Executive Director',
-            company: 'Piramal Group',
-            email: 'anand@piramal.com',
-            phone: '+91-9876543227',
-          },
-        ],
-        capacity: 20,
-        registered: 16,
-        agenda: [
-          {
-            time: '6:30 - 6:40 PM',
-            title: 'Registration & Networking High Tea',
-            icon: '/images/agenda/vector.svg',
-          },
-          {
-            time: '6:40 - 6:50 PM',
-            title: 'Opening Remarks by Giakaa Capital',
-            icon: '/images/agenda/vector2.svg',
-          },
-          {
-            time: '6:50 - 7:00 PM',
-            title: 'Partner Introduction',
-            icon: '/images/agenda/vector3.svg',
-          },
-          {
-            time: '7:00 - 7:40 PM',
-            title: 'Valuation Discussion Points',
-            icon: '/images/agenda/vector4.svg',
-          },
-          {
-            time: '7:40 - 7:50 PM',
-            title: 'Group Photo & Thankyou Note',
-            icon: '/images/agenda/vector5.svg',
-          },
-          {
-            time: '7:50 - 8:30 PM',
-            title: 'Networking & Refreshments',
-            icon: '/images/agenda/vector6.svg',
-          },
-        ],
-      },
-    ],
-  },
-];
+  const agendaData = [
+    {
+      date: 'Tuesday, 7 October',
+      dateValue: '7 Oct',
+      events: [
+        {
+          id: 1,
+          time: '4:30 - 6:30 PM',
+          location: 'Trident Hotel, BKC, Mumbai',
+          eventDate: '7 Sept, 2025',
+          title: 'Financial Inclusion Through Digital Payments: Reaching Bharat',
+          slug: generateSlug('Financial Inclusion Through Digital Payments: Reaching Bharat'),
+          type: 'Roundtable',
+          roundtableId: 'Roundtable',
+          bgColor: 'bg-blue-50',
+          borderColor: 'border-blue-200',
+          textColor: 'text-blue-900',
+          iconColor: 'text-blue-600',
+          hasAgenda: true,
+          isExpanded: false,
+          speakers: [
+            {
+              name: 'Rajesh Kumar',
+              role: 'CEO',
+              company: 'PayTech India',
+              email: 'rajesh@paytech.in',
+              phone: '+91-9876543210',
+            },
+            {
+              name: 'Priya Sharma',
+              role: 'Head of Digital Banking',
+              company: 'HDFC Bank',
+              email: 'priya.sharma@hdfc.com',
+              phone: '+91-9876543211',
+            },
+            {
+              name: 'Amit Patel',
+              role: 'VP Strategy',
+              company: 'PhonePe',
+              email: 'amit.patel@phonepe.com',
+              phone: '+91-9876543212',
+            },
+          ],
+          capacity: 25,
+          registered: 18,
+          agenda: [
+            {
+              time: '4:30 - 4:40 PM',
+              title: 'Registration & Networking High Tea',
+              icon: 'calendar',
+              iconBg: 'bg-blue-500',
+            },
+            {
+              time: '4:40 - 4:50 PM',
+              title: 'Opening Remarks by Giakaa Capital',
+              icon: 'clock',
+              iconBg: 'bg-blue-500',
+            },
+            {
+              time: '4:50 - 5:00 PM',
+              title: 'Partner Introduction',
+              icon: 'users',
+              iconBg: 'bg-blue-500',
+            },
+            {
+              time: '5:00 - 5:40 PM',
+              title: 'Discussion Points',
+              icon: 'message-circle',
+              iconBg: 'bg-blue-500',
+            },
+            {
+              time: '5:40 - 5:50 PM',
+              title: 'Group Photo & Thankyou Note',
+              icon: 'camera',
+              iconBg: 'bg-blue-500',
+            },
+            {
+              time: '5:50 - 6:30 PM',
+              title: 'Networking & Refreshments',
+              icon: 'coffee',
+              iconBg: 'bg-blue-500',
+            },
+          ],
+        },
+        {
+          id: 2,
+          time: '6:30 - 8:30 PM',
+          location: 'Trident Hotel, BKC, Mumbai',
+          eventDate: '7 Sept, 2025',
+          title: 'Fintech Valuations in 2025: Navigating Market Corrections & Realistic Pricing',
+          slug: generateSlug('Fintech Valuations in 2025: Navigating Market Corrections & Realistic Pricing'),
+          type: 'Roundtable',
+          roundtableId: 'Roundtable',
+          bgColor: 'bg-red-50',
+          borderColor: 'border-red-200',
+          textColor: 'text-red-900',
+          iconColor: 'text-red-600',
+          hasAgenda: false,
+          isExpanded: false,
+          speakers: [
+            {
+              name: 'Vikram Singh',
+              role: 'Managing Partner',
+              company: 'Sequoia Capital',
+              email: 'vikram@sequoia.com',
+              phone: '+91-9876543213',
+            },
+            {
+              name: 'Meera Jain',
+              role: 'Investment Director',
+              company: 'Tiger Global',
+              email: 'meera@tiger.com',
+              phone: '+91-9876543214',
+            },
+            {
+              name: 'Arjun Malhotra',
+              role: 'CFO',
+              company: 'Razorpay',
+              email: 'arjun@razorpay.com',
+              phone: '+91-9876543215',
+            },
+          ],
+          capacity: 20,
+          registered: 15,
+          agenda: [
+            {
+              time: '6:30 - 6:40 PM',
+              title: 'Registration & Networking High Tea',
+              icon: 'calendar',
+              iconBg: 'bg-red-500',
+            },
+            {
+              time: '6:40 - 6:50 PM',
+              title: 'Opening Remarks by Giakaa Capital',
+              icon: 'clock',
+              iconBg: 'bg-red-500',
+            },
+            {
+              time: '6:50 - 7:00 PM',
+              title: 'Partner Introduction',
+              icon: 'users',
+              iconBg: 'bg-red-500',
+            },
+            {
+              time: '7:00 - 7:40 PM',
+              title: 'Valuation Discussion Points',
+              icon: 'message-circle',
+              iconBg: 'bg-red-500',
+            },
+            {
+              time: '7:40 - 7:50 PM',
+              title: 'Group Photo & Thankyou Note',
+              icon: 'camera',
+              iconBg: 'bg-red-500',
+            },
+            {
+              time: '7:50 - 8:30 PM',
+              title: 'Networking & Refreshments',
+              icon: 'coffee',
+              iconBg: 'bg-red-500',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      date: 'Wednesday, 8 October',
+      dateValue: '8 Oct',
+      events: [
+        {
+          id: 3,
+          time: '4:00 - 6:00 PM',
+          location: 'Trident Hotel, BKC, Mumbai',
+          eventDate: '8 Sept, 2025',
+          title: "India Stack Opportunities: Building on UPI's $990B Market Potential",
+          slug: generateSlug("India Stack Opportunities: Building on UPI's $990B Market Potential"),
+          type: 'Roundtable',
+          roundtableId: 'Roundtable',
+          bgColor: 'bg-purple-50',
+          borderColor: 'border-purple-200',
+          textColor: 'text-purple-900',
+          iconColor: 'text-purple-600',
+          hasAgenda: false,
+          isExpanded: false,
+          speakers: [
+            {
+              name: 'Nandan Nilekani',
+              role: 'Co-founder',
+              company: 'Infosys',
+              email: 'nandan@infosys.com',
+              phone: '+91-9876543216',
+            },
+            {
+              name: 'Dilip Asbe',
+              role: 'CEO',
+              company: 'NPCI',
+              email: 'dilip@npci.org.in',
+              phone: '+91-9876543217',
+            },
+            {
+              name: 'Sameer Nigam',
+              role: 'Founder',
+              company: 'PhonePe',
+              email: 'sameer@phonepe.com',
+              phone: '+91-9876543218',
+            },
+          ],
+          capacity: 30,
+          registered: 22,
+          agenda: [
+            {
+              time: '4:00 - 4:10 PM',
+              title: 'Registration & Networking High Tea',
+              icon: 'calendar',
+              iconBg: 'bg-purple-500',
+            },
+            {
+              time: '4:10 - 4:20 PM',
+              title: 'Opening Remarks by Giakaa Capital',
+              icon: 'clock',
+              iconBg: 'bg-purple-500',
+            },
+            {
+              time: '4:20 - 4:30 PM',
+              title: 'Partner Introduction',
+              icon: 'users',
+              iconBg: 'bg-purple-500',
+            },
+            {
+              time: '4:30 - 5:10 PM',
+              title: 'India Stack Discussion Points',
+              icon: 'message-circle',
+              iconBg: 'bg-purple-500',
+            },
+            {
+              time: '5:10 - 5:20 PM',
+              title: 'Group Photo & Thankyou Note',
+              icon: 'camera',
+              iconBg: 'bg-purple-500',
+            },
+            {
+              time: '5:20 - 6:00 PM',
+              title: 'Networking & Refreshments',
+              icon: 'coffee',
+              iconBg: 'bg-purple-500',
+            },
+          ],
+        },
+        {
+          id: 4,
+          time: '6:30 - 8:30 PM',
+          location: 'Trident Hotel, BKC, Mumbai',
+          eventDate: '8 Sept, 2025',
+          title: 'Bank-Fintech Partnerships: Creating Win-Win Collaboration Models',
+          slug: generateSlug('Bank-Fintech Partnerships: Creating Win-Win Collaboration Models'),
+          type: 'Roundtable',
+          roundtableId: 'Roundtable',
+          bgColor: 'bg-orange-50',
+          borderColor: 'border-orange-200',
+          textColor: 'text-orange-900',
+          iconColor: 'text-orange-600',
+          hasAgenda: false,
+          isExpanded: false,
+          speakers: [
+            {
+              name: 'Shikha Sharma',
+              role: 'Former CEO',
+              company: 'Axis Bank',
+              email: 'shikha@axis.com',
+              phone: '+91-9876543219',
+            },
+            {
+              name: 'Harshil Mathur',
+              role: 'CEO',
+              company: 'Razorpay',
+              email: 'harshil@razorpay.com',
+              phone: '+91-9876543220',
+            },
+            {
+              name: 'Ashneer Grover',
+              role: 'Former MD',
+              company: 'BharatPe',
+              email: 'ashneer@bharatpe.com',
+              phone: '+91-9876543221',
+            },
+          ],
+          capacity: 25,
+          registered: 20,
+          agenda: [
+            {
+              time: '6:30 - 6:40 PM',
+              title: 'Registration & Networking High Tea',
+              icon: 'calendar',
+              iconBg: 'bg-orange-500',
+            },
+            {
+              time: '6:40 - 6:50 PM',
+              title: 'Opening Remarks by Giakaa Capital',
+              icon: 'clock',
+              iconBg: 'bg-orange-500',
+            },
+            {
+              time: '6:50 - 7:00 PM',
+              title: 'Partner Introduction',
+              icon: 'users',
+              iconBg: 'bg-orange-500',
+            },
+            {
+              time: '7:00 - 7:40 PM',
+              title: 'Partnership Discussion Points',
+              icon: 'message-circle',
+              iconBg: 'bg-orange-500',
+            },
+            {
+              time: '7:40 - 7:50 PM',
+              title: 'Group Photo & Thankyou Note',
+              icon: 'camera',
+              iconBg: 'bg-orange-500',
+            },
+            {
+              time: '7:50 - 8:30 PM',
+              title: 'Networking & Refreshments',
+              icon: 'coffee',
+              iconBg: 'bg-orange-500',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      date: 'Thursday, 9 October',
+      dateValue: '9 Oct',
+      events: [
+        {
+          id: 5,
+          time: '4:00 - 6:00 PM',
+          location: 'Trident Hotel, BKC, Mumbai',
+          eventDate: '9 Sept, 2025',
+          title: "Building India's Sustainable Digital Financial Ecosystem 2030: A Multi-Stakeholder Blueprint for Inclusive Growth",
+          slug: generateSlug("Building India's Sustainable Digital Financial Ecosystem 2030: A Multi-Stakeholder Blueprint for Inclusive Growth"),
+          type: 'Roundtable',
+          roundtableId: 'Roundtable',
+          bgColor: 'bg-cyan-50',
+          borderColor: 'border-cyan-200',
+          textColor: 'text-cyan-900',
+          iconColor: 'text-cyan-600',
+          hasAgenda: false,
+          isExpanded: false,
+          speakers: [
+            {
+              name: 'Raghuram Rajan',
+              role: 'Former RBI Governor',
+              company: 'University of Chicago',
+              email: 'raghuram@uchicago.edu',
+              phone: '+91-9876543222',
+            },
+            {
+              name: 'Uday Kotak',
+              role: 'Executive Chairman',
+              company: 'Kotak Mahindra Bank',
+              email: 'uday@kotak.com',
+              phone: '+91-9876543223',
+            },
+            {
+              name: 'Kunal Shah',
+              role: 'Founder',
+              company: 'CRED',
+              email: 'kunal@cred.club',
+              phone: '+91-9876543224',
+            },
+          ],
+          capacity: 35,
+          registered: 28,
+          agenda: [
+            {
+              time: '4:00 - 4:10 PM',
+              title: 'Registration & Networking High Tea',
+              icon: 'calendar',
+              iconBg: 'bg-cyan-500',
+            },
+            {
+              time: '4:10 - 4:20 PM',
+              title: 'Opening Remarks by Giakaa Capital',
+              icon: 'clock',
+              iconBg: 'bg-cyan-500',
+            },
+            {
+              time: '4:20 - 4:30 PM',
+              title: 'Partner Introduction',
+              icon: 'users',
+              iconBg: 'bg-cyan-500',
+            },
+            {
+              time: '4:30 - 5:10 PM',
+              title: 'Ecosystem Discussion Points',
+              icon: 'message-circle',
+              iconBg: 'bg-cyan-500',
+            },
+            {
+              time: '5:10 - 5:20 PM',
+              title: 'Group Photo & Thankyou Note',
+              icon: 'camera',
+              iconBg: 'bg-cyan-500',
+            },
+            {
+              time: '5:20 - 6:00 PM',
+              title: 'Networking & Refreshments',
+              icon: 'coffee',
+              iconBg: 'bg-cyan-500',
+            },
+          ],
+        },
+        {
+          id: 6,
+          time: '6:30 - 8:30 PM',
+          location: 'Trident Hotel, BKC, Mumbai',
+          eventDate: '9 Sept, 2025',
+          title: "Asset Allocators, PE, Family Offices & Institutional Investors Shaping India's Fintech Future",
+          slug: generateSlug("Asset Allocators, PE, Family Offices & Institutional Investors Shaping India's Fintech Future"),
+          type: 'Roundtable',
+          roundtableId: 'Roundtable',
+          bgColor: 'bg-green-50',
+          borderColor: 'border-green-200',
+          textColor: 'text-green-900',
+          iconColor: 'text-green-600',
+          hasAgenda: false,
+          isExpanded: false,
+          speakers: [
+            {
+              name: 'Ravi Adusumalli',
+              role: 'Founder',
+              company: 'Elevation Capital',
+              email: 'ravi@elevation.capital',
+              phone: '+91-9876543225',
+            },
+            {
+              name: 'Binny Bansal',
+              role: 'Co-founder',
+              company: 'Flipkart',
+              email: 'binny@flipkart.com',
+              phone: '+91-9876543226',
+            },
+            {
+              name: 'Anand Piramal',
+              role: 'Executive Director',
+              company: 'Piramal Group',
+              email: 'anand@piramal.com',
+              phone: '+91-9876543227',
+            },
+          ],
+          capacity: 20,
+          registered: 16,
+          agenda: [
+            {
+              time: '6:30 - 6:40 PM',
+              title: 'Registration & Networking High Tea',
+              icon: 'calendar',
+              iconBg: 'bg-green-500',
+            },
+            {
+              time: '6:40 - 6:50 PM',
+              title: 'Opening Remarks by Giakaa Capital',
+              icon: 'clock',
+              iconBg: 'bg-green-500',
+            },
+            {
+              time: '6:50 - 7:00 PM',
+              title: 'Partner Introduction',
+              icon: 'users',
+              iconBg: 'bg-green-500',
+            },
+            {
+              time: '7:00 - 7:40 PM',
+              title: 'Investment Discussion Points',
+              icon: 'message-circle',
+              iconBg: 'bg-green-500',
+            },
+            {
+              time: '7:40 - 7:50 PM',
+              title: 'Group Photo & Thankyou Note',
+              icon: 'camera',
+              iconBg: 'bg-green-500',
+            },
+            {
+              time: '7:50 - 8:30 PM',
+              title: 'Networking & Refreshments',
+              icon: 'coffee',
+              iconBg: 'bg-green-500',
+            },
+          ],
+        },
+      ],
+    },
+  ];
 
 // Filter Sidebar Component with Motion
 const FilterSidebar = ({
@@ -976,7 +1029,7 @@ const AgendaSection = ({ filteredData }) => {
                                 whileTap={{ scale: 0.98 }}
                               >
                                 <Button
-                                  onClick={() => router.push(`/overview/${event.id}`)}
+                                  onClick={() => router.push(`/overview/${event.slug}`)}
                                   variant="primary"
                                   size="md"
                                   className="relative overflow-hidden group"
@@ -988,7 +1041,7 @@ const AgendaSection = ({ filteredData }) => {
                                       transition: { duration: 0.6 },
                                     }}
                                   />
-                                  <span className="relative z-10">Request to invite</span>
+                                  <span className="relative z-10">Request an invite</span>
                                 </Button>
                               </motion.div>
 

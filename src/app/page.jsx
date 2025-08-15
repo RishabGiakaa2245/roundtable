@@ -12,6 +12,7 @@ import PostEventHighlights from '@/components/PostEventHighlights';
 import Visionary from '@/components/Visionary';
 import GlobalCompanies from '@/components/GlobalCompanies';
 import FreshStories from '@/components/FreshStories';
+import Partners from '@/components/Partners';
 // import { useRef } from 'react';
 // import { useParallax } from '@/hooks/useParallax';
 
@@ -106,7 +107,13 @@ const HomePage = () => {
         <PostEventHighlights />
       
       {/* Visionary Leaders Section */}
-      <Visionary />
+      {/* <Visionary /> */}
+
+      {/* Partners Section */}
+
+        <Partners />
+
+
       {/* Global Companies and Partners Section */}
       <div id="partner-section">
         <GlobalCompanies />

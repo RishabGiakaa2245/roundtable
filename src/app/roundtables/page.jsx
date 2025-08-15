@@ -32,7 +32,7 @@ const Roundtables = () => {
   };
 
   const handleRequestInvite = () => {
-    console.log('Request to invite clicked');
+    console.log('Request an invite clicked');
   };
   
   const handleDateChange = (date) => {

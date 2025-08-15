@@ -4,6 +4,7 @@ import Button from './ui/Button';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import { generateSlug } from '@/helper/utils';
 // Add these Tailwind custom utilities to your global CSS or component
 const customStyles = `
   .line-clamp-3 {
@@ -18,10 +19,11 @@ const customStyles = `
 const roundtableData = [
   {
     id: 1,
-    title: "Building India's Sustainable Digital Financial Ecosystem 2030",
-    time: '10:00 PM',
-    location: 'xyz city, India',
-    date: '9 Sept. 2025',
+    title: "Financial Inclusion Through Digital Payments: Reaching Bharat",
+    slug: generateSlug("Financial Inclusion Through Digital Payments: Reaching Bharat"),
+    time: '4:30 PM',
+    location: 'Trident Hotel, BKC, Mumbai',
+    date: '7 Oct. 2025',
     image: '/images/img_rectangle_160911.png',
     timeIcon: '/images/img_search.svg',
     locationIcon: '/images/img_frame_white_a700.svg',
@@ -29,10 +31,11 @@ const roundtableData = [
   },
   {
     id: 2,
-    title: 'Future of FinTech Innovation in Asia',
-    time: '2:00 PM',
-    location: 'Mumbai, India',
-    date: '15 Sept. 2025',
+    title: 'Fintech Valuations in 2025: Navigating Market Corrections & Realistic Pricing',
+    slug: generateSlug('Fintech Valuations in 2025: Navigating Market Corrections & Realistic Pricing'),
+    time: '6:30 PM',
+    location: 'Trident Hotel, BKC, Mumbai',
+    date: '7 Oct. 2025',
     image: '/images/img_rectangle_160911.png',
     timeIcon: '/images/img_search.svg',
     locationIcon: '/images/img_frame_white_a700.svg',
@@ -40,10 +43,11 @@ const roundtableData = [
   },
   {
     id: 3,
-    title: 'Digital Banking Transformation Summit',
-    time: '11:00 AM',
-    location: 'Delhi, India',
-    date: '20 Sept. 2025',
+    title: "India Stack Opportunities: Building on UPI's $990B Market Potential",
+    slug: generateSlug("India Stack Opportunities: Building on UPI's $990B Market Potential"),
+    time: '4:00 PM',
+    location: 'Trident Hotel, BKC, Mumbai',
+    date: '8 Oct. 2025',
     image: '/images/img_rectangle_160911.png',
     timeIcon: '/images/img_search.svg',
     locationIcon: '/images/img_frame_white_a700.svg',
@@ -51,10 +55,11 @@ const roundtableData = [
   },
   {
     id: 4,
-    title: 'Blockchain & Cryptocurrency Regulations',
-    time: '4:00 PM',
-    location: 'Bangalore, India',
-    date: '25 Sept. 2025',
+    title: 'Bank-Fintech Partnerships: Creating Win-Win Collaboration Models',
+    slug: generateSlug('Bank-Fintech Partnerships: Creating Win-Win Collaboration Models'),
+    time: '6:30 PM',
+    location: 'Trident Hotel, BKC, Mumbai',
+    date: '8 Oct. 2025',
     image: '/images/img_rectangle_160911.png',
     timeIcon: '/images/img_search.svg',
     locationIcon: '/images/img_frame_white_a700.svg',
@@ -62,10 +67,11 @@ const roundtableData = [
   },
   {
     id: 5,
-    title: 'AI in Financial Services',
-    time: '1:00 PM',
-    location: 'Hyderabad, India',
-    date: '30 Sept. 2025',
+    title: "Building India's Sustainable Digital Financial Ecosystem 2030: A Multi-Stakeholder Blueprint for Inclusive Growth",
+    slug: generateSlug("Building India's Sustainable Digital Financial Ecosystem 2030: A Multi-Stakeholder Blueprint for Inclusive Growth"),
+    time: '4:00 PM',
+    location: 'Trident Hotel, BKC, Mumbai',
+    date: '9 Oct. 2025',
     image: '/images/img_rectangle_160911.png',
     timeIcon: '/images/img_search.svg',
     locationIcon: '/images/img_frame_white_a700.svg',
@@ -73,10 +79,11 @@ const roundtableData = [
   },
   {
     id: 6,
-    title: 'Green Finance & ESG Investment',
-    time: '3:00 PM',
-    location: 'Pune, India',
-    date: '5 Oct. 2025',
+    title: "Asset Allocators, PE, Family Offices & Institutional Investors Shaping India's Fintech Future",
+    slug: generateSlug("Asset Allocators, PE, Family Offices & Institutional Investors Shaping India's Fintech Future"),
+    time: '6:30 PM',
+    location: 'Trident Hotel, BKC, Mumbai',
+    date: '9 Oct. 2025',
     image: '/images/img_rectangle_160911.png',
     timeIcon: '/images/img_search.svg',
     locationIcon: '/images/img_frame_white_a700.svg',
@@ -87,7 +94,7 @@ const roundtableData = [
 // Reusable RoundtableCard component with animations
 const RoundtableCard = ({ roundtable, index }) => {
   const router = useRouter();
-  const {id , title, time, location, date, image, timeIcon, locationIcon, dateIcon } = roundtable;
+  const {id , title, time, location, date, image, timeIcon, locationIcon, dateIcon , slug } = roundtable;
   const cardRef = useRef(null);
   const isInView = useInView(cardRef, { once: true, amount: 0.2 });
 
@@ -257,8 +264,8 @@ const RoundtableCard = ({ roundtable, index }) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button  onClick={() => router.push(`/overview/${id}`)} variant="secondary" size="md" className="">
-                  Request for Invite
+                <Button  onClick={() => router.push(`/overview/${slug}`)} variant="secondary" size="md" className="">
+                  Request an invite
                 </Button>
               </motion.div>
             </div>
@@ -406,7 +413,7 @@ const Roundtable = ({ data = roundtableData }) => {
 
         {/* Roundtable Grid */}
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[20px] md:gap-[30px] lg:gap-[40px] px-[20px] md:px-[40px] lg:px-[78px]"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[20px] md:gap-[30px] lg:gap-[40px] px-[20px] md:px-[40px] lg:px-[28px]"
           variants={gridVariants}
         >
           {data.map((roundtable, index) => (

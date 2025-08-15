@@ -5,6 +5,7 @@ import VideoHero from './ui/VideoHero'
 import Header from './common/Header'
 import Image from 'next/image'
 import { useParallax } from '@/hooks/useParallax'
+import Link from 'next/link'
 
 const Hero = ({ onExploreMore }) => {
   return (
@@ -18,7 +19,7 @@ const Hero = ({ onExploreMore }) => {
         <div className="absolute inset-0 w-full h-full z-10">
           {/* Header */}
           {/* Left Side Images */}
-          <div  className="hidden sm:block absolute left-[0] md:left-[80px] top-[13%] sm:top-0  w-[100vw] sm:w-[210px] h-[155px] sm:h-[80vh] overflow-hidden z-20">
+          <div  className="hidden lg:block absolute left-[0] md:left-[80px] top-[13%] sm:top-0  w-[100vw] sm:w-[210px] h-[155px] sm:h-[80vh] overflow-hidden z-20">
             <div className="animate-scroll-right sm:animate-scroll-up flex flex-row sm:flex-col gap-[12px] md:gap-[24px] justify-start items-center">
               <Image
                 src="/images/img_rectangle_160866.png"
@@ -65,7 +66,7 @@ const Hero = ({ onExploreMore }) => {
             </div>
           </div>
           {/* Right Side Images */}
-          <div className="hidden sm:block absolute right-[0] md:right-[80px] bottom-0 sm:top-0  w-[100vw] sm:w-[105px] md:w-[210px] h-[155px] sm:h-[85vh] md:h-[80vh] overflow-hidden z-20">
+          <div className="hidden lg:block absolute right-[0] md:right-[80px] bottom-0 sm:top-0  w-[100vw] sm:w-[105px] md:w-[210px] h-[155px] sm:h-[85vh] md:h-[80vh] overflow-hidden z-20">
             <div className="animate-scroll-left sm:animate-scroll-down flex flex-row sm:flex-col gap-[12px] md:gap-[24px] justify-start items-center">
               <Image
                 src="/images/img_rectangle_160947.png"
@@ -130,13 +131,15 @@ Trident Hotel, BKC, Mumbai                </p>
                 The Giakaa Capital Fintech Leadership Roundtable Series
               </h1>
               {/* CTA Button */}
+              <Link href="/roundtables" className="z-10">
               <Button
-                onClick={onExploreMore}
+                // onClick={onExploreMore}
                 variant="primary"
                 className="rounded-[25px] px-[12px] md:px-[24px] py-[6px] md:py-[12px] text-[12px] md:text-[16px] font-lufga font-bold leading-[16px] md:leading-[21px] mt-[17px] z-10"
               >
                 Explore More
               </Button>
+              </Link>
             </div>
             {/* Hero Video */}
             <div  className="w-[376px] md:w-[800px] z-0 sm:mt-[5%]">
@@ -144,14 +147,14 @@ Trident Hotel, BKC, Mumbai                </p>
             </div>
           </div>
           {/* top Gradient Overlay - Desktop only */}
-          <div className="hidden sm:block absolute top-0 w-full h-[20px] md:h-[40px] bg-[linear-gradient(180deg,#ffffff_0%,#ffffff00_100%)] z-50"></div>
+          <div className="hidden sm:block absolute top-[-3px] w-full h-[20px] md:h-[40px] bg-[linear-gradient(180deg,#ffffff_0%,#ffffff00_100%)] z-50"></div>
           {/* Bottom Gradient Overlay - Desktop only */}
-          <div className="hidden sm:block absolute bottom-0 w-full h-[20px] md:h-[40px] bg-[linear-gradient(0deg,#ffffff_0%,#ffffff00_100%)] z-50"></div>
+          <div className="hidden sm:block absolute bottom-[-3px] w-full h-[20px] md:h-[40px] bg-[linear-gradient(0deg,#ffffff_0%,#ffffff00_100%)] z-50"></div>
 
           {/* Left Gradient Overlay - Mobile only */}
-          <div className="block sm:hidden absolute left-0 top-0 w-[20px] h-full bg-[linear-gradient(90deg,#ffffff_0%,#ffffff00_100%)] z-50"></div>
+          <div className="block sm:hidden absolute left-[-3px] top-0 w-[20px] h-full bg-[linear-gradient(90deg,#ffffff_0%,#ffffff00_100%)] z-50"></div>
           {/* Right Gradient Overlay - Mobile only */}
-          <div className="block sm:hidden absolute right-0 top-0 w-[20px] h-full bg-[linear-gradient(270deg,#ffffff_0%,#ffffff00_100%)] z-50"></div>
+          <div className="block sm:hidden absolute right-[-3px] top-0 w-[20px] h-full bg-[linear-gradient(270deg,#ffffff_0%,#ffffff00_100%)] z-50"></div>
         </div>
       </section>
       {/* Organized By Section */}
