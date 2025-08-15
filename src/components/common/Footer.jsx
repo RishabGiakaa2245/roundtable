@@ -1,10 +1,49 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import Button from '../ui/Button';
 import { motion } from 'framer-motion';
+import { useRouter, usePathname } from 'next/navigation';
 
 const Footer = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const navigateToSection = (sectionId) => {
+    // If we're not on the home page, first navigate to home
+    if (pathname !== '/') {
+      // Store the section ID in sessionStorage
+      sessionStorage.setItem('scrollToSection', sectionId);
+      router.push('/');
+    } else {
+      // If we're already on the home page, just scroll to the section
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
+  // Check for stored section ID when component mounts
+  useEffect(() => {
+    if (pathname === '/') {
+      console.log("start");
+      const sectionId = sessionStorage.getItem('scrollToSection');
+      console.log(sectionId);
+      if (sectionId) {
+        // Clear the stored section ID
+        sessionStorage.removeItem('scrollToSection');
+        // Add a small delay to ensure the page has loaded
+        setTimeout(() => {
+          const section = document.getElementById(sectionId);
+          if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 500);
+      }
+    }
+  }, [pathname]);
+
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -311,21 +350,21 @@ const Footer = () => {
                     { text: 'Speaker', href: '/speakers' },
                     { text: 'Roundtables', href: '/roundtables' },
                     { text: 'Agenda', href: '/agenda' },
-                    { text: 'Partner', onClick: () => scrollToSection('partner-section') },
+                    { text: 'Partner', onClick: () => navigateToSection('partner-section') },
                   ],
                   [
                     {
                       text: 'Past Glimpse',
-                      onClick: () => scrollToSection('past-glimpse-section'),
+                      onClick: () => navigateToSection('past-glimpse-section'),
                     },
-                    { text: 'About', onClick: () => scrollToSection('statistics-section') },
+                    { text: 'About', onClick: () => navigateToSection('statistics-section') },
                     { text: 'Contact', href: '/contact' },
-                    { text: 'Media', onClick: () => scrollToSection('partner-section') },
+                    { text: 'Media', onClick: () => navigateToSection('partner-section') },
                   ],
                   [
-                    { text: 'Topics', onClick: () => scrollToSection('Tracks-section') },
-                    { text: 'News', onClick: () => scrollToSection('news-section') },
-                    { text: 'Highlights', onClick: () => scrollToSection('highlights-section') },
+                    { text: 'Topics', onClick: () => navigateToSection('Tracks-section') },
+                    { text: 'News', onClick: () => navigateToSection('news-section') },
+                    { text: 'Highlights', onClick: () => navigateToSection('highlights-section') },
                   ],
                 ].map((column, columnIndex) => (
                   <motion.div
