@@ -159,7 +159,7 @@ const Partners = () => {
             <motion.div 
               className="flex w-fit gap-[26px] py-4"
               animate={{
-                x: isHovered ? 0 : "-50%"
+                x: isHovered ? 0 : "-100%"
               }}
               transition={{
                 x: {

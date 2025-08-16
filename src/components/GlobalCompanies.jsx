@@ -74,7 +74,7 @@ const imageVariants = {
 
 const CompanyCard = ({ imgSrc, index = 0 }) => (
   <motion.div 
-    className="flex flex-row justify-center items-center shadow-[0px_0px_15px_#18afff3f] bg-white border border-[#00000019] rounded-[10px] md:rounded-[20px] py-[11px] md:py-[22px] min-w-[120px] "
+    className="flex flex-row justify-center items-center  bg-black/30 backdrop-blur-md border border-black/20 shadow-lg rounded-[10px] md:rounded-[20px] py-[11px] md:py-[22px] px-[4px] md:px-[11px] min-w-[120px] "
     variants={cardHoverVariants}
     whileHover="hover"
     whileTap="tap"
@@ -99,7 +99,7 @@ const CompanyCard = ({ imgSrc, index = 0 }) => (
         alt="Logo"
         width={120}
         height={60}
-        className="w-auto h-auto max-w-[120px] max-h-[50px] md:max-w-[150px] md:max-h-[60px] object-contain"
+        className="w-auto h-auto  max-h-[50px] object-contain"
         style={{ objectPosition: 'center' }}
         priority
       />
@@ -111,12 +111,10 @@ const GlobalCompanies = () => {
   // Object-based arrays for partners and media partners
 const partnersRow1 = [
   { img: "/images/partners/pastpartner/1.png" },
-  { img: "/images/partners/pastpartner/2.png" },
   { img: "/images/partners/pastpartner/3.png" },
   { img: "/images/partners/pastpartner/4.png" },
   { img: "/images/partners/pastpartner/5.png" },
   { img: "/images/partners/pastpartner/6.png" },
-  { img: "/images/partners/pastpartner/7.png" },
   { img: "/images/partners/pastpartner/8.png" },
   { img: "/images/partners/pastpartner/9.png" },
   { img: "/images/partners/pastpartner/10.png" },
@@ -127,10 +125,7 @@ const partnersRow1 = [
   { img: "/images/partners/pastpartner/15.png" },
   { img: "/images/partners/pastpartner/16.png" },
   { img: "/images/partners/pastpartner/17.png" },
-  { img: "/images/partners/pastpartner/18.png" },
   { img: "/images/partners/pastpartner/19.png" },
-  { img: "/images/partners/pastpartner/20.png" },
-  { img: "/images/partners/pastpartner/21.png" },
   { img: "/images/partners/pastpartner/22.png" },
   { img: "/images/partners/pastpartner/23.png" },
   { img: "/images/partners/pastpartner/24.png" },
@@ -142,17 +137,10 @@ const partnersRow1 = [
   { img: "/images/partners/pastpartner/33.png" },
   { img: "/images/partners/pastpartner/34.png" },
   { img: "/images/partners/pastpartner/35.png" },
-  { img: "/images/partners/pastpartner/36.png" },
   { img: "/images/partners/pastpartner/37.png" },
-  { img: "/images/partners/pastpartner/38.png" },
-  { img: "/images/partners/pastpartner/47.png" },
-  { img: "/images/partners/pastpartner/48.png" },
-  { img: "/images/partners/pastpartner/49.png" },
-  { img: "/images/partners/pastpartner/50.png" },
   { img: "/images/partners/pastpartner/53.png" },
   { img: "/images/partners/pastpartner/58.jpg" },
   { img: "/images/partners/pastpartner/62.png" },
-  { img: "/images/partners/pastpartner/69.png" },
   { img: "/images/partners/pastpartner/100vp.png" },
   { img: "/images/partners/pastpartner/319c.png" },
   { img: "/images/partners/pastpartner/accenture.png" },
@@ -233,7 +221,6 @@ const partnersRow1 = [
   { img: "/images/partners/pastpartner/digitalao.png" },
   { img: "/images/partners/pastpartner/dmdm.png" },
   { img: "/images/partners/pastpartner/droomdroom.png" },
-  { img: "/images/partners/pastpartner/ds.png" },
   { img: "/images/partners/pastpartner/earned.jpg" },
   { img: "/images/partners/pastpartner/earnscape.png" },
   { img: "/images/partners/pastpartner/em.png" },
@@ -242,7 +229,6 @@ const partnersRow1 = [
   { img: "/images/partners/pastpartner/ey.png" },
   { img: "/images/partners/pastpartner/fin.jpg" },
   { img: "/images/partners/pastpartner/fm.png" },
-  { img: "/images/partners/pastpartner/fou.png" },
   { img: "/images/partners/pastpartner/fris.jpg" }
 ];
 
@@ -254,7 +240,6 @@ const partnersRow2 = [
   { img: "/images/partners/pastpartner/genesis.png" },
   { img: "/images/partners/pastpartner/giakaacapital.png" },
   { img: "/images/partners/pastpartner/gigaton.jpg" },
-  { img: "/images/partners/pastpartner/glass.png" },
   { img: "/images/partners/pastpartner/gpl.png" },
   { img: "/images/partners/pastpartner/gsp.jpg" },
   { img: "/images/partners/pastpartner/haveto.jpg" },
@@ -470,11 +455,11 @@ const mediaRow = [
           variants={scrollRowVariants}
         >
           <motion.div 
-            className="overflow-hidden py-4"
+            className="relative py-4"
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ 
               opacity: 1, 
-              x: 0,
+              x: 0, 
               transition: {
                 duration: 0.8,
                 delay: 0.3
@@ -484,15 +469,15 @@ const mediaRow = [
 
           >
             <motion.div 
-              className="flex gap-[25px] md:gap-[50px] animate-scroll-left"
+              className="flex gap-[25px] md:gap-[50px]"
               animate={{
-                x: [0, -50],
+                x: ["0%", "-500%"],
               }}
               transition={{
                 x: {
                   repeat: Infinity,
                   repeatType: "loop",
-                  duration: 20,
+                  duration: 100,
                   ease: "linear",
                 },
               }}
@@ -504,7 +489,7 @@ const mediaRow = [
           </motion.div>
           
           <motion.div 
-            className="overflow-hidden py-4"
+            className="relative py-4"
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ 
               opacity: 1, 
@@ -518,19 +503,19 @@ const mediaRow = [
 
           >
             <motion.div 
-              className="flex gap-[25px] md:gap-[50px] animate-scroll-right"
+              className="flex gap-[25px] md:gap-[50px]"
               animate={{
-                x: [0, 50],
+                x: ["-500%", "0%"],
               }}
               transition={{
                 x: {
                   repeat: Infinity,
                   repeatType: "loop",
-                  duration: 25,
+                  duration:100,
                   ease: "linear",
                 },
               }}
-            >
+            > 
               {[...partnersRow2, ...partnersRow2].map((item, i) => (
                 <CompanyCard key={`p2-${i}`} imgSrc={item.img} index={i} />
               ))}
@@ -563,7 +548,7 @@ const mediaRow = [
 
         {/* Media Partners Row */}
         <motion.div 
-          className="mt-[24px] overflow-hidden py-4"
+          className="mt-[24px] py-4"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ 
             opacity: 1, 
@@ -577,15 +562,15 @@ const mediaRow = [
 
         >
           <motion.div 
-            className="flex gap-[25px] md:gap-[50px] animate-scroll-left"
+            className="flex gap-[25px] md:gap-[50px]"
             animate={{
-              x: [0, -50],
+              x: ["0%", "-500%"],
             }}
             transition={{
               x: {
                 repeat: Infinity,
                 repeatType: "loop",
-                duration: 22,
+                duration: 100,
                 ease: "linear",
               },
             }}
