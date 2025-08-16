@@ -340,11 +340,11 @@ const TracksAtRountable = () => {
             <div className="flex flex-col lg:flex-row justify-start w-full px-[12px] md:px-[24px]">
               {/* Left Side - Technology Image */}
               <motion.div 
-                className="w-full lg:w-[44%] mr-[12px] md:mr-[24px] mt-[28px] md:mt-[56px]"
+                className="w-full lg:w-[44%] lg:flex lg:items-end mr-[12px] md:mr-[24px] mt-[28px] md:mt-[56px]"
                 variants={imageVariants}
               >
                 <motion.div
-                  className="w-full h-[333px] md:h-[666px] bg-contain bg-bottom bg-no-repeat rounded-[14px] md:rounded-[28px] mt-[7px] md:mt-[14px]"
+                  className="w-full h-[333px] lg:flex lg:items-end md:h-[666px] bg-contain bg-bottom bg-no-repeat rounded-[14px] md:rounded-[28px] mt-[7px] md:mt-[14px]"
                   style={{ backgroundImage: "url('/images/Group 1984077514.png')" }}
 
                   transition={{ duration: 0.3 }}
@@ -352,6 +352,7 @@ const TracksAtRountable = () => {
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.5 }}
+                    className='lg:w-full lg:h-full lg:flex lg:items-end'
                   >
                     <Image
                       src="/images/img_technology_inte.png"

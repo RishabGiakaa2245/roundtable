@@ -232,10 +232,7 @@ const Footer = () => {
               >
                 <motion.div
                   className="w-[48px] h-[48px] bg-white rounded-[12px] flex items-center justify-center"
-                  whileHover={{
-                    rotate: 360,
-                    transition: { duration: 0.6 },
-                  }}
+                  
                 >
                   <svg
                     className="w-[24px] h-[24px] text-[#1D1D2B]"
@@ -264,8 +261,7 @@ const Footer = () => {
           {/* Right Image */}
           <motion.div
             className="absolute right-0 bottom-0 z-1"
-            variants={floatingVariants}
-            animate="animate"
+
           >
             <Image
               src="/images/2151876479 1.png"
@@ -480,9 +476,9 @@ const Footer = () => {
                       viewport={{ once: true }}
                     />
                   </div>
-                  <div className="flex flex-row gap-[6px] md:gap-[12px] justify-center items-center">
+                  <div className="flex w-full flex-row gap-[6px] md:gap-[12px] justify-center items-center">
                     <motion.div
-                      className="bg-[#000000] rounded-[4px] md:rounded-[8px] p-[6px] md:p-[12px]"
+                      className="bg-[#22242e] rounded-[4px] md:rounded-[8px]"
                       whileHover={{ rotate: 5, scale: 1.1 }}
                       transition={{ duration: 0.2 }}
                     >
@@ -491,21 +487,15 @@ const Footer = () => {
                         alt="Partner Logo"
                         width={32}
                         height={32}
-                        className="w-[22px] h-[22px] md:w-[30px] md:h-[30px]"
+                        className="w-[22px] h-[22px] md:w-[45px] md:h-[45px]"
                       />
                     </motion.div>
                     <motion.div
-                      className="w-[37px] md:w-[74px]"
+                      className="w-fit"
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Image
-                        src="/images/img_group_3_white_a700.svg"
-                        alt="Partner Logo"
-                        width={74}
-                        height={24}
-                        className="w-full h-auto"
-                      />
+                      <span className='text-white'>bepay money</span>
                     </motion.div>
                   </div>
                 </motion.div>

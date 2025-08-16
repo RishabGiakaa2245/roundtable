@@ -204,9 +204,6 @@ const RoundtableCard = ({ roundtable, index }) => {
           scale: 1.02
         }}
         transition={{ duration: 0.3 }}
-        style={{
-          backgroundSize: "200% 200%",
-        }}
         animate={{
           backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
         }}

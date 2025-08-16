@@ -455,7 +455,7 @@ const mediaRow = [
           variants={scrollRowVariants}
         >
           <motion.div 
-            className="relative py-4"
+            className="relative overflow-hidden py-4"
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ 
               opacity: 1, 
@@ -489,7 +489,7 @@ const mediaRow = [
           </motion.div>
           
           <motion.div 
-            className="relative py-4"
+            className="relative overflow-hidden py-4"
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ 
               opacity: 1, 
@@ -548,7 +548,7 @@ const mediaRow = [
 
         {/* Media Partners Row */}
         <motion.div 
-          className="mt-[24px] py-4"
+          className="mt-[24px] overflow-hidden py-4"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ 
             opacity: 1, 

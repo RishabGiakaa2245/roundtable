@@ -190,24 +190,22 @@ Trident Hotel, BKC, Mumbai                </p>
                 <div className="w-[30px] md:w-[60px] h-[1px] bg-[#c9c9c9]"></div>
               </div>
               <div className="flex flex-row justify-center items-center w-full mr-[8px] md:mr-[16px] ml-[8px] md:ml-[16px]">
-                <div className="bg-[#000000] rounded-[4px] md:rounded-[8px] p-[6px] md:p-[12px]">
+                <div className="bg-white rounded-[4px] md:rounded-[8px] pr-3">
                   <Image
-                    src="/images/img_logo_mark.png"
+                    src="/images/img_logo_mark2.png"
                     alt="Partner Logo"
                     width={28}
                     height={28}
-                    className="w-[28px] h-[28px] md:w-[30px] md:h-[30px]"
+                    className="w-[38px] h-[38px] md:w-[45px] md:h-[45px]"
                   />
                 </div>
-                <div className="w-[32px] md:w-[64px] ml-[5px] md:ml-[10px]">
-                  <Image
-                    src="/images/img_group_3.svg"
-                    alt="Partner Logo"
-                    width={64}
-                    height={20}
-                    className="w-full h-auto"
-                  />
-                </div>
+                <div
+                      className="w-fit"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <span className='text-black'>bepay money</span>
+                    </div>
               </div>
             </div>
           </div>
