@@ -1,11 +1,10 @@
-import React, { useRef, useEffect } from 'react';
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import React, { useRef, useState } from 'react';
+import { motion, useInView, useScroll, useTransform, useAnimation, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
 const PostEventHighlights = () => {
-  const scrollContainerRef = useRef(null);
-  const autoScrollRef = useRef(null);
   const sectionRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   
   // Scroll-based animations
@@ -18,48 +17,48 @@ const PostEventHighlights = () => {
   const headerY = useTransform(scrollYProgress, [0, 0.5], ["0px", "-30px"]);
 
   // Main gallery images data
- const mainGalleryImages = [
-  {
-    id: 1,
-    src: '/images/Rectangle 160894.png',
-    alt: 'Past Event 1',
-  },
-  {
-    id: 2,
-    src: '/images/Rectangle 160954.png',
-    alt: 'Past Event 2',
-  },
-  {
-    id: 3,
-    src: '/images/Rectangle 160955.png',
-    alt: 'Past Event 3',
-  },
-  {
-    id: 4,
-    src: '/images/Rectangle 160956.png',
-    alt: 'Past Event 4',
-  },
-  {
-    id: 5,
-    src: '/images/Rectangle 160957.png',
-    alt: 'Past Event 5',
-  },
-  {
-    id: 6,
-    src: '/images/Rectangle 160958.png',
-    alt: 'Past Event 6',
-  },
-  {
-    id: 7,
-    src: '/images/Rectangle 160959.png',
-    alt: 'Past Event 7',
-  },
-  {
-    id: 8,
-    src: '/images/Rectangle 160960.png',
-    alt: 'Past Event 8',
-  },
-];
+  const mainGalleryImages = [
+    {
+      id: 1,
+      src: '/images/Rectangle 160894.png',
+      alt: 'Past Event 1',
+    },
+    {
+      id: 2,
+      src: '/images/Rectangle 160954.png',
+      alt: 'Past Event 2',
+    },
+    {
+      id: 3,
+      src: '/images/Rectangle 160955.png',
+      alt: 'Past Event 3',
+    },
+    {
+      id: 4,
+      src: '/images/Rectangle 160956.png',
+      alt: 'Past Event 4',
+    },
+    {
+      id: 5,
+      src: '/images/Rectangle 160957.png',
+      alt: 'Past Event 5',
+    },
+    {
+      id: 6,
+      src: '/images/Rectangle 160958.png',
+      alt: 'Past Event 6',
+    },
+    {
+      id: 7,
+      src: '/images/Rectangle 160959.png',
+      alt: 'Past Event 7',
+    },
+    {
+      id: 8,
+      src: '/images/Rectangle 160960.png',
+      alt: 'Past Event 8',
+    },
+  ];
 
   // Bottom gallery videos data
   const bottomGalleryVideos = [
@@ -79,54 +78,6 @@ const PostEventHighlights = () => {
       alt: 'Bottom Event Video 3',
     },
   ];
-
-  // Auto-scroll functionality
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    let animationId;
-    let isScrolling = false;
-    let scrollSpeed = 0.5;
-
-    const smoothScroll = () => {
-      if (!isScrolling && container) {
-        container.scrollLeft += scrollSpeed;
-        
-        // Reset scroll for infinite effect
-        const maxScroll = container.scrollWidth / 2;
-        if (container.scrollLeft >= maxScroll) {
-          container.scrollLeft = 0;
-        }
-      }
-      animationId = requestAnimationFrame(smoothScroll);
-    };
-
-    const handleMouseEnter = () => {
-      isScrolling = true;
-    };
-
-    const handleMouseLeave = () => {
-      isScrolling = false;
-    };
-
-    // Start animation
-    animationId = requestAnimationFrame(smoothScroll);
-
-    // Add event listeners
-    container.addEventListener('mouseenter', handleMouseEnter);
-    container.addEventListener('mouseleave', handleMouseLeave);
-
-    return () => {
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
-      if (container) {
-        container.removeEventListener('mouseenter', handleMouseEnter);
-        container.removeEventListener('mouseleave', handleMouseLeave);
-      }
-    };
-  }, []);
 
   // Animation variants
   const containerVariants = {
@@ -218,13 +169,36 @@ const PostEventHighlights = () => {
     }
   };
 
-  // Create duplicated images for infinite scroll
+  // Scroll speed configuration (lower = faster, higher = slower)
+  const SCROLL_SPEED = 20; // Change this value to adjust speed
+  
+  // Calculate the correct scroll distance (only scroll one set of images)
+  const imageWidth = 240; // Width in pixels per image (adjust based on your image size)
+  const gap = 16; // Gap between images in pixels
+  const totalWidthPerImage = imageWidth + gap;
+  const scrollDistance = -(totalWidthPerImage * mainGalleryImages.length);
+
+  // Framer Motion scroll animation variants
+  const scrollingGalleryVariants = {
+    animate: {
+      x: [0, scrollDistance],
+      transition: {
+        x: {
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: SCROLL_SPEED,
+          ease: "linear",
+        },
+      },
+    }
+  };
+
+  // Create duplicated images for seamless infinite scroll
   const duplicatedImages = [...mainGalleryImages, ...mainGalleryImages];
 
   return (
     <section 
-    id="past-glimpse-section"
-     
+      id="past-glimpse-section"
       ref={sectionRef}
       className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-green-400 relative overflow-hidden"
       style={{ 
@@ -279,19 +253,16 @@ const PostEventHighlights = () => {
             </motion.h2>
           </motion.div>
 
-          {/* Scrollable Image Gallery */}
+          {/* Scrollable Image Gallery with Framer Motion */}
           <motion.div 
             className="relative mb-6 md:mb-8 overflow-hidden"
             variants={galleryVariants}
           >
             <div className="relative">
-              <div
-                ref={scrollContainerRef}
-                className="flex gap-3 md:gap-4 py-4 overflow-x-hidden scrollbar-hide"
-                style={{ 
-                  scrollBehavior: 'auto',
-                  WebkitOverflowScrolling: 'touch'
-                }}
+              <motion.div
+                className="flex gap-3 md:gap-4 py-4"
+                variants={scrollingGalleryVariants}
+                animate="animate"
               >
                 {duplicatedImages.map((image, index) => (
                   <motion.div
@@ -325,7 +296,7 @@ const PostEventHighlights = () => {
                     <div className="absolute inset-0 bg-white/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
           </motion.div>
 

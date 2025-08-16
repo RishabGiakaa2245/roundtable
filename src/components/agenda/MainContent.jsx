@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, Clock, MapPin, ChevronDown, Users, Building } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import Button from '../ui/Button';
 import Image from 'next/image';
 import { generateSlug } from '@/helper/utils';
-import { useRouter } from 'next/navigation';
+import { Calendar, Clock, MapPin, ChevronDown, Users, Building } from 'lucide-react';
 
 // UI Components with Motion
 const Badge = ({ className, variant = 'default', children, ...props }) => {
@@ -50,503 +50,503 @@ const CardContent = ({ className, children, ...props }) => (
   </div>
 );
 
-// Data (keeping original data structure)
-  const agendaData = [
-    {
-      date: 'Tuesday, 7 October',
-      dateValue: '7 Oct',
-      events: [
-        {
-          id: 1,
-          time: '4:30 - 6:30 PM',
-          location: 'Trident Hotel, BKC, Mumbai',
-          eventDate: '7 Sept, 2025',
-          title: 'Financial Inclusion Through Digital Payments: Reaching Bharat',
-          slug: generateSlug('Financial Inclusion Through Digital Payments: Reaching Bharat'),
-          type: 'Roundtable',
-          roundtableId: 'Roundtable',
-          bgColor: 'bg-blue-50',
-          borderColor: 'border-blue-200',
-          textColor: 'text-blue-900',
-          iconColor: 'text-blue-600',
-          hasAgenda: true,
-          isExpanded: false,
-          speakers: [
-            {
-              name: 'Rajesh Kumar',
-              role: 'CEO',
-              company: 'PayTech India',
-              email: 'rajesh@paytech.in',
-              phone: '+91-9876543210',
-            },
-            {
-              name: 'Priya Sharma',
-              role: 'Head of Digital Banking',
-              company: 'HDFC Bank',
-              email: 'priya.sharma@hdfc.com',
-              phone: '+91-9876543211',
-            },
-            {
-              name: 'Amit Patel',
-              role: 'VP Strategy',
-              company: 'PhonePe',
-              email: 'amit.patel@phonepe.com',
-              phone: '+91-9876543212',
-            },
-          ],
-          capacity: 25,
-          registered: 18,
-          agenda: [
-            {
-              time: '4:30 - 4:40 PM',
-              title: 'Registration & Networking High Tea',
-              icon: 'calendar',
-              iconBg: 'bg-blue-500',
-            },
-            {
-              time: '4:40 - 4:50 PM',
-              title: 'Opening Remarks by Giakaa Capital',
-              icon: 'clock',
-              iconBg: 'bg-blue-500',
-            },
-            {
-              time: '4:50 - 5:00 PM',
-              title: 'Partner Introduction',
-              icon: 'users',
-              iconBg: 'bg-blue-500',
-            },
-            {
-              time: '5:00 - 5:40 PM',
-              title: 'Discussion Points',
-              icon: 'message-circle',
-              iconBg: 'bg-blue-500',
-            },
-            {
-              time: '5:40 - 5:50 PM',
-              title: 'Group Photo & Thankyou Note',
-              icon: 'camera',
-              iconBg: 'bg-blue-500',
-            },
-            {
-              time: '5:50 - 6:30 PM',
-              title: 'Networking & Refreshments',
-              icon: 'coffee',
-              iconBg: 'bg-blue-500',
-            },
-          ],
-        },
-        {
-          id: 2,
-          time: '6:30 - 8:30 PM',
-          location: 'Trident Hotel, BKC, Mumbai',
-          eventDate: '7 Sept, 2025',
-          title: 'Fintech Valuations in 2025: Navigating Market Corrections & Realistic Pricing',
-          slug: generateSlug('Fintech Valuations in 2025: Navigating Market Corrections & Realistic Pricing'),
-          type: 'Roundtable',
-          roundtableId: 'Roundtable',
-          bgColor: 'bg-red-50',
-          borderColor: 'border-red-200',
-          textColor: 'text-red-900',
-          iconColor: 'text-red-600',
-          hasAgenda: false,
-          isExpanded: false,
-          speakers: [
-            {
-              name: 'Vikram Singh',
-              role: 'Managing Partner',
-              company: 'Sequoia Capital',
-              email: 'vikram@sequoia.com',
-              phone: '+91-9876543213',
-            },
-            {
-              name: 'Meera Jain',
-              role: 'Investment Director',
-              company: 'Tiger Global',
-              email: 'meera@tiger.com',
-              phone: '+91-9876543214',
-            },
-            {
-              name: 'Arjun Malhotra',
-              role: 'CFO',
-              company: 'Razorpay',
-              email: 'arjun@razorpay.com',
-              phone: '+91-9876543215',
-            },
-          ],
-          capacity: 20,
-          registered: 15,
-          agenda: [
-            {
-              time: '6:30 - 6:40 PM',
-              title: 'Registration & Networking High Tea',
-              icon: 'calendar',
-              iconBg: 'bg-red-500',
-            },
-            {
-              time: '6:40 - 6:50 PM',
-              title: 'Opening Remarks by Giakaa Capital',
-              icon: 'clock',
-              iconBg: 'bg-red-500',
-            },
-            {
-              time: '6:50 - 7:00 PM',
-              title: 'Partner Introduction',
-              icon: 'users',
-              iconBg: 'bg-red-500',
-            },
-            {
-              time: '7:00 - 7:40 PM',
-              title: 'Valuation Discussion Points',
-              icon: 'message-circle',
-              iconBg: 'bg-red-500',
-            },
-            {
-              time: '7:40 - 7:50 PM',
-              title: 'Group Photo & Thankyou Note',
-              icon: 'camera',
-              iconBg: 'bg-red-500',
-            },
-            {
-              time: '7:50 - 8:30 PM',
-              title: 'Networking & Refreshments',
-              icon: 'coffee',
-              iconBg: 'bg-red-500',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      date: 'Wednesday, 8 October',
-      dateValue: '8 Oct',
-      events: [
-        {
-          id: 3,
-          time: '4:00 - 6:00 PM',
-          location: 'Trident Hotel, BKC, Mumbai',
-          eventDate: '8 Sept, 2025',
-          title: "India Stack Opportunities: Building on UPI's $990B Market Potential",
-          slug: generateSlug("India Stack Opportunities: Building on UPI's $990B Market Potential"),
-          type: 'Roundtable',
-          roundtableId: 'Roundtable',
-          bgColor: 'bg-purple-50',
-          borderColor: 'border-purple-200',
-          textColor: 'text-purple-900',
-          iconColor: 'text-purple-600',
-          hasAgenda: false,
-          isExpanded: false,
-          speakers: [
-            {
-              name: 'Nandan Nilekani',
-              role: 'Co-founder',
-              company: 'Infosys',
-              email: 'nandan@infosys.com',
-              phone: '+91-9876543216',
-            },
-            {
-              name: 'Dilip Asbe',
-              role: 'CEO',
-              company: 'NPCI',
-              email: 'dilip@npci.org.in',
-              phone: '+91-9876543217',
-            },
-            {
-              name: 'Sameer Nigam',
-              role: 'Founder',
-              company: 'PhonePe',
-              email: 'sameer@phonepe.com',
-              phone: '+91-9876543218',
-            },
-          ],
-          capacity: 30,
-          registered: 22,
-          agenda: [
-            {
-              time: '4:00 - 4:10 PM',
-              title: 'Registration & Networking High Tea',
-              icon: 'calendar',
-              iconBg: 'bg-purple-500',
-            },
-            {
-              time: '4:10 - 4:20 PM',
-              title: 'Opening Remarks by Giakaa Capital',
-              icon: 'clock',
-              iconBg: 'bg-purple-500',
-            },
-            {
-              time: '4:20 - 4:30 PM',
-              title: 'Partner Introduction',
-              icon: 'users',
-              iconBg: 'bg-purple-500',
-            },
-            {
-              time: '4:30 - 5:10 PM',
-              title: 'India Stack Discussion Points',
-              icon: 'message-circle',
-              iconBg: 'bg-purple-500',
-            },
-            {
-              time: '5:10 - 5:20 PM',
-              title: 'Group Photo & Thankyou Note',
-              icon: 'camera',
-              iconBg: 'bg-purple-500',
-            },
-            {
-              time: '5:20 - 6:00 PM',
-              title: 'Networking & Refreshments',
-              icon: 'coffee',
-              iconBg: 'bg-purple-500',
-            },
-          ],
-        },
-        {
-          id: 4,
-          time: '6:30 - 8:30 PM',
-          location: 'Trident Hotel, BKC, Mumbai',
-          eventDate: '8 Sept, 2025',
-          title: 'Bank-Fintech Partnerships: Creating Win-Win Collaboration Models',
-          slug: generateSlug('Bank-Fintech Partnerships: Creating Win-Win Collaboration Models'),
-          type: 'Roundtable',
-          roundtableId: 'Roundtable',
-          bgColor: 'bg-orange-50',
-          borderColor: 'border-orange-200',
-          textColor: 'text-orange-900',
-          iconColor: 'text-orange-600',
-          hasAgenda: false,
-          isExpanded: false,
-          speakers: [
-            {
-              name: 'Shikha Sharma',
-              role: 'Former CEO',
-              company: 'Axis Bank',
-              email: 'shikha@axis.com',
-              phone: '+91-9876543219',
-            },
-            {
-              name: 'Harshil Mathur',
-              role: 'CEO',
-              company: 'Razorpay',
-              email: 'harshil@razorpay.com',
-              phone: '+91-9876543220',
-            },
-            {
-              name: 'Ashneer Grover',
-              role: 'Former MD',
-              company: 'BharatPe',
-              email: 'ashneer@bharatpe.com',
-              phone: '+91-9876543221',
-            },
-          ],
-          capacity: 25,
-          registered: 20,
-          agenda: [
-            {
-              time: '6:30 - 6:40 PM',
-              title: 'Registration & Networking High Tea',
-              icon: 'calendar',
-              iconBg: 'bg-orange-500',
-            },
-            {
-              time: '6:40 - 6:50 PM',
-              title: 'Opening Remarks by Giakaa Capital',
-              icon: 'clock',
-              iconBg: 'bg-orange-500',
-            },
-            {
-              time: '6:50 - 7:00 PM',
-              title: 'Partner Introduction',
-              icon: 'users',
-              iconBg: 'bg-orange-500',
-            },
-            {
-              time: '7:00 - 7:40 PM',
-              title: 'Partnership Discussion Points',
-              icon: 'message-circle',
-              iconBg: 'bg-orange-500',
-            },
-            {
-              time: '7:40 - 7:50 PM',
-              title: 'Group Photo & Thankyou Note',
-              icon: 'camera',
-              iconBg: 'bg-orange-500',
-            },
-            {
-              time: '7:50 - 8:30 PM',
-              title: 'Networking & Refreshments',
-              icon: 'coffee',
-              iconBg: 'bg-orange-500',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      date: 'Thursday, 9 October',
-      dateValue: '9 Oct',
-      events: [
-        {
-          id: 5,
-          time: '4:00 - 6:00 PM',
-          location: 'Trident Hotel, BKC, Mumbai',
-          eventDate: '9 Sept, 2025',
-          title: "Building India's Sustainable Digital Financial Ecosystem 2030: A Multi-Stakeholder Blueprint for Inclusive Growth",
-          slug: generateSlug("Building India's Sustainable Digital Financial Ecosystem 2030: A Multi-Stakeholder Blueprint for Inclusive Growth"),
-          type: 'Roundtable',
-          roundtableId: 'Roundtable',
-          bgColor: 'bg-cyan-50',
-          borderColor: 'border-cyan-200',
-          textColor: 'text-cyan-900',
-          iconColor: 'text-cyan-600',
-          hasAgenda: false,
-          isExpanded: false,
-          speakers: [
-            {
-              name: 'Raghuram Rajan',
-              role: 'Former RBI Governor',
-              company: 'University of Chicago',
-              email: 'raghuram@uchicago.edu',
-              phone: '+91-9876543222',
-            },
-            {
-              name: 'Uday Kotak',
-              role: 'Executive Chairman',
-              company: 'Kotak Mahindra Bank',
-              email: 'uday@kotak.com',
-              phone: '+91-9876543223',
-            },
-            {
-              name: 'Kunal Shah',
-              role: 'Founder',
-              company: 'CRED',
-              email: 'kunal@cred.club',
-              phone: '+91-9876543224',
-            },
-          ],
-          capacity: 35,
-          registered: 28,
-          agenda: [
-            {
-              time: '4:00 - 4:10 PM',
-              title: 'Registration & Networking High Tea',
-              icon: 'calendar',
-              iconBg: 'bg-cyan-500',
-            },
-            {
-              time: '4:10 - 4:20 PM',
-              title: 'Opening Remarks by Giakaa Capital',
-              icon: 'clock',
-              iconBg: 'bg-cyan-500',
-            },
-            {
-              time: '4:20 - 4:30 PM',
-              title: 'Partner Introduction',
-              icon: 'users',
-              iconBg: 'bg-cyan-500',
-            },
-            {
-              time: '4:30 - 5:10 PM',
-              title: 'Ecosystem Discussion Points',
-              icon: 'message-circle',
-              iconBg: 'bg-cyan-500',
-            },
-            {
-              time: '5:10 - 5:20 PM',
-              title: 'Group Photo & Thankyou Note',
-              icon: 'camera',
-              iconBg: 'bg-cyan-500',
-            },
-            {
-              time: '5:20 - 6:00 PM',
-              title: 'Networking & Refreshments',
-              icon: 'coffee',
-              iconBg: 'bg-cyan-500',
-            },
-          ],
-        },
-        {
-          id: 6,
-          time: '6:30 - 8:30 PM',
-          location: 'Trident Hotel, BKC, Mumbai',
-          eventDate: '9 Sept, 2025',
-          title: "Asset Allocators, PE, Family Offices & Institutional Investors Shaping India's Fintech Future",
-          slug: generateSlug("Asset Allocators, PE, Family Offices & Institutional Investors Shaping India's Fintech Future"),
-          type: 'Roundtable',
-          roundtableId: 'Roundtable',
-          bgColor: 'bg-green-50',
-          borderColor: 'border-green-200',
-          textColor: 'text-green-900',
-          iconColor: 'text-green-600',
-          hasAgenda: false,
-          isExpanded: false,
-          speakers: [
-            {
-              name: 'Ravi Adusumalli',
-              role: 'Founder',
-              company: 'Elevation Capital',
-              email: 'ravi@elevation.capital',
-              phone: '+91-9876543225',
-            },
-            {
-              name: 'Binny Bansal',
-              role: 'Co-founder',
-              company: 'Flipkart',
-              email: 'binny@flipkart.com',
-              phone: '+91-9876543226',
-            },
-            {
-              name: 'Anand Piramal',
-              role: 'Executive Director',
-              company: 'Piramal Group',
-              email: 'anand@piramal.com',
-              phone: '+91-9876543227',
-            },
-          ],
-          capacity: 20,
-          registered: 16,
-          agenda: [
-            {
-              time: '6:30 - 6:40 PM',
-              title: 'Registration & Networking High Tea',
-              icon: 'calendar',
-              iconBg: 'bg-green-500',
-            },
-            {
-              time: '6:40 - 6:50 PM',
-              title: 'Opening Remarks by Giakaa Capital',
-              icon: 'clock',
-              iconBg: 'bg-green-500',
-            },
-            {
-              time: '6:50 - 7:00 PM',
-              title: 'Partner Introduction',
-              icon: 'users',
-              iconBg: 'bg-green-500',
-            },
-            {
-              time: '7:00 - 7:40 PM',
-              title: 'Investment Discussion Points',
-              icon: 'message-circle',
-              iconBg: 'bg-green-500',
-            },
-            {
-              time: '7:40 - 7:50 PM',
-              title: 'Group Photo & Thankyou Note',
-              icon: 'camera',
-              iconBg: 'bg-green-500',
-            },
-            {
-              time: '7:50 - 8:30 PM',
-              title: 'Networking & Refreshments',
-              icon: 'coffee',
-              iconBg: 'bg-green-500',
-            },
-          ],
-        },
-      ],
-    },
-  ];
+// Data (keeping original agenda structure)
+const agendaData = [
+  {
+    date: 'Tuesday, 7 October',
+    dateValue: '7 Oct',
+    events: [
+      {
+        id: 1,
+        time: '4:30 - 6:30 PM',
+        location: 'Trident Hotel, BKC, Mumbai',
+        eventDate: '7 Sept, 2025',
+        title: 'Financial Inclusion Through Digital Payments: Reaching Bharat',
+        slug: generateSlug('Financial Inclusion Through Digital Payments: Reaching Bharat'),
+        type: 'Roundtable',
+        roundtableId: 'Roundtable 1',
+        bgColor: 'bg-blue-50',
+        borderColor: 'border-blue-200',
+        textColor: 'text-blue-900',
+        iconColor: 'text-blue-600',
+        hasAgenda: true,
+        isExpanded: false,
+        speakers: [
+          {
+            name: 'Rajesh Kumar',
+            role: 'CEO',
+            company: 'PayTech India',
+            email: 'rajesh@paytech.in',
+            phone: '+91-9876543210',
+          },
+          {
+            name: 'Priya Sharma',
+            role: 'Head of Digital Banking',
+            company: 'HDFC Bank',
+            email: 'priya.sharma@hdfc.com',
+            phone: '+91-9876543211',
+          },
+          {
+            name: 'Amit Patel',
+            role: 'VP Strategy',
+            company: 'PhonePe',
+            email: 'amit.patel@phonepe.com',
+            phone: '+91-9876543212',
+          },
+        ],
+        capacity: 25,
+        registered: 18,
+        agenda: [
+          {
+            time: '4:30 - 4:40 PM',
+            title: 'Registration & Networking High Tea',
+            icon: '📅',
+            iconBg: 'bg-blue-500',
+          },
+          {
+            time: '4:40 - 4:50 PM',
+            title: 'Opening Remarks by Giakaa Capital',
+            icon: '🕐',
+            iconBg: 'bg-blue-500',
+          },
+          {
+            time: '4:50 - 5:00 PM',
+            title: 'Partner Introduction',
+            icon: '👥',
+            iconBg: 'bg-blue-500',
+          },
+          {
+            time: '5:00 - 5:40 PM',
+            title: 'Discussion Points',
+            icon: '💬',
+            iconBg: 'bg-blue-500',
+          },
+          {
+            time: '5:40 - 5:50 PM',
+            title: 'Group Photo & Thankyou Note',
+            icon: '📸',
+            iconBg: 'bg-blue-500',
+          },
+          {
+            time: '5:50 - 6:30 PM',
+            title: 'Networking & Refreshments',
+            icon: '☕',
+            iconBg: 'bg-blue-500',
+          },
+        ],
+      },
+      {
+        id: 2,
+        time: '6:30 - 8:30 PM',
+        location: 'Trident Hotel, BKC, Mumbai',
+        eventDate: '7 Sept, 2025',
+        title: 'Fintech Valuations in 2025: Navigating Market Corrections & Realistic Pricing',
+        slug: generateSlug('Fintech Valuations in 2025: Navigating Market Corrections & Realistic Pricing'),
+        type: 'Roundtable',
+        roundtableId: 'Roundtable 2',
+        bgColor: 'bg-red-50',
+        borderColor: 'border-red-200',
+        textColor: 'text-red-900',
+        iconColor: 'text-red-600',
+        hasAgenda: false,
+        isExpanded: false,
+        speakers: [
+          {
+            name: 'Vikram Singh',
+            role: 'Managing Partner',
+            company: 'Sequoia Capital',
+            email: 'vikram@sequoia.com',
+            phone: '+91-9876543213',
+          },
+          {
+            name: 'Meera Jain',
+            role: 'Investment Director',
+            company: 'Tiger Global',
+            email: 'meera@tiger.com',
+            phone: '+91-9876543214',
+          },
+          {
+            name: 'Arjun Malhotra',
+            role: 'CFO',
+            company: 'Razorpay',
+            email: 'arjun@razorpay.com',
+            phone: '+91-9876543215',
+          },
+        ],
+        capacity: 20,
+        registered: 15,
+        agenda: [
+          {
+            time: '6:30 - 6:40 PM',
+            title: 'Registration & Networking High Tea',
+            icon: '📅',
+            iconBg: 'bg-red-500',
+          },
+          {
+            time: '6:40 - 6:50 PM',
+            title: 'Opening Remarks by Giakaa Capital',
+            icon: '🕐',
+            iconBg: 'bg-red-500',
+          },
+          {
+            time: '6:50 - 7:00 PM',
+            title: 'Partner Introduction',
+            icon: '👥',
+            iconBg: 'bg-red-500',
+          },
+          {
+            time: '7:00 - 7:40 PM',
+            title: 'Valuation Discussion Points',
+            icon: '💬',
+            iconBg: 'bg-red-500',
+          },
+          {
+            time: '7:40 - 7:50 PM',
+            title: 'Group Photo & Thankyou Note',
+            icon: '📸',
+            iconBg: 'bg-red-500',
+          },
+          {
+            time: '7:50 - 8:30 PM',
+            title: 'Networking & Refreshments',
+            icon: '☕',
+            iconBg: 'bg-red-500',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    date: 'Wednesday, 8 October',
+    dateValue: '8 Oct',
+    events: [
+      {
+        id: 3,
+        time: '4:00 - 6:00 PM',
+        location: 'Trident Hotel, BKC, Mumbai',
+        eventDate: '8 Sept, 2025',
+        title: "India Stack Opportunities: Building on UPI's $990B Market Potential",
+        slug: generateSlug("India Stack Opportunities: Building on UPI's $990B Market Potential"),
+        type: 'Roundtable',
+        roundtableId: 'Roundtable 3',
+        bgColor: 'bg-purple-50',
+        borderColor: 'border-purple-200',
+        textColor: 'text-purple-900',
+        iconColor: 'text-purple-600',
+        hasAgenda: false,
+        isExpanded: false,
+        speakers: [
+          {
+            name: 'Nandan Nilekani',
+            role: 'Co-founder',
+            company: 'Infosys',
+            email: 'nandan@infosys.com',
+            phone: '+91-9876543216',
+          },
+          {
+            name: 'Dilip Asbe',
+            role: 'CEO',
+            company: 'NPCI',
+            email: 'dilip@npci.org.in',
+            phone: '+91-9876543217',
+          },
+          {
+            name: 'Sameer Nigam',
+            role: 'Founder',
+            company: 'PhonePe',
+            email: 'sameer@phonepe.com',
+            phone: '+91-9876543218',
+          },
+        ],
+        capacity: 30,
+        registered: 22,
+        agenda: [
+          {
+            time: '4:00 - 4:10 PM',
+            title: 'Registration & Networking High Tea',
+            icon: '📅',
+            iconBg: 'bg-purple-500',
+          },
+          {
+            time: '4:10 - 4:20 PM',
+            title: 'Opening Remarks by Giakaa Capital',
+            icon: '🕐',
+            iconBg: 'bg-purple-500',
+          },
+          {
+            time: '4:20 - 4:30 PM',
+            title: 'Partner Introduction',
+            icon: '👥',
+            iconBg: 'bg-purple-500',
+          },
+          {
+            time: '4:30 - 5:10 PM',
+            title: 'India Stack Discussion Points',
+            icon: '💬',
+            iconBg: 'bg-purple-500',
+          },
+          {
+            time: '5:10 - 5:20 PM',
+            title: 'Group Photo & Thankyou Note',
+            icon: '📸',
+            iconBg: 'bg-purple-500',
+          },
+          {
+            time: '5:20 - 6:00 PM',
+            title: 'Networking & Refreshments',
+            icon: '☕',
+            iconBg: 'bg-purple-500',
+          },
+        ],
+      },
+      {
+        id: 4,
+        time: '6:30 - 8:30 PM',
+        location: 'Trident Hotel, BKC, Mumbai',
+        eventDate: '8 Sept, 2025',
+        title: 'Bank-Fintech Partnerships: Creating Win-Win Collaboration Models',
+        slug: generateSlug('Bank-Fintech Partnerships: Creating Win-Win Collaboration Models'),
+        type: 'Roundtable',
+        roundtableId: 'Roundtable 4',
+        bgColor: 'bg-orange-50',
+        borderColor: 'border-orange-200',
+        textColor: 'text-orange-900',
+        iconColor: 'text-orange-600',
+        hasAgenda: false,
+        isExpanded: false,
+        speakers: [
+          {
+            name: 'Shikha Sharma',
+            role: 'Former CEO',
+            company: 'Axis Bank',
+            email: 'shikha@axis.com',
+            phone: '+91-9876543219',
+          },
+          {
+            name: 'Harshil Mathur',
+            role: 'CEO',
+            company: 'Razorpay',
+            email: 'harshil@razorpay.com',
+            phone: '+91-9876543220',
+          },
+          {
+            name: 'Ashneer Grover',
+            role: 'Former MD',
+            company: 'BharatPe',
+            email: 'ashneer@bharatpe.com',
+            phone: '+91-9876543221',
+          },
+        ],
+        capacity: 25,
+        registered: 20,
+        agenda: [
+          {
+            time: '6:30 - 6:40 PM',
+            title: 'Registration & Networking High Tea',
+            icon: '📅',
+            iconBg: 'bg-orange-500',
+          },
+          {
+            time: '6:40 - 6:50 PM',
+            title: 'Opening Remarks by Giakaa Capital',
+            icon: '🕐',
+            iconBg: 'bg-orange-500',
+          },
+          {
+            time: '6:50 - 7:00 PM',
+            title: 'Partner Introduction',
+            icon: '👥',
+            iconBg: 'bg-orange-500',
+          },
+          {
+            time: '7:00 - 7:40 PM',
+            title: 'Partnership Discussion Points',
+            icon: '💬',
+            iconBg: 'bg-orange-500',
+          },
+          {
+            time: '7:40 - 7:50 PM',
+            title: 'Group Photo & Thankyou Note',
+            icon: '📸',
+            iconBg: 'bg-orange-500',
+          },
+          {
+            time: '7:50 - 8:30 PM',
+            title: 'Networking & Refreshments',
+            icon: '☕',
+            iconBg: 'bg-orange-500',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    date: 'Thursday, 9 October',
+    dateValue: '9 Oct',
+    events: [
+      {
+        id: 5,
+        time: '4:00 - 6:00 PM',
+        location: 'Trident Hotel, BKC, Mumbai',
+        eventDate: '9 Sept, 2025',
+        title: "Building India's Sustainable Digital Financial Ecosystem 2030: A Multi-Stakeholder Blueprint for Inclusive Growth",
+        slug: generateSlug("Building India's Sustainable Digital Financial Ecosystem 2030: A Multi-Stakeholder Blueprint for Inclusive Growth"),
+        type: 'Roundtable',
+        roundtableId: 'Roundtable 5',
+        bgColor: 'bg-cyan-50',
+        borderColor: 'border-cyan-200',
+        textColor: 'text-cyan-900',
+        iconColor: 'text-cyan-600',
+        hasAgenda: false,
+        isExpanded: false,
+        speakers: [
+          {
+            name: 'Raghuram Rajan',
+            role: 'Former RBI Governor',
+            company: 'University of Chicago',
+            email: 'raghuram@uchicago.edu',
+            phone: '+91-9876543222',
+          },
+          {
+            name: 'Uday Kotak',
+            role: 'Executive Chairman',
+            company: 'Kotak Mahindra Bank',
+            email: 'uday@kotak.com',
+            phone: '+91-9876543223',
+          },
+          {
+            name: 'Kunal Shah',
+            role: 'Founder',
+            company: 'CRED',
+            email: 'kunal@cred.club',
+            phone: '+91-9876543224',
+          },
+        ],
+        capacity: 35,
+        registered: 28,
+        agenda: [
+          {
+            time: '4:00 - 4:10 PM',
+            title: 'Registration & Networking High Tea',
+            icon: '📅',
+            iconBg: 'bg-cyan-500',
+          },
+          {
+            time: '4:10 - 4:20 PM',
+            title: 'Opening Remarks by Giakaa Capital',
+            icon: '🕐',
+            iconBg: 'bg-cyan-500',
+          },
+          {
+            time: '4:20 - 4:30 PM',
+            title: 'Partner Introduction',
+            icon: '👥',
+            iconBg: 'bg-cyan-500',
+          },
+          {
+            time: '4:30 - 5:10 PM',
+            title: 'Ecosystem Discussion Points',
+            icon: '💬',
+            iconBg: 'bg-cyan-500',
+          },
+          {
+            time: '5:10 - 5:20 PM',
+            title: 'Group Photo & Thankyou Note',
+            icon: '📸',
+            iconBg: 'bg-cyan-500',
+          },
+          {
+            time: '5:20 - 6:00 PM',
+            title: 'Networking & Refreshments',
+            icon: '☕',
+            iconBg: 'bg-cyan-500',
+          },
+        ],
+      },
+      {
+        id: 6,
+        time: '6:30 - 8:30 PM',
+        location: 'Trident Hotel, BKC, Mumbai',
+        eventDate: '9 Sept, 2025',
+        title: "Asset Allocators, PE, Family Offices & Institutional Investors Shaping India's Fintech Future",
+        slug: generateSlug("Asset Allocators, PE, Family Offices & Institutional Investors Shaping India's Fintech Future"),
+        type: 'Roundtable',
+        roundtableId: 'Roundtable 6',
+        bgColor: 'bg-green-50',
+        borderColor: 'border-green-200',
+        textColor: 'text-green-900',
+        iconColor: 'text-green-600',
+        hasAgenda: false,
+        isExpanded: false,
+        speakers: [
+          {
+            name: 'Ravi Adusumalli',
+            role: 'Founder',
+            company: 'Elevation Capital',
+            email: 'ravi@elevation.capital',
+            phone: '+91-9876543225',
+          },
+          {
+            name: 'Binny Bansal',
+            role: 'Co-founder',
+            company: 'Flipkart',
+            email: 'binny@flipkart.com',
+            phone: '+91-9876543226',
+          },
+          {
+            name: 'Anand Piramal',
+            role: 'Executive Director',
+            company: 'Piramal Group',
+            email: 'anand@piramal.com',
+            phone: '+91-9876543227',
+          },
+        ],
+        capacity: 20,
+        registered: 16,
+        agenda: [
+          {
+            time: '6:30 - 6:40 PM',
+            title: 'Registration & Networking High Tea',
+            icon: '📅',
+            iconBg: 'bg-green-500',
+          },
+          {
+            time: '6:40 - 6:50 PM',
+            title: 'Opening Remarks by Giakaa Capital',
+            icon: '🕐',
+            iconBg: 'bg-green-500',
+          },
+          {
+            time: '6:50 - 7:00 PM',
+            title: 'Partner Introduction',
+            icon: '👥',
+            iconBg: 'bg-green-500',
+          },
+          {
+            time: '7:00 - 7:40 PM',
+            title: 'Investment Discussion Points',
+            icon: '💬',
+            iconBg: 'bg-green-500',
+          },
+          {
+            time: '7:40 - 7:50 PM',
+            title: 'Group Photo & Thankyou Note',
+            icon: '📸',
+            iconBg: 'bg-green-500',
+          },
+          {
+            time: '7:50 - 8:30 PM',
+            title: 'Networking & Refreshments',
+            icon: '☕',
+            iconBg: 'bg-green-500',
+          },
+        ],
+      },
+    ],
+  },
+];
 
-// Filter Sidebar Component with Motion
+// Filter Sidebar Component with Motion - FIXED LOGIC
 const FilterSidebar = ({
   selectedDate,
   setSelectedDate,
@@ -562,6 +562,7 @@ const FilterSidebar = ({
 
   const getAvailableRoundtables = () => {
     if (selectedDate === 'All') {
+      // When "All" dates is selected, show all roundtables
       return [
         { label: 'All', value: 'All' },
         { label: 'Roundtable 1', value: 'Roundtable 1' },
@@ -573,11 +574,15 @@ const FilterSidebar = ({
       ];
     }
 
+    // When specific date is selected, show only roundtables available for that date
     const selectedDateData = agendaData.find((day) => day.dateValue === selectedDate);
     if (!selectedDateData) return [{ label: 'All', value: 'All' }];
 
     const roundtables = [...new Set(selectedDateData.events.map((event) => event.roundtableId))];
-    return [{ label: 'All', value: 'All' }, ...roundtables.map((rt) => ({ label: rt, value: rt }))];
+    return [
+      { label: 'All', value: 'All' }, 
+      ...roundtables.map((rt) => ({ label: rt, value: rt }))
+    ];
   };
 
   const availableRoundtables = getAvailableRoundtables();
@@ -650,8 +655,6 @@ const FilterSidebar = ({
           >
             <motion.h2
               className="text-white text-2xl lg:text-3xl font-bold tracking-wide"
-              whileHover={{ scale: 1.05, letterSpacing: '0.2em' }}
-              transition={{ duration: 0.3 }}
             >
               AGENDA
             </motion.h2>
@@ -716,7 +719,7 @@ const FilterSidebar = ({
                     variant="outline"
                     className={`px-3 lg:px-4 py-2 rounded-lg border-blue-500 transition-all text-xs lg:text-sm ${
                       selectedDate === option.value
-                        ? 'bg-blue-100 text-blue-600 border-blue-600'
+                        ? 'bg-blue-100 text-blue-600 border-blue-600 shadow-lg'
                         : 'bg-white text-gray-700 hover:bg-blue-50'
                     }`}
                     onClick={() => handleDateChange(option.value)}
@@ -762,7 +765,7 @@ const FilterSidebar = ({
                       variant="outline"
                       className={`px-3 lg:px-4 py-2 rounded-lg border-blue-500 transition-all text-xs lg:text-sm ${
                         selectedRoundtable === option.value
-                          ? 'bg-blue-100 text-blue-600 border-blue-600'
+                          ? 'bg-blue-100 text-blue-600 border-blue-600 shadow-lg'
                           : 'bg-white text-gray-700 hover:bg-blue-50'
                       }`}
                       onClick={() => setSelectedRoundtable(option.value)}
@@ -821,16 +824,6 @@ const AgendaSection = ({ filteredData }) => {
 
   const handleDropdownToggle = (eventId) => {
     setOpenDropdown(openDropdown === eventId ? null : eventId);
-
-    setTimeout(() => {
-      if (window.updateLocomotiveScroll) {
-        window.updateLocomotiveScroll();
-      }
-    }, 300);
-  };
-
-  const handleInvite = (eventId) => {
-    console.log(`Request invite for event ${eventId}`);
   };
 
   const containerVariants = {
@@ -853,19 +846,6 @@ const AgendaSection = ({ filteredData }) => {
         ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
-  };
-
-  const agendaItemVariants = {
-    hidden: { opacity: 0, x: -30 },
-    visible: (i) => ({
-      opacity: 1,
-      x: 0,
-      transition: {
-        delay: i * 0.1,
-        duration: 0.5,
-        ease: 'easeOut',
-      },
-    }),
   };
 
   return (
@@ -908,17 +888,6 @@ const AgendaSection = ({ filteredData }) => {
                     <Card
                       className={`${event.bgColor} ${event.borderColor} rounded-2xl border-2 transition-all hover:shadow-lg relative overflow-hidden`}
                     >
-                      {/* Animated background effect */}
-                      <motion.div
-                        className="absolute inset-0 opacity-0"
-                        whileHover={{
-                          opacity: 0.1,
-                          background:
-                            'linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent)',
-                        }}
-                        transition={{ duration: 0.3 }}
-                      />
-
                       <CardContent className="p-4 lg:p-8 relative z-10">
                         <motion.div
                           className="space-y-4 lg:space-y-6"
@@ -936,12 +905,7 @@ const AgendaSection = ({ filteredData }) => {
                                 whileHover={{ scale: 1.02, x: 5 }}
                                 transition={{ duration: 0.2 }}
                               >
-                                <motion.div
-                                  whileHover={{ rotate: 360 }}
-                                  transition={{ duration: 0.5 }}
-                                >
-                                  <Clock className={`w-4 lg:w-5 h-4 lg:h-5 ${event.textColor}`} />
-                                </motion.div>
+                                <Clock className={`w-4 lg:w-5 h-4 lg:h-5 ${event.textColor}`} />
                                 <span
                                   className={`font-semibold ${event.textColor} text-sm lg:text-base`}
                                 >
@@ -954,12 +918,7 @@ const AgendaSection = ({ filteredData }) => {
                                 whileHover={{ scale: 1.02, x: 5 }}
                                 transition={{ duration: 0.2 }}
                               >
-                                <motion.div
-                                  whileHover={{ scale: 1.2 }}
-                                  transition={{ duration: 0.2 }}
-                                >
-                                  <MapPin className={`w-4 lg:w-5 h-4 lg:h-5 ${event.textColor}`} />
-                                </motion.div>
+                                <MapPin className={`w-4 lg:w-5 h-4 lg:h-5 ${event.textColor}`} />
                                 <span
                                   className={`font-semibold ${event.textColor} text-sm lg:text-base truncate`}
                                 >
@@ -972,14 +931,9 @@ const AgendaSection = ({ filteredData }) => {
                                 whileHover={{ scale: 1.02, x: 5 }}
                                 transition={{ duration: 0.2 }}
                               >
-                                <motion.div
-                                  whileHover={{ rotateY: 180 }}
-                                  transition={{ duration: 0.5 }}
-                                >
-                                  <Calendar
-                                    className={`w-4 lg:w-5 h-4 lg:h-5 ${event.textColor}`}
-                                  />
-                                </motion.div>
+                                <Calendar
+                                  className={`w-4 lg:w-5 h-4 lg:h-5 ${event.textColor}`}
+                                />
                                 <span
                                   className={`font-semibold ${event.textColor} text-sm lg:text-base`}
                                 >
@@ -1060,14 +1014,6 @@ const AgendaSection = ({ filteredData }) => {
                                 transition={{ duration: 0.3 }}
                               >
                                 <ChevronDown className="w-3 lg:w-4 h-3 lg:h-4" />
-
-                                {/* Ripple effect */}
-                                <motion.div
-                                  className="absolute inset-0 bg-white/30 rounded-full"
-                                  initial={{ scale: 0, opacity: 0 }}
-                                  whileTap={{ scale: 1.5, opacity: 1 }}
-                                  transition={{ duration: 0.2 }}
-                                />
                               </motion.button>
                             </motion.div>
                           </motion.div>
@@ -1077,7 +1023,7 @@ const AgendaSection = ({ filteredData }) => {
 
                     {/* Event-specific Detailed Agenda with AnimatePresence */}
                     <AnimatePresence>
-                      {openDropdown === event.id && (
+                      {openDropdown === event.id && event.agenda.length > 0 && (
                         <motion.div
                           initial={{ opacity: 0, height: 0, scale: 0.95 }}
                           animate={{
@@ -1087,9 +1033,6 @@ const AgendaSection = ({ filteredData }) => {
                             transition: {
                               duration: 0.4,
                               ease: [0.25, 0.46, 0.45, 0.94],
-                              height: { duration: 0.3 },
-                              opacity: { duration: 0.2 },
-                              scale: { duration: 0.3, delay: 0.1 },
                             },
                           }}
                           exit={{
@@ -1104,142 +1047,40 @@ const AgendaSection = ({ filteredData }) => {
                           className="mt-4 overflow-hidden"
                         >
                           <Card
-                            className={`${event.bgColor} ${event.borderColor} rounded-2xl border shadow-lg relative overflow-hidden`}
+                            className={`${event.bgColor} ${event.borderColor} rounded-2xl border shadow-lg`}
                           >
-                            {/* Background animation */}
-                            <motion.div
-                              className="absolute inset-0 opacity-0"
-                              animate={{
-                                opacity: [0, 0.05, 0],
-                                background: [
-                                  'linear-gradient(0deg, transparent, rgba(255,255,255,0.1), transparent)',
-                                  'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
-                                  'linear-gradient(180deg, transparent, rgba(255,255,255,0.1), transparent)',
-                                ],
-                              }}
-                              transition={{
-                                duration: 4,
-                                repeat: Infinity,
-                                ease: 'easeInOut',
-                              }}
-                            />
-
-                            <CardContent className="p-0 relative z-10">
-                              <motion.div
-                                className="p-6 lg:p-8 pb-4 lg:pb-6"
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.2, duration: 0.4 }}
-                              >
-                                <motion.div
-                                  className="flex items-center gap-3 mb-4 lg:mb-6"
-                                  initial={{ opacity: 0, x: -30 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{ delay: 0.3, duration: 0.5 }}
-                                >
-                                  <motion.div
-                                    className={`w-1 h-8 lg:h-12 ${event.textColor.replace('text-', 'bg-')} rounded-full`}
-                                    animate={{
-                                      scaleY: [1, 1.2, 1],
-                                      opacity: [0.7, 1, 0.7],
-                                    }}
-                                    transition={{
-                                      duration: 2,
-                                      repeat: Infinity,
-                                      ease: 'easeInOut',
-                                    }}
-                                  />
-                                  <motion.h3
-                                    className="text-black text-2xl lg:text-4xl font-medium"
-                                    whileHover={{ scale: 1.02 }}
-                                    transition={{ duration: 0.2 }}
+                            <CardContent className="p-6 lg:p-8">
+                              <h3 className="text-black text-2xl lg:text-4xl font-medium mb-6">
+                                Agenda
+                              </h3>
+                              <div className="space-y-0">
+                                {event.agenda.map((item, index) => (
+                                  <div
+                                    key={index}
+                                    className="rounded-lg"
                                   >
-                                    Agenda
-                                  </motion.h3>
-                                </motion.div>
-
-                                <motion.div
-                                  className="space-y-0"
-                                  variants={containerVariants}
-                                  initial="hidden"
-                                  animate="visible"
-                                >
-                                  {event.agenda.map((item, index) => (
-                                    <motion.div
-                                      key={index}
-                                      variants={agendaItemVariants}
-                                      custom={index}
-                                      whileHover={{
-                                        x: 10,
-                                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                                      }}
-                                      transition={{ duration: 0.2 }}
-                                      className="rounded-lg"
+                                    <div
+                                      className={`flex items-center gap-3 lg:gap-4 py-3 lg:py-4 ${index !== 0 && 'border-t border-gray-300'}`}
                                     >
                                       <div
-                                        className={`flex items-center gap-3 lg:gap-4 py-3 lg:py-4 ${index !== 0 && 'border-t border-gray-300'}`}
+                                        className={`w-10 lg:w-12 h-10 lg:h-12 flex items-center justify-center ${event.textColor.replace('text-', 'bg-')} rounded-md flex-shrink-0 p-2 relative overflow-hidden`}
                                       >
-                                        <motion.div
-                                          className={`w-10 lg:w-12 h-10 lg:h-12 flex items-center justify-center ${event.textColor.replace('text-', 'bg-')} rounded-md flex-shrink-0 p-2 relative overflow-hidden`}
-                                          whileHover={{
-                                            scale: 1.1,
-                                            rotate: 5,
-                                          }}
-                                          transition={{
-                                            type: 'spring',
-                                            stiffness: 300,
-                                            damping: 20,
-                                          }}
-                                        >
-                                          {/* Icon glow effect */}
-                                          <motion.div
-                                            className="absolute inset-0 bg-white/20 rounded-md"
-                                            initial={{ opacity: 0, scale: 0.8 }}
-                                            whileHover={{ opacity: 1, scale: 1 }}
-                                            transition={{ duration: 0.2 }}
-                                          />
-                                          <Image
-                                            src={item.icon}
-                                            alt={item.title}
-                                            width={40}
-                                            height={40}
-                                            className="w-[70%] h-[70%] object-contain relative z-10"
-                                          />
-                                        </motion.div>
-                                        <motion.div
-                                          className="flex-1 min-w-0"
-                                          initial={{ opacity: 0, x: -20 }}
-                                          animate={{ opacity: 1, x: 0 }}
-                                          transition={{ delay: 0.1 + index * 0.05 }}
-                                        >
-                                          <motion.div
-                                            className="text-gray-600 text-xs lg:text-sm font-medium"
-                                            whileHover={{ color: '#4b5563' }}
-                                          >
-                                            {item.time}
-                                          </motion.div>
-                                          <motion.div
-                                            className={`${event.textColor} text-sm lg:text-lg font-medium leading-tight`}
-                                            whileHover={{ scale: 1.02 }}
-                                            transition={{ duration: 0.2 }}
-                                          >
-                                            {item.title}
-                                          </motion.div>
-                                        </motion.div>
+                                        <span className="text-white text-lg">{item.icon}</span>
                                       </div>
-                                      {index < event.agenda.length - 1 && (
-                                        <motion.div
-                                          className="w-full h-px bg-gray-200 ml-12 lg:ml-16"
-                                          initial={{ scaleX: 0 }}
-                                          animate={{ scaleX: 1 }}
-                                          transition={{ delay: 0.2 + index * 0.1, duration: 0.3 }}
-                                          style={{ originX: 0 }}
-                                        />
-                                      )}
-                                    </motion.div>
-                                  ))}
-                                </motion.div>
-                              </motion.div>
+                                      <div className="flex-1 min-w-0">
+                                        <div className="text-gray-600 text-xs lg:text-sm font-medium">
+                                          {item.time}
+                                        </div>
+                                        <div
+                                          className={`${event.textColor} text-sm lg:text-lg font-medium leading-tight`}
+                                        >
+                                          {item.title}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
                             </CardContent>
                           </Card>
                         </motion.div>
@@ -1296,35 +1137,27 @@ const AgendaSection = ({ filteredData }) => {
   );
 };
 
-// Main App Component
+// Main App Component - FIXED FILTER LOGIC
 export default function CombinedAgendaApp() {
-  const router = useRouter();
   const [selectedDate, setSelectedDate] = useState('All');
   const [selectedRoundtable, setSelectedRoundtable] = useState('All');
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (window.updateLocomotiveScroll) {
-        window.updateLocomotiveScroll();
-      }
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, [selectedDate, selectedRoundtable]);
 
   const getFilteredData = () => {
     let filteredData = agendaData
       .map((dayData) => ({
         ...dayData,
         events: dayData.events.filter((event) => {
+          // Date filter logic
           const dateMatch = selectedDate === 'All' || dayData.dateValue === selectedDate;
-          const roundtableMatch =
-            selectedRoundtable === 'All' || event.roundtableId === selectedRoundtable;
+          
+          // Roundtable filter logic
+          const roundtableMatch = selectedRoundtable === 'All' || event.roundtableId === selectedRoundtable;
+          
           return dateMatch && roundtableMatch;
         }),
       }))
       .filter((dayData) => dayData.events.length > 0);
-
+ 
     return filteredData;
   };
 

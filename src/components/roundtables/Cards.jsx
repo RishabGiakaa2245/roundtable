@@ -471,11 +471,7 @@ const cardsData = [
                     stiffness: 150,
                     damping: 15,
                   }}
-                  whileHover={{
-                    scale: 1.05,
-                    y: -6,
-                    transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] },
-                  }}
+
                   whileTap={{ scale: 0.95 }}
                   viewport={{ once: true, amount: 0.1 }}
                 >

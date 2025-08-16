@@ -26,8 +26,8 @@ const speakersData = [
     imageUrl: '/images/img-2.png',
   },
   {
-    name: 'Sandeep',
-    title: 'Founder, Impact',
+    name: 'Sandeep Nailwal',
+    title: 'Co-Founder, Polygon Labs | Founder, Blockchain for Impact (BFI)',
     imageUrl: '/images/Rectangle 1051.png',
   },
   {
