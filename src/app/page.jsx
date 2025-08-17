@@ -119,7 +119,7 @@ const HomePage = () => {
         <GlobalCompanies />
       </div>
       {/* Fresh Stories Section */}
-      <div id="news-section">
+      <div id="news-section" className='w-full'>
         <FreshStories />
       </div>
       {/* Footer */}

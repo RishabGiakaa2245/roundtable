@@ -665,6 +665,15 @@ const OverviewPage = () => {
   const params = useParams();
   const [loading, setLoading] = useState(false);
   const [content, setContent] = useState(null);
+  const [showForm, setShowForm] = useState(false);
+
+  const openForm = () => {
+    setShowForm(true);
+  };
+
+  const closeForm = () => {
+    setShowForm(false);
+  };
 
 useEffect(() => {
   if (!params.id) return;
@@ -698,11 +707,11 @@ useEffect(() => {
   return (
     <div className="flex flex-col justify-start items-center w-full bg-[#ffffff]">
       {/* Hero Section */}
-      <Hero content={content.heroContent} onRequestInvite={handleRequestInvite} loading={loading} />
-      
+      <Hero content={content.heroContent} onRequestInvite={handleRequestInvite} loading={loading} showForm={showForm} setShowForm={setShowForm} closeForm={closeForm} openForm={openForm} />
+
       {/* Main Content Section */}
-      <MainContent tempData={content.MainContent} />
-      
+      <MainContent tempData={content.MainContent} showForm={showForm} setShowForm={setShowForm} closeForm={closeForm} openForm={openForm} />
+
       {/* Banner */}
       <Banner />
     </div>

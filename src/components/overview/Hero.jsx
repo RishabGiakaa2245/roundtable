@@ -1,10 +1,16 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import Button from '@/components/ui/Button'
+import { useState } from 'react'
 
 // Content object extracted from your original component
 
-const Hero = ({ content }) => {
+const Hero = ({ content , showForm , setShowForm , closeForm , openForm }) => {
+    // const [showForm, setShowForm] = useState(false);
+
+
+
+
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -231,6 +237,37 @@ const Hero = ({ content }) => {
                     </motion.div>
                   </motion.div>
 
+                  <motion.div
+                    variants={buttonVariants}
+                    whileHover="hover"
+                    whileTap="tap"
+                    data-scroll
+                    data-scroll-speed="0.6"
+                    className='mt-6'
+                  >
+                    <motion.div
+                      variants={floatingVariants}
+                      animate="animate"
+                    >
+                      <Button
+                                        onClick={openForm}
+                        variant="ternary" 
+                        size="md"
+                        className="relative overflow-hidden  text-white hover:text-black group"
+                      >
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full"
+                          whileHover={{
+                            translateX: "100%",
+                            transition: { duration: 0.6 }
+                          }}
+                        />
+                        <span className="relative z-10">
+                          Request an invite
+                        </span>
+                      </Button>
+                    </motion.div>
+                  </motion.div>
                   
                 </motion.div>
               </div>

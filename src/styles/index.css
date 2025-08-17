@@ -1,5 +1,61 @@
 @import './tailwind.css';
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lufga:wght@400;500;600;700&display=swap');
+
+@font-face {
+  font-family: 'Lufga';
+  src: url('/fonts/Lufga/LufgaRegular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lufga';
+  src: url('/fonts/Lufga/LufgaMedium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lufga';
+  src: url('/fonts/Lufga/LufgaSemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lufga';
+  src: url('/fonts/Lufga/LufgaBold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lufga';
+  src: url('/fonts/Lufga/LufgaExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lufga';
+  src: url('/fonts/Lufga/LufgaItalic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lufga';
+  src: url('/fonts/Lufga/LufgaLightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
 
 html.has-scroll-smooth {
   overflow: hidden;

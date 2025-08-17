@@ -107,21 +107,21 @@ const FreshStories = () => {
 
   return (
     <motion.section 
-      className="w-full px-8 mt-[96px]"
+      className="w-full overflow-hidden mt-[48px] sm:mt-[64px] md:mt-[96px]"
       data-scroll
       data-scroll-speed="0.1"
     >
-      <div className="w-full max-w-[1440px] mx-auto">
+      <div className="w-full max-w-[1440px] mx-auto overflow-hidden">
         {/* Section Header */}
         <motion.div 
-          className="text-center mb-[40px]"
+          className="text-center mb-[24px] sm:mb-[32px] md:mb-[40px]"
           variants={headerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.p 
-            className="text-[16px] lg:text-[20px] font-lufga font-bold leading-[21px] lg:leading-[27px] text-center uppercase text-[#0575e6]"
+            className="text-[14px] sm:text-[16px] lg:text-[20px] font-lufga font-bold leading-[18px] sm:leading-[21px] lg:leading-[27px] text-center uppercase text-[#0575e6]"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -132,7 +132,7 @@ const FreshStories = () => {
             News Feed
           </motion.p>
           <motion.h2 
-            className="text-[32px] lg:text-[64px] font-lufga font-normal leading-[42px] lg:leading-[84px] text-center text-[#000000] mt-[16px] lg:mt-[32px]"
+            className="text-[24px] sm:text-[32px] lg:text-[64px] font-lufga font-normal leading-[32px] sm:leading-[42px] lg:leading-[84px] text-center text-[#000000] mt-[12px] sm:mt-[16px] lg:mt-[32px] max-w-full break-words"
             initial={{ opacity: 0, y: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -146,7 +146,7 @@ const FreshStories = () => {
 
         {/* Stories Grid */}
         <motion.div 
-          className="flex flex-col lg:flex-row gap-[20px] w-full justify-center items-center"
+          className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap gap-[16px] sm:gap-[20px] w-full p-8 sm:p-14 justify-center items-stretch overflow-hidden"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -155,14 +155,14 @@ const FreshStories = () => {
           {stories.map((story, index) => (
             <motion.div
               key={story.id}
-              className="flex w-full lg:w-[420px] flex-col items-center justify-start"
+              className="flex w-full sm:w-[calc(50%-10px)] lg:flex-1 lg:max-w-none max-w-full flex-col items-center justify-start"
               variants={cardVariants}
               whileHover="hover"
               data-scroll
               data-scroll-speed={`${0.1 + index * 0.05}`}
             >
               <motion.div
-                className="relative overflow-hidden rounded-[20px] w-full z-10"
+                className="relative overflow-hidden rounded-[16px] sm:rounded-[20px] w-full z-10"
                 variants={imageVariants}
               >
                 <Image
@@ -170,17 +170,17 @@ const FreshStories = () => {
                   alt={story.title}
                   width={210}
                   height={120}
-                  className="h-[240px] w-full object-cover rounded-[20px]"
+                  className="h-[200px] sm:h-[220px] md:h-[240px] w-full object-cover rounded-[16px] sm:rounded-[20px]"
                 />
                 <motion.div
-                  className="absolute inset-0 bg-black/20 opacity-0 rounded-[20px]"
+                  className="absolute inset-0 bg-black/20 opacity-0 rounded-[16px] sm:rounded-[20px]"
                   whileHover={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
                 />
               </motion.div>
               
               <motion.div 
-                className="-mt-[22px] flex w-full h-[184px] flex-row items-start justify-start bg-[linear-gradient(90deg,#0575e6_0%,#5336f8_50%,#00f260_100%)] px-[16px] py-0 shadow-[0px_4px_25px_#888888ff] rounded-[20px] z-20"
+                className="-mt-[18px] sm:-mt-[22px] flex w-full h-[160px] sm:h-[170px] md:h-[184px] flex-row items-start justify-start bg-[linear-gradient(90deg,#0575e6_0%,#5336f8_50%,#00f260_100%)] px-[12px] sm:px-[16px] py-0 shadow-[0px_4px_25px_#888888ff] rounded-[16px] sm:rounded-[20px] z-20"
                 variants={cardContentVariants}
                 whileHover={{
                   y: -8,
@@ -189,20 +189,20 @@ const FreshStories = () => {
                 }}
               >
                 <motion.div 
-                  className="-mt-[16px] w-full h-full border z-20 border-[#ffffff] backdrop-blur-md bg-white/20 p-[22px] shadow-[0px_4px_100px_#888888ff] rounded-[20px]"
+                  className="-mt-[12px] sm:-mt-[16px] w-full h-full border z-20 border-[#ffffff] backdrop-blur-md bg-white/20 p-[16px] sm:p-[22px] shadow-[0px_4px_100px_#888888ff] rounded-[16px] sm:rounded-[20px]"
                   variants={glassCardVariants}
                 >
-                  <div className="flex w-full h-full flex-col items-start justify-between gap-[12px] mt-[6px]">
+                  <div className="flex w-full h-full flex-col items-start justify-between gap-[8px] sm:gap-[12px] mt-[4px] sm:mt-[6px]">
                     <div className="flex flex-col gap-[2px] justify-start items-start w-full">
                       <motion.h3 
-                        className="text-[18px] lg:text-[24px] font-lufga font-semibold leading-[23px] lg:leading-[31px] text-left text-[#ffffff] w-full"
+                        className="text-[16px] sm:text-[18px] lg:text-[24px] font-lufga font-semibold leading-[20px] sm:leading-[23px] lg:leading-[31px] text-left text-[#ffffff] w-full break-words overflow-hidden"
                         whileHover={{ x: 5 }}
                         transition={{ duration: 0.2 }}
                       >
                         {story.title}
                       </motion.h3>
                       <motion.p 
-                        className="text-[14px] lg:text-[16px] font-lufga font-medium leading-[18px] lg:leading-[21px] text-left text-[#ffffff]"
+                        className="text-[12px] sm:text-[14px] lg:text-[16px] font-lufga font-medium leading-[16px] sm:leading-[18px] lg:leading-[21px] text-left text-[#ffffff]"
                         whileHover={{ x: 5 }}
                         transition={{ duration: 0.2, delay: 0.05 }}
                       >
@@ -211,7 +211,7 @@ const FreshStories = () => {
                     </div>
                     <motion.a
                       href={story.link}
-                      className="text-[14px] lg:text-[16px] font-lufga font-bold leading-[18px] lg:leading-[21px] text-center underline text-[#ffdf01] hover:text-[#ffb11b] transition-colors"
+                      className="text-[12px] sm:text-[14px] lg:text-[16px] font-lufga font-bold leading-[16px] sm:leading-[18px] lg:leading-[21px] text-center underline text-[#ffdf01] hover:text-[#ffb11b] transition-colors"
                       whileHover={{ 
                         scale: 1.05,
                         color: "#ffb11b",

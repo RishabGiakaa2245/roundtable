@@ -1,13 +1,82 @@
 'use client';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Button from '../ui/Button';
 import { motion } from 'framer-motion';
 import { useRouter, usePathname } from 'next/navigation';
+import { db } from '@/firebase/config';
+import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
+import { AnimatePresence } from 'framer-motion';
+import ConfirmationModal from '../ui/ConfirmationModal';
 
 const Footer = () => {
   const router = useRouter();
   const pathname = usePathname();
+  const [email, setEmail] = useState('');
+  const [subscriptionStatus, setSubscriptionStatus] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [confirmedEmail, setConfirmedEmail] = useState('');
+
+  const handleSubscribe = async () => {
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setSubscriptionStatus('Please enter a valid email address');
+      return;
+    }
+
+    setIsLoading(true);
+    setSubscriptionStatus('');
+
+    try {
+      // Check if email already exists
+      const subscribersRef = collection(db, 'subscribers');
+      const q = query(subscribersRef, where('email', '==', email));
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        setSubscriptionStatus('This email is already subscribed!');
+        setIsLoading(false);
+        return;
+      }
+
+      // Add new subscriber
+      await addDoc(collection(db, 'subscribers'), {
+        email,
+        subscribedAt: new Date().toISOString(),
+        eventName: 'Roundtable 2025',
+        status: 'active',
+      });
+
+      // Store email for confirmation modal
+      setConfirmedEmail(email);
+      setEmail('');
+      setShowConfirmation(true);
+
+      // Optional: Send welcome email via your backend
+      // await sendWelcomeEmail(email);
+    } catch (error) {
+      console.error('Error subscribing:', error);
+      setSubscriptionStatus('An error occurred. Please try again later.');
+    }
+    setIsLoading(false);
+  };
+
+  const closeConfirmation = () => {
+    setShowConfirmation(false);
+    setSubscriptionStatus('');
+  };
+
+  // Auto-close confirmation after 10 seconds
+  useEffect(() => {
+    if (showConfirmation) {
+      const timer = setTimeout(() => {
+        setShowConfirmation(false);
+      }, 10000);
+      return () => clearTimeout(timer);
+    }
+  }, [showConfirmation]);
 
   const navigateToSection = (sectionId) => {
     // If we're not on the home page, first navigate to home
@@ -27,7 +96,7 @@ const Footer = () => {
   // Check for stored section ID when component mounts
   useEffect(() => {
     if (pathname === '/') {
-      console.log("start");
+      console.log('start');
       const sectionId = sessionStorage.getItem('scrollToSection');
       console.log(sectionId);
       if (sectionId) {
@@ -163,6 +232,8 @@ const Footer = () => {
   };
 
   return (
+    <>
+    <ConfirmationModal showConfirmation={showConfirmation} closeConfirmation={closeConfirmation} confirmedEmail={confirmedEmail} />
     <motion.div
       id="footer-section"
       className="relative z-10 box-border w-full"
@@ -210,14 +281,20 @@ const Footer = () => {
           {/* Right Content - Contact Info */}
           <motion.div className="flex flex-col gap-[16px] z-10" variants={containerVariants}>
             {[
-              { icon: 'M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z', text: 'Omika Dubey' },
+              {
+                icon: 'M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z',
+                text: 'Omika Dubey',
+                link: 'https://www.linkedin.com/in/omikadubey/',
+              },
               {
                 icon: 'M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z',
-                text: '12345 67890',
+                text: '+917489976927 ',
+                link: 'tel:+917489976927',
               },
               {
                 icon: 'M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884zM18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z',
-                text: 'Omika@gmail.com',
+                text: 'Omika@giakaacapital.com',
+                link: 'mailto:Omika@giakaacapital.com',
               },
             ].map((item, index) => (
               <motion.div
@@ -230,10 +307,7 @@ const Footer = () => {
                   transition: { duration: 0.3 },
                 }}
               >
-                <motion.div
-                  className="w-[48px] h-[48px] bg-white rounded-[12px] flex items-center justify-center"
-                  
-                >
+                <motion.div className="w-[48px] h-[48px] bg-white rounded-[12px] flex items-center justify-center">
                   <svg
                     className="w-[24px] h-[24px] text-[#1D1D2B]"
                     fill="currentColor"
@@ -242,27 +316,22 @@ const Footer = () => {
                     <path fillRule="evenodd" d={item.icon} clipRule="evenodd" />
                   </svg>
                 </motion.div>
-                <motion.div
-                  className="flex-1 bg-white/20 border backdrop-blur-md px-[20px] py-[12px] rounded-[12px]"
-                  whileHover={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.3)',
-                    backdropFilter: 'blur(20px)',
-                    transition: { duration: 0.3 },
-                  }}
+                <motion.a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 bg-white/20 border backdrop-blur-md px-[20px] py-[12px] rounded-[12px] hover:bg-white/30 transition-all duration-300"
                 >
                   <span className="text-[16px] font-lufga font-medium text-[#ffffff]">
                     {item.text}
                   </span>
-                </motion.div>
+                </motion.a>
               </motion.div>
             ))}
           </motion.div>
 
           {/* Right Image */}
-          <motion.div
-            className="absolute right-0 bottom-0 z-1"
-
-          >
+          <motion.div className="absolute right-0 bottom-0 z-1">
             <Image
               src="/images/2151876479 1.png"
               alt="Contact illustration"
@@ -315,7 +384,12 @@ const Footer = () => {
                 data-scroll
                 data-scroll-speed="0.1"
               >
-                <div className="w-full max-w-[268px] md:max-w-[536px]">
+                <motion.a
+                  href="https://www.giakaacapital.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full max-w-[268px] md:max-w-[536px] hover:opacity-90 transition-opacity"
+                >
                   <Image
                     src="/images/img_primary_without_bg_white_a700.png"
                     alt="Giakaa Capital Logo"
@@ -323,7 +397,7 @@ const Footer = () => {
                     height={88}
                     className="w-full h-auto"
                   />
-                </div>
+                </motion.a>
                 <motion.p
                   className="text-[14px] md:text-[18px] font-lufga font-medium leading-[18px] md:leading-[24px] text-center text-[#ffffff]"
                   initial={{ opacity: 0, y: 20 }}
@@ -331,7 +405,7 @@ const Footer = () => {
                   transition={{ duration: 0.6, delay: 0.3 }}
                   viewport={{ once: true }}
                 >
-                  7 to 9 October 2025 | XYZ Hall, India
+                  7 to 9 October 2025 | Trident Hotel, BKC, Mumbai
                 </motion.p>
               </motion.div>
 
@@ -440,7 +514,12 @@ const Footer = () => {
                       viewport={{ once: true }}
                     />
                   </div>
-                  <div className="w-full max-w-[134px] md:max-w-[268px]">
+                  <motion.a
+                    href="https://www.giakaacapital.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full max-w-[134px] md:max-w-[268px] hover:opacity-90 transition-opacity"
+                  >
                     <Image
                       src="/images/img_primary_without_bg_white_a700.png"
                       alt="Organizer Logo"
@@ -448,7 +527,7 @@ const Footer = () => {
                       height={44}
                       className="w-full h-auto"
                     />
-                  </div>
+                  </motion.a>
                 </motion.div>
 
                 {/* Powered By */}
@@ -476,7 +555,12 @@ const Footer = () => {
                       viewport={{ once: true }}
                     />
                   </div>
-                  <div className="flex w-full flex-row gap-[6px] md:gap-[12px] justify-center items-center">
+                  <motion.a
+                    href="https://bepay.money/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex w-full flex-row gap-[6px] md:gap-[12px] justify-center items-center hover:opacity-90 transition-opacity"
+                  >
                     <motion.div
                       className="bg-[#22242e] rounded-[4px] md:rounded-[8px]"
                       whileHover={{ rotate: 5, scale: 1.1 }}
@@ -495,9 +579,9 @@ const Footer = () => {
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <span className='text-white'>bepay money</span>
+                      <span className="text-white">bepay money</span>
                     </motion.div>
-                  </div>
+                  </motion.a>
                 </motion.div>
               </motion.div>
 
@@ -517,8 +601,9 @@ const Footer = () => {
                 >
                   Subscribe Our Newsletter for more Updates
                 </motion.p>
+
                 <motion.div
-                  className="flex flex-col sm:flex-row justify-between items-center w-full bg-[#ffffff] rounded-[14px] md:rounded-[28px] mr-[5px] md:mr-[10px] p-2"
+                  className="flex flex-col sm:flex-row justify-between items-center w-full bg-[#ffffff] rounded-[14px] md:rounded-[28px] mr-[5px] md:mr-[10px] p-2 relative"
                   whileHover={{
                     boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.2)',
                     scale: 1.02,
@@ -532,6 +617,11 @@ const Footer = () => {
                   <input
                     type="email"
                     placeholder="Enter Email"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      if (subscriptionStatus) setSubscriptionStatus(''); // Clear error when typing
+                    }}
                     className="text-[14px] md:text-[18px] font-lufga font-normal leading-[18px] md:leading-[24px] text-left text-[#22242e] placeholder-black bg-transparent border-none outline-none flex-1 px-4 py-2 w-full sm:w-auto"
                   />
                   <motion.div
@@ -541,12 +631,41 @@ const Footer = () => {
                   >
                     <Button
                       variant="primary"
+                      onClick={handleSubscribe}
+                      disabled={isLoading}
                       className="rounded-[12px] md:rounded-[24px] px-[12px] md:px-[24px] py-[6px] md:py-[12px] text-[12px] md:text-[16px] font-lufga font-bold leading-[16px] md:leading-[21px] mt-2 sm:mt-0 w-[100%] sm:w-auto"
                     >
-                      Subscribe Now
+                      {isLoading ? (
+                        <div className="flex items-center justify-center">
+                          <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></div>
+                          Subscribing...
+                        </div>
+                      ) : (
+                        'Subscribe Now'
+                      )}
                     </Button>
                   </motion.div>
                 </motion.div>
+
+                {/* Error Message */}
+                <AnimatePresence>
+                  {subscriptionStatus && !showConfirmation && (
+                    <motion.p
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className={`text-sm ${
+                        subscriptionStatus.includes('error') ||
+                        subscriptionStatus.includes('already') ||
+                        subscriptionStatus.includes('valid')
+                          ? 'text-red-400'
+                          : 'text-green-400'
+                      }`}
+                    >
+                      {subscriptionStatus}
+                    </motion.p>
+                  )}
+                </AnimatePresence>
               </motion.div>
             </motion.div>
 
@@ -639,6 +758,7 @@ const Footer = () => {
         </div>
       </motion.div>
     </motion.div>
+    </>
   );
 };
 

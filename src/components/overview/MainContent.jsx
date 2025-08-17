@@ -3,10 +3,10 @@ import { ChevronDown, ChevronUp, Calendar, Mic, Users, MessageSquare, Camera, Co
 import { motion, AnimatePresence } from 'framer-motion';
 import Form from '../ui/Form';
 
-const MainContent = ({tempData}) => {
+const MainContent = ({tempData  , showForm , setShowForm  , openForm , closeForm}) => {
   const [expandedPillars, setExpandedPillars] = useState({});
   const [showFullAbout, setShowFullAbout] = useState(false);
-  const [showForm, setShowForm] = useState(false);
+  // const [showForm, setShowForm] = useState(false);
 
   const togglePillar = (index) => {
     setExpandedPillars(prev => ({
@@ -19,13 +19,13 @@ const MainContent = ({tempData}) => {
     setShowFullAbout(prev => !prev);
   };
 
-  const openForm = () => {
-    setShowForm(true);
-  };
+  // const openForm = () => {
+  //   setShowForm(true);
+  // };
 
-  const closeForm = () => {
-    setShowForm(false);
-  };
+  // const closeForm = () => {
+  //   setShowForm(false);
+  // };
 
   // Animation variants
   const containerVariants = {

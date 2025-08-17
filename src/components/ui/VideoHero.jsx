@@ -30,7 +30,7 @@ const VideoHero = () => {
   }, []);
 
   return (
-    <div className="relative w-[376px] md:w-[800px] aspect-video overflow-hidden z-[0] rounded-xl border-2">
+    <div className="relative w-[376px] md:w-[600px] aspect-video overflow-hidden z-[0] rounded-xl border-2">
       {/* Video Container with Mask */}
       <div className="absolute inset-0 rounded-xl">
         <video

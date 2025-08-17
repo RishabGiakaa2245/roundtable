@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const Banner = () => {
   // Animation variants
@@ -158,11 +159,13 @@ const Banner = () => {
                   variants={logoVariants}
                   whileHover={logoHover}
                 >
-                  <img
-                    src="/images/agenda/img_group_1984077505.svg"
-                    className="w-[200px] h-[60px] xs:w-[230px] xs:h-[70px] sm:w-[300px] sm:h-[90px] md:w-[345px] md:h-[105px] lg:w-[460px] lg:h-[140px] object-contain cursor-pointer"
-                    alt="Giakaa Capital Logo"
-                  />
+                  <Link href="https://www.giakaacapital.com/" target="_blank" rel="noopener noreferrer">
+                    <img
+                      src="/images/agenda/img_group_1984077505.svg"
+                      className="w-[200px] h-[60px] xs:w-[230px] xs:h-[70px] sm:w-[300px] sm:h-[90px] md:w-[345px] md:h-[105px] lg:w-[460px] lg:h-[140px] object-contain cursor-pointer hover:opacity-80 transition-opacity"
+                      alt="Giakaa Capital Logo"
+                    />
+                  </Link>
                 </motion.div>
 
                 <motion.div 
@@ -223,11 +226,13 @@ const Banner = () => {
                   variants={logoVariants}
                   whileHover={logoHover}
                 >
-                  <img
-                    src="/images/agenda/img_group_1984077506.svg"
-                    className="w-[160px] h-[60px] xs:w-[180px] xs:h-[70px] sm:w-[230px] sm:h-[90px] md:w-[270px] md:h-[105px] lg:w-[360px] lg:h-[140px] object-contain cursor-pointer"
-                    alt="bepay Logo"
-                  />
+                  <Link href="https://bepay.money/" target="_blank" rel="noopener noreferrer">
+                    <img
+                      src="/images/agenda/img_group_1984077506.svg"
+                      className="w-[160px] h-[60px] xs:w-[180px] xs:h-[70px] sm:w-[230px] sm:h-[90px] md:w-[270px] md:h-[105px] lg:w-[360px] lg:h-[140px] object-contain cursor-pointer hover:opacity-80 transition-opacity"
+                      alt="bepay Logo"
+                    />
+                  </Link>
                 </motion.div>
 
                 <motion.div 

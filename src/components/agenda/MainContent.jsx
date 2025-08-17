@@ -4,7 +4,8 @@ import { useRouter } from 'next/navigation';
 import Button from '../ui/Button';
 import Image from 'next/image';
 import { generateSlug } from '@/helper/utils';
-import { Calendar, Clock, MapPin, ChevronDown, Users, Building } from 'lucide-react';
+import { Calendar, Clock, Users, MessageSquare, Camera, Coffee, MapPin, ChevronDown } from 'lucide-react';
+
 
 // UI Components with Motion
 const Badge = ({ className, variant = 'default', children, ...props }) => {
@@ -100,37 +101,37 @@ const agendaData = [
           {
             time: '4:30 - 4:40 PM',
             title: 'Registration & Networking High Tea',
-            icon: '📅',
+            icon: 'Calendar',
             iconBg: 'bg-blue-500',
           },
           {
             time: '4:40 - 4:50 PM',
             title: 'Opening Remarks by Giakaa Capital',
-            icon: '🕐',
+            icon: 'Clock',
             iconBg: 'bg-blue-500',
           },
           {
             time: '4:50 - 5:00 PM',
             title: 'Partner Introduction',
-            icon: '👥',
+            icon: 'Users',
             iconBg: 'bg-blue-500',
           },
           {
             time: '5:00 - 5:40 PM',
             title: 'Discussion Points',
-            icon: '💬',
+            icon: 'MessageSquare',
             iconBg: 'bg-blue-500',
           },
           {
             time: '5:40 - 5:50 PM',
             title: 'Group Photo & Thankyou Note',
-            icon: '📸',
+            icon: 'Camera',
             iconBg: 'bg-blue-500',
           },
           {
             time: '5:50 - 6:30 PM',
             title: 'Networking & Refreshments',
-            icon: '☕',
+            icon: 'Coffee',
             iconBg: 'bg-blue-500',
           },
         ],
@@ -179,37 +180,37 @@ const agendaData = [
           {
             time: '6:30 - 6:40 PM',
             title: 'Registration & Networking High Tea',
-            icon: '📅',
+            icon: 'Calendar',
             iconBg: 'bg-red-500',
           },
           {
             time: '6:40 - 6:50 PM',
             title: 'Opening Remarks by Giakaa Capital',
-            icon: '🕐',
+            icon: 'Clock',
             iconBg: 'bg-red-500',
           },
           {
             time: '6:50 - 7:00 PM',
             title: 'Partner Introduction',
-            icon: '👥',
+            icon: 'Users',
             iconBg: 'bg-red-500',
           },
           {
             time: '7:00 - 7:40 PM',
             title: 'Valuation Discussion Points',
-            icon: '💬',
+            icon: 'MessageSquare',
             iconBg: 'bg-red-500',
           },
           {
             time: '7:40 - 7:50 PM',
             title: 'Group Photo & Thankyou Note',
-            icon: '📸',
+            icon: 'Camera',
             iconBg: 'bg-red-500',
           },
           {
             time: '7:50 - 8:30 PM',
             title: 'Networking & Refreshments',
-            icon: '☕',
+            icon: 'Coffee',
             iconBg: 'bg-red-500',
           },
         ],
@@ -264,37 +265,37 @@ const agendaData = [
           {
             time: '4:00 - 4:10 PM',
             title: 'Registration & Networking High Tea',
-            icon: '📅',
+            icon: 'Calendar',
             iconBg: 'bg-purple-500',
           },
           {
             time: '4:10 - 4:20 PM',
             title: 'Opening Remarks by Giakaa Capital',
-            icon: '🕐',
+            icon: 'Clock',
             iconBg: 'bg-purple-500',
           },
           {
             time: '4:20 - 4:30 PM',
             title: 'Partner Introduction',
-            icon: '👥',
+            icon: 'Users',
             iconBg: 'bg-purple-500',
           },
           {
             time: '4:30 - 5:10 PM',
             title: 'India Stack Discussion Points',
-            icon: '💬',
+            icon: 'MessageSquare',
             iconBg: 'bg-purple-500',
           },
           {
             time: '5:10 - 5:20 PM',
             title: 'Group Photo & Thankyou Note',
-            icon: '📸',
+            icon: 'Camera',
             iconBg: 'bg-purple-500',
           },
           {
             time: '5:20 - 6:00 PM',
             title: 'Networking & Refreshments',
-            icon: '☕',
+            icon: 'Coffee',
             iconBg: 'bg-purple-500',
           },
         ],
@@ -343,37 +344,37 @@ const agendaData = [
           {
             time: '6:30 - 6:40 PM',
             title: 'Registration & Networking High Tea',
-            icon: '📅',
+            icon: 'Calendar',
             iconBg: 'bg-orange-500',
           },
           {
             time: '6:40 - 6:50 PM',
             title: 'Opening Remarks by Giakaa Capital',
-            icon: '🕐',
+            icon: 'Clock',
             iconBg: 'bg-orange-500',
           },
           {
             time: '6:50 - 7:00 PM',
             title: 'Partner Introduction',
-            icon: '👥',
+            icon: 'Users',
             iconBg: 'bg-orange-500',
           },
           {
             time: '7:00 - 7:40 PM',
             title: 'Partnership Discussion Points',
-            icon: '💬',
+            icon: 'MessageSquare',
             iconBg: 'bg-orange-500',
           },
           {
             time: '7:40 - 7:50 PM',
             title: 'Group Photo & Thankyou Note',
-            icon: '📸',
+            icon: 'Camera',
             iconBg: 'bg-orange-500',
           },
           {
             time: '7:50 - 8:30 PM',
             title: 'Networking & Refreshments',
-            icon: '☕',
+            icon: 'Coffee',
             iconBg: 'bg-orange-500',
           },
         ],
@@ -428,37 +429,37 @@ const agendaData = [
           {
             time: '4:00 - 4:10 PM',
             title: 'Registration & Networking High Tea',
-            icon: '📅',
+            icon: 'Calendar',
             iconBg: 'bg-cyan-500',
           },
           {
             time: '4:10 - 4:20 PM',
             title: 'Opening Remarks by Giakaa Capital',
-            icon: '🕐',
+            icon: 'Clock',
             iconBg: 'bg-cyan-500',
           },
           {
             time: '4:20 - 4:30 PM',
             title: 'Partner Introduction',
-            icon: '👥',
+            icon: 'Users',
             iconBg: 'bg-cyan-500',
           },
           {
             time: '4:30 - 5:10 PM',
             title: 'Ecosystem Discussion Points',
-            icon: '💬',
+            icon: 'MessageSquare',
             iconBg: 'bg-cyan-500',
           },
           {
             time: '5:10 - 5:20 PM',
             title: 'Group Photo & Thankyou Note',
-            icon: '📸',
+            icon: 'Camera',
             iconBg: 'bg-cyan-500',
           },
           {
             time: '5:20 - 6:00 PM',
             title: 'Networking & Refreshments',
-            icon: '☕',
+            icon: 'Coffee',
             iconBg: 'bg-cyan-500',
           },
         ],
@@ -507,37 +508,37 @@ const agendaData = [
           {
             time: '6:30 - 6:40 PM',
             title: 'Registration & Networking High Tea',
-            icon: '📅',
+            icon: 'Calendar',
             iconBg: 'bg-green-500',
           },
           {
             time: '6:40 - 6:50 PM',
             title: 'Opening Remarks by Giakaa Capital',
-            icon: '🕐',
+            icon: 'Clock',
             iconBg: 'bg-green-500',
           },
           {
             time: '6:50 - 7:00 PM',
             title: 'Partner Introduction',
-            icon: '👥',
+            icon: 'Users',
             iconBg: 'bg-green-500',
           },
           {
             time: '7:00 - 7:40 PM',
             title: 'Investment Discussion Points',
-            icon: '💬',
+            icon: 'MessageSquare',
             iconBg: 'bg-green-500',
           },
           {
             time: '7:40 - 7:50 PM',
             title: 'Group Photo & Thankyou Note',
-            icon: '📸',
+            icon: 'Camera',
             iconBg: 'bg-green-500',
           },
           {
             time: '7:50 - 8:30 PM',
             title: 'Networking & Refreshments',
-            icon: '☕',
+            icon: 'Coffee',
             iconBg: 'bg-green-500',
           },
         ],
@@ -1063,9 +1064,28 @@ const AgendaSection = ({ filteredData }) => {
                                       className={`flex items-center gap-3 lg:gap-4 py-3 lg:py-4 ${index !== 0 && 'border-t border-gray-300'}`}
                                     >
                                       <div
-                                        className={`w-10 lg:w-12 h-10 lg:h-12 flex items-center justify-center ${event.textColor.replace('text-', 'bg-')} rounded-md flex-shrink-0 p-2 relative overflow-hidden`}
+                                        className={`w-10 lg:w-12 h-10 lg:h-12 flex items-center justify-center ${item.iconBg} rounded-md flex-shrink-0 p-2 relative overflow-hidden`}
                                       >
-                                        <span className="text-white text-lg">{item.icon}</span>
+                                        <span className="text-white">
+                                          {(() => {
+                                            switch (item.icon) {
+                                              case 'Calendar':
+                                                return <Calendar className="w-5 h-5" />;
+                                              case 'Clock':
+                                                return <Clock className="w-5 h-5" />;
+                                              case 'Users':
+                                                return <Users className="w-5 h-5" />;
+                                              case 'MessageSquare':
+                                                return <MessageSquare className="w-5 h-5" />;
+                                              case 'Camera':
+                                                return <Camera className="w-5 h-5" />;
+                                              case 'Coffee':
+                                                return <Coffee className="w-5 h-5" />;
+                                              default:
+                                                return null;
+                                            }
+                                          })()}
+                                        </span>
                                       </div>
                                       <div className="flex-1 min-w-0">
                                         <div className="text-gray-600 text-xs lg:text-sm font-medium">
@@ -1112,7 +1132,7 @@ const AgendaSection = ({ filteredData }) => {
                 ease: 'easeInOut',
               }}
             >
-              📅
+              <Calendar className="w-16 h-16 text-gray-400" />
             </motion.div>
             <motion.h3
               className="text-2xl font-semibold text-gray-600 mb-2"

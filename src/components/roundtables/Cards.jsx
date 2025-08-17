@@ -34,7 +34,7 @@ const Cards = () => {
 const cardsData = [
   {
     id: 1,
-    imagePath: '/images/agenda/Rectangle 160911.png',
+    imagePath: '/images/roundtables/vertical/Roundtable1.jpg',
     title: 'Financial Inclusion Through Digital Payments: Reaching Bharat',
     slug: generateSlug('Financial Inclusion Through Digital Payments: Reaching Bharat'),
     description: [
@@ -54,7 +54,7 @@ const cardsData = [
   },
   {
     id: 2,
-    imagePath: '/images/agenda/Rectangle 160911.png',
+    imagePath: '/images/roundtables/vertical/Roundtable2.jpg',
     title: 'Fintech Valuations in 2025: Navigating Market Corrections & Realistic Pricing',
     slug: generateSlug(
       'Fintech Valuations in 2025: Navigating Market Corrections & Realistic Pricing'
@@ -75,7 +75,7 @@ const cardsData = [
   },
   {
     id: 3,
-    imagePath: '/images/agenda/Rectangle 160911.png',
+    imagePath: '/images/roundtables/vertical/Roundtable3.jpg',
     title: "India Stack Opportunities: Building on UPI's $990B Market Potential",
     slug: generateSlug("India Stack Opportunities: Building on UPI's $990B Market Potential"),
     description: [
@@ -95,7 +95,7 @@ const cardsData = [
   },
   {
     id: 4,
-    imagePath: '/images/agenda/Rectangle 160911.png',
+    imagePath: '/images/roundtables/vertical/Roundtable4.jpg',
     title: 'Bank-Fintech Partnerships: Creating Win-Win Collaboration Models',
     slug: generateSlug('Bank-Fintech Partnerships: Creating Win-Win Collaboration Models'),
     description: [
@@ -114,7 +114,7 @@ const cardsData = [
   },
   {
     id: 5,
-    imagePath: '/images/agenda/Rectangle 160911.png',
+    imagePath: '/images/roundtables/vertical/Roundtable5.jpg',
     title: "Building India's Sustainable Digital Financial Ecosystem 2030: A Multi-Stakeholder Blueprint for Inclusive Growth",
     slug: generateSlug("Building India's Sustainable Digital Financial Ecosystem 2030: A Multi-Stakeholder Blueprint for Inclusive Growth"),
     description: [
@@ -133,7 +133,7 @@ const cardsData = [
   },
   {
     id: 6,
-    imagePath: '/images/agenda/Rectangle 160911.png',
+    imagePath: '/images/roundtables/vertical/Roundtable6.jpg',
     title: "Asset Allocators, PE, Family Offices & Institutional Investors Shaping India's Fintech Future",
     slug: generateSlug(
       "Asset Allocators, PE, Family Offices & Institutional Investors Shaping India's Fintech Future"
@@ -236,7 +236,7 @@ const cardsData = [
             <motion.img
               src={cardData.imagePath}
               alt={cardData.title}
-              className="w-full h-[330px] sm:h-full border-2 border-[#cacac9] rounded-2xl sm:rounded-3xl object-cover"
+              className="w-full h-[430px] sm:h-full border-2 border-[#cacac9] rounded-2xl sm:rounded-3xl object-cover"
               loading="lazy"
               initial={{ scale: 1.2 }}
               animate={{ scale: 1 }}

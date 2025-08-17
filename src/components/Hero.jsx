@@ -113,8 +113,8 @@ const Hero = ({ onExploreMore }) => {
             </div>
           </div>
           {/* Center Content */}
-          <div className="relative inset-0 flex flex-col justify-center items-center pt-[73%] sm:pt-[11%] px-4 sm:px-6 lg:px-8">
-            <div className="absolute top-[40%] sm:top-[15%] flex flex-col justify-start items-center w-full max-w-[720px] z-2">
+          <div className="relative inset-0 flex flex-col justify-center items-center pt-[45%] md:pt-[11%] px-4 sm:px-6 lg:px-8">
+            <div className="absolute top-[30%] md:top-[15%] flex flex-col justify-start items-center w-full max-w-[720px] z-2">
               {/* Date and Location */}
               <div data-scroll className="flex flex-row gap-[6px] md:gap-[12px] justify-center items-center">
                 <p className="text-[14px] md:text-[18px] font-lufga font-semibold leading-[18px] md:leading-[24px] text-center text-[#ffffff] drop-shadow-lg">
@@ -142,7 +142,7 @@ Trident Hotel, BKC, Mumbai                </p>
               </Link>
             </div>
             {/* Hero Video */}
-            <div  className="w-[376px] md:w-[800px] z-0 sm:mt-[5%]">
+            <div  className="w-[376px] md:w-[600px] z-0 mt-[40%] sm:mt-[0%] md:mt-[20%] lg:mt-[15%] xl:mt-[10%]">
               <VideoHero />
             </div>
           </div>
@@ -171,13 +171,15 @@ Trident Hotel, BKC, Mumbai                </p>
                 <div className="w-[30px] md:w-[60px] h-[1px] bg-[#c9c9c9] "></div>
               </div>
               <div className="w-[110px] md:w-[220px]">
-                <Image
-                  src="/images/img_primary_without_bg.png"
-                  alt="Organizer Logo"
-                  width={220}
-                  height={36}
-                  className="w-full h-auto"
-                />
+                <Link href="https://www.giakaacapital.com/" target="_blank" rel="noopener noreferrer">
+                  <Image
+                    src="/images/img_primary_without_bg.png"
+                    alt="Organizer Logo"
+                    width={220}
+                    height={36}
+                    className="w-full h-auto hover:opacity-80 transition-opacity"
+                  />
+                </Link>
               </div>
             </div>
             {/* Powered By */}
@@ -190,22 +192,24 @@ Trident Hotel, BKC, Mumbai                </p>
                 <div className="w-[30px] md:w-[60px] h-[1px] bg-[#c9c9c9]"></div>
               </div>
               <div className="flex flex-row justify-center items-center w-full mr-[8px] md:mr-[16px] ml-[8px] md:ml-[16px]">
-                <div className="bg-white rounded-[4px] md:rounded-[8px] pr-3">
-                  <Image
-                    src="/images/img_logo_mark2.png"
-                    alt="Partner Logo"
-                    width={28}
-                    height={28}
-                    className="w-[38px] h-[38px] md:w-[45px] md:h-[45px]"
-                  />
-                </div>
-                <div
-                      className="w-fit"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <span className='text-black'>bepay money</span>
-                    </div>
+                <Link href="https://bepay.money/" target="_blank" rel="noopener noreferrer" className="flex items-center hover:opacity-80 transition-opacity">
+                  <div className="bg-white rounded-[4px] md:rounded-[8px] pr-3">
+                    <Image
+                      src="/images/img_logo_mark2.png"
+                      alt="Partner Logo"
+                      width={28}
+                      height={28}
+                      className="w-[38px] h-[38px] md:w-[45px] md:h-[45px]"
+                    />
+                  </div>
+                  <div
+                        className="w-fit"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <span className='text-black'>bepay money</span>
+                      </div>
+                </Link>
               </div>
             </div>
           </div>
