@@ -313,7 +313,7 @@ const Statistics = ({onExploreMore}) => {
                 </motion.div>
                 <div className="flex flex-row justify-start items-start w-full -mt-[43px] md:-mt-[86px]">
                   <motion.p 
-                    className="text-[10px] md:text-[16px] font-normal leading-[15px] md:leading-[20px] text-left text-[#ffffff] sm:w-[100%] mt-[63px] md:mt-[126px] z-20"
+                    className="text-[10px] md:text-[16px] font-medium leading-[15px] md:leading-[20px] text-left text-[#ffffff] sm:w-[100%] mt-[63px] md:mt-[126px] z-20"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.7 }}

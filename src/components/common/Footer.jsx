@@ -19,6 +19,7 @@ const Footer = () => {
   const [confirmedEmail, setConfirmedEmail] = useState('');
 
   const handleSubscribe = async () => {
+    console.log('Subscribing:', email);
     // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
@@ -33,7 +34,9 @@ const Footer = () => {
       // Check if email already exists
       const subscribersRef = collection(db, 'subscribers');
       const q = query(subscribersRef, where('email', '==', email));
+      console.log('Checking subscription status for:', q);
       const querySnapshot = await getDocs(q);
+      console.log('Subscription status check result:', querySnapshot);
 
       if (!querySnapshot.empty) {
         setSubscriptionStatus('This email is already subscribed!');
@@ -721,13 +724,15 @@ const Footer = () => {
                   variants={containerVariants}
                 >
                   {[
-                    '/images/img_frame_1707482311.svg',
-                    '/images/img_frame_1707482312.svg',
-                    '/images/img_frame_1707482313.svg',
-                    '/images/img_frame_1707482314.svg',
-                  ].map((src, index) => (
-                    <motion.button
+                    { icon: '/images/img_frame_1707482311.svg', url: 'https://www.linkedin.com/company/giakaa-capital/' },
+                    { icon: '/images/img_frame_1707482312.svg', url: 'https://twitter.com/Giakaa_Capital' },
+                    { icon: '/images/img_frame_1707482314.svg', url: 'https://t.me/GiakaaCapital' },
+                  ].map(({ icon, url }, index) => (
+                    <motion.a
                       key={index}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="bg-[#000000] rounded-[5px] md:rounded-[10px] p-[4px] md:p-[8px] hover:bg-gray-800 transition-colors"
                       variants={socialHoverVariants}
                       whileHover="hover"
@@ -743,13 +748,13 @@ const Footer = () => {
                       viewport={{ once: true }}
                     >
                       <Image
-                        src={src}
+                        src={icon}
                         alt="Social Icon"
                         width={26}
                         height={26}
                         className="w-[21px] h-[21px] md:w-[26px] md:h-[26px]"
                       />
-                    </motion.button>
+                    </motion.a>
                   ))}
                 </motion.div>
               </motion.div>

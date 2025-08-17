@@ -5,29 +5,29 @@ import { motion } from 'framer-motion';
 
 const FreshStories = () => {
   // Stories data array - can be moved to props or external data source
-  const stories = [
-    {
-      id: 1,
-      imageUrl: '/images/img_rectangle_160945.png',
-      title: 'Over 10,000 Jobs Lost as Automation Reshapes the',
-      date: 'July 15',
-      link: '#',
-    },
-    {
-      id: 2,
-      imageUrl: '/images/Rectangle 160945.png',
-      title: 'Over 10,000 Jobs Lost as Automation Reshapes the',
-      date: 'July 15',
-      link: '#',
-    },
-    {
-      id: 3,
-      imageUrl: '/images/Rectangle 160945-1.png',
-      title: 'Over 10,000 Jobs Lost as Automation Reshapes the',
-      date: 'July 15',
-      link: '#',
-    },
-  ];
+const stories = [
+  {
+    id: 1,
+    imageUrl: '/images/img_rectangle_160945.png',
+    title: 'The Future of Work: Will AI Replace Jobs or Create New Ones?',
+    date: 'June 3, 2025',
+    link: 'https://blog.lewagon.com/skills/the-future-of-work-will-ai-replace-jobs-or-create-new-ones/',
+  },
+  {
+    id: 2,
+    imageUrl: '/images/Rectangle 160945.png',
+    title: 'How Is AI Really Impacting Jobs In 2025?',
+    date: 'June 30, 2025',
+    link: 'https://www.forbes.com/sites/bernardmarr/2025/06/30/how-is-ai-really-impacting-jobs-in-2025/',
+  },
+  {
+    id: 3,
+    imageUrl: '/images/Rectangle 160945-1.png',
+    title: 'Emerging Technologies to Drive Job Growth in 2025: Report',
+    date: 'June 25, 2025',
+    link: 'https://economictimes.com/tech/information-tech/emerging-technologies-to-drive-job-growth-in-2025-report/articleshow/116832468.cms',
+  },
+];
 
   // Animation variants
   const containerVariants = {

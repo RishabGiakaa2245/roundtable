@@ -59,7 +59,7 @@ const agendaData = [
     events: [
       {
         id: 1,
-        time: '4:30 - 6:30 PM',
+        time: '4:30 PM - 6:30 PM',
         location: 'Trident Hotel, BKC, Mumbai',
         eventDate: '7 Sept, 2025',
         title: 'Financial Inclusion Through Digital Payments: Reaching Bharat',
@@ -99,37 +99,37 @@ const agendaData = [
         registered: 18,
         agenda: [
           {
-            time: '4:30 - 4:40 PM',
+            time: '4:30 PM - 4:40 PM',
             title: 'Registration & Networking High Tea',
             icon: 'Calendar',
             iconBg: 'bg-blue-500',
           },
           {
-            time: '4:40 - 4:50 PM',
+            time: '4:40 PM - 4:50 PM',
             title: 'Opening Remarks by Giakaa Capital',
             icon: 'Clock',
             iconBg: 'bg-blue-500',
           },
           {
-            time: '4:50 - 5:00 PM',
+            time: '4:50 PM - 5:00 PM',
             title: 'Partner Introduction',
             icon: 'Users',
             iconBg: 'bg-blue-500',
           },
           {
-            time: '5:00 - 5:40 PM',
+            time: '5:00 PM - 5:40 PM',
             title: 'Discussion Points',
             icon: 'MessageSquare',
             iconBg: 'bg-blue-500',
           },
           {
-            time: '5:40 - 5:50 PM',
+            time: '5:40 PM - 5:50 PM',
             title: 'Group Photo & Thankyou Note',
             icon: 'Camera',
             iconBg: 'bg-blue-500',
           },
           {
-            time: '5:50 - 6:30 PM',
+            time: '5:50 PM - 6:30 PM',
             title: 'Networking & Refreshments',
             icon: 'Coffee',
             iconBg: 'bg-blue-500',
@@ -138,7 +138,7 @@ const agendaData = [
       },
       {
         id: 2,
-        time: '6:30 - 8:30 PM',
+        time: '6:30 PM - 8:30 PM',
         location: 'Trident Hotel, BKC, Mumbai',
         eventDate: '7 Sept, 2025',
         title: 'Fintech Valuations in 2025: Navigating Market Corrections & Realistic Pricing',
@@ -178,37 +178,37 @@ const agendaData = [
         registered: 15,
         agenda: [
           {
-            time: '6:30 - 6:40 PM',
+            time: '6:30 PM - 6:40 PM',
             title: 'Registration & Networking High Tea',
             icon: 'Calendar',
             iconBg: 'bg-red-500',
           },
           {
-            time: '6:40 - 6:50 PM',
+            time: '6:40 PM - 6:50 PM',
             title: 'Opening Remarks by Giakaa Capital',
             icon: 'Clock',
             iconBg: 'bg-red-500',
           },
           {
-            time: '6:50 - 7:00 PM',
+            time: '6:50 PM - 7:00 PM',
             title: 'Partner Introduction',
             icon: 'Users',
             iconBg: 'bg-red-500',
           },
           {
-            time: '7:00 - 7:40 PM',
+            time: '7:00 PM - 7:40 PM',
             title: 'Valuation Discussion Points',
             icon: 'MessageSquare',
             iconBg: 'bg-red-500',
           },
           {
-            time: '7:40 - 7:50 PM',
+            time: '7:40 PM - 7:50 PM',
             title: 'Group Photo & Thankyou Note',
             icon: 'Camera',
             iconBg: 'bg-red-500',
           },
           {
-            time: '7:50 - 8:30 PM',
+            time: '7:50 PM - 8:30 PM',
             title: 'Networking & Refreshments',
             icon: 'Coffee',
             iconBg: 'bg-red-500',
@@ -223,7 +223,7 @@ const agendaData = [
     events: [
       {
         id: 3,
-        time: '4:00 - 6:00 PM',
+        time: '4:00 PM - 6:00 PM',
         location: 'Trident Hotel, BKC, Mumbai',
         eventDate: '8 Sept, 2025',
         title: "India Stack Opportunities: Building on UPI's $990B Market Potential",
@@ -263,37 +263,37 @@ const agendaData = [
         registered: 22,
         agenda: [
           {
-            time: '4:00 - 4:10 PM',
+            time: '4:00 PM - 4:10 PM',
             title: 'Registration & Networking High Tea',
             icon: 'Calendar',
             iconBg: 'bg-purple-500',
           },
           {
-            time: '4:10 - 4:20 PM',
+            time: '4:10 PM - 4:20 PM',
             title: 'Opening Remarks by Giakaa Capital',
             icon: 'Clock',
             iconBg: 'bg-purple-500',
           },
           {
-            time: '4:20 - 4:30 PM',
+            time: '4:20 PM - 4:30 PM',
             title: 'Partner Introduction',
             icon: 'Users',
             iconBg: 'bg-purple-500',
           },
           {
-            time: '4:30 - 5:10 PM',
+            time: '4:30 PM - 5:10 PM',
             title: 'India Stack Discussion Points',
             icon: 'MessageSquare',
             iconBg: 'bg-purple-500',
           },
           {
-            time: '5:10 - 5:20 PM',
+            time: '5:10 PM - 5:20 PM',
             title: 'Group Photo & Thankyou Note',
             icon: 'Camera',
             iconBg: 'bg-purple-500',
           },
           {
-            time: '5:20 - 6:00 PM',
+            time: '5:20 PM - 6:00 PM',
             title: 'Networking & Refreshments',
             icon: 'Coffee',
             iconBg: 'bg-purple-500',
@@ -302,7 +302,7 @@ const agendaData = [
       },
       {
         id: 4,
-        time: '6:30 - 8:30 PM',
+        time: '6:30 PM - 8:30 PM',
         location: 'Trident Hotel, BKC, Mumbai',
         eventDate: '8 Sept, 2025',
         title: 'Bank-Fintech Partnerships: Creating Win-Win Collaboration Models',
@@ -342,37 +342,37 @@ const agendaData = [
         registered: 20,
         agenda: [
           {
-            time: '6:30 - 6:40 PM',
+            time: '6:30 PM - 6:40 PM',
             title: 'Registration & Networking High Tea',
             icon: 'Calendar',
             iconBg: 'bg-orange-500',
           },
           {
-            time: '6:40 - 6:50 PM',
+            time: '6:40 PM - 6:50 PM',
             title: 'Opening Remarks by Giakaa Capital',
             icon: 'Clock',
             iconBg: 'bg-orange-500',
           },
           {
-            time: '6:50 - 7:00 PM',
+            time: '6:50 PM - 7:00 PM',
             title: 'Partner Introduction',
             icon: 'Users',
             iconBg: 'bg-orange-500',
           },
           {
-            time: '7:00 - 7:40 PM',
+            time: '7:00 PM - 7:40 PM',
             title: 'Partnership Discussion Points',
             icon: 'MessageSquare',
             iconBg: 'bg-orange-500',
           },
           {
-            time: '7:40 - 7:50 PM',
+            time: '7:40 PM - 7:50 PM',
             title: 'Group Photo & Thankyou Note',
             icon: 'Camera',
             iconBg: 'bg-orange-500',
           },
           {
-            time: '7:50 - 8:30 PM',
+            time: '7:50 PM - 8:30 PM',
             title: 'Networking & Refreshments',
             icon: 'Coffee',
             iconBg: 'bg-orange-500',
@@ -387,7 +387,7 @@ const agendaData = [
     events: [
       {
         id: 5,
-        time: '4:00 - 6:00 PM',
+        time: '4:00 PM - 6:00 PM',
         location: 'Trident Hotel, BKC, Mumbai',
         eventDate: '9 Sept, 2025',
         title: "Building India's Sustainable Digital Financial Ecosystem 2030: A Multi-Stakeholder Blueprint for Inclusive Growth",
@@ -427,37 +427,37 @@ const agendaData = [
         registered: 28,
         agenda: [
           {
-            time: '4:00 - 4:10 PM',
+            time: '4:00 PM - 4:10 PM',
             title: 'Registration & Networking High Tea',
             icon: 'Calendar',
             iconBg: 'bg-cyan-500',
           },
           {
-            time: '4:10 - 4:20 PM',
+            time: '4:10 PM - 4:20 PM',
             title: 'Opening Remarks by Giakaa Capital',
             icon: 'Clock',
             iconBg: 'bg-cyan-500',
           },
           {
-            time: '4:20 - 4:30 PM',
+            time: '4:20 PM - 4:30 PM',
             title: 'Partner Introduction',
             icon: 'Users',
             iconBg: 'bg-cyan-500',
           },
           {
-            time: '4:30 - 5:10 PM',
+            time: '4:30 PM - 5:10 PM',
             title: 'Ecosystem Discussion Points',
             icon: 'MessageSquare',
             iconBg: 'bg-cyan-500',
           },
           {
-            time: '5:10 - 5:20 PM',
+            time: '5:10 PM - 5:20 PM',
             title: 'Group Photo & Thankyou Note',
             icon: 'Camera',
             iconBg: 'bg-cyan-500',
           },
           {
-            time: '5:20 - 6:00 PM',
+            time: '5:20 PM - 6:00 PM',
             title: 'Networking & Refreshments',
             icon: 'Coffee',
             iconBg: 'bg-cyan-500',
@@ -466,7 +466,7 @@ const agendaData = [
       },
       {
         id: 6,
-        time: '6:30 - 8:30 PM',
+        time: '6:30 PM - 8:30 PM',
         location: 'Trident Hotel, BKC, Mumbai',
         eventDate: '9 Sept, 2025',
         title: "Asset Allocators, PE, Family Offices & Institutional Investors Shaping India's Fintech Future",
@@ -506,37 +506,37 @@ const agendaData = [
         registered: 16,
         agenda: [
           {
-            time: '6:30 - 6:40 PM',
+            time: '6:30 PM - 6:40 PM',
             title: 'Registration & Networking High Tea',
             icon: 'Calendar',
             iconBg: 'bg-green-500',
           },
           {
-            time: '6:40 - 6:50 PM',
+            time: '6:40 PM - 6:50 PM',
             title: 'Opening Remarks by Giakaa Capital',
             icon: 'Clock',
             iconBg: 'bg-green-500',
           },
           {
-            time: '6:50 - 7:00 PM',
+            time: '6:50 PM - 7:00 PM',
             title: 'Partner Introduction',
             icon: 'Users',
             iconBg: 'bg-green-500',
           },
           {
-            time: '7:00 - 7:40 PM',
+            time: '7:00 PM - 7:40 PM',
             title: 'Investment Discussion Points',
             icon: 'MessageSquare',
             iconBg: 'bg-green-500',
           },
           {
-            time: '7:40 - 7:50 PM',
+            time: '7:40 PM - 7:50 PM',
             title: 'Group Photo & Thankyou Note',
             icon: 'Camera',
             iconBg: 'bg-green-500',
           },
           {
-            time: '7:50 - 8:30 PM',
+            time: '7:50 PM - 8:30 PM',
             title: 'Networking & Refreshments',
             icon: 'Coffee',
             iconBg: 'bg-green-500',

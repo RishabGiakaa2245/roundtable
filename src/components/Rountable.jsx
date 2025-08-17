@@ -21,7 +21,7 @@ const roundtableData = [
     id: 1,
     title: "Financial Inclusion Through Digital Payments: Reaching Bharat",
     slug: generateSlug("Financial Inclusion Through Digital Payments: Reaching Bharat"),
-    time: '4:30 PM',
+    time: '4:30 PM PM',
     location: 'Trident Hotel, BKC, Mumbai',
     date: '7 Oct. 2025',
     image: '/images/roundtables/horizontal/Roundtable1.jpg',

@@ -92,7 +92,7 @@ const roundtableContent = {
     agenda: {
       title: "Agenda",
       items: [
-        { time: "4:30 - 4:40 PM", title: "Registration & Networking High Tea", icon: Calendar },
+        { time: "4:30 PM - 4:40 PM", title: "Registration & Networking High Tea", icon: Calendar },
         { time: "4:40 - 4:50 PM", title: "Opening Remarks by Giakaa Capital", icon: Mic },
         { time: "4:50 - 5:00 PM", title: "Partner Introduction", icon: Users },
         { time: "5:00 - 5:30 PM", title: "Discussion Points", icon: MessageSquare },
@@ -306,7 +306,7 @@ const roundtableContent = {
       agenda: {
         title: "Agenda",
         items: [
-          { time: "4:30 - 4:40 PM", title: "Registration & Networking High Tea", icon: Calendar },
+          { time: "4:30 PM - 4:40 PM", title: "Registration & Networking High Tea", icon: Calendar },
           { time: "4:40 - 4:50 PM", title: "Opening Remarks by Giakaa Capital", icon: Mic },
           { time: "4:50 - 5:00 PM", title: "Partner Introduction", icon: Users },
           { time: "5:00 - 5:40 PM", title: "India Stack Discussion Points", icon: MessageSquare },
@@ -520,7 +520,7 @@ const roundtableContent = {
       agenda: {
         title: "Agenda",
         items: [
-          { time: "4:30 - 4:40 PM", title: "Registration & Networking High Tea", icon: Calendar },
+          { time: "4:30 PM - 4:40 PM", title: "Registration & Networking High Tea", icon: Calendar },
           { time: "4:40 - 4:50 PM", title: "Opening Remarks by Giakaa Capital", icon: Mic },
           { time: "4:50 - 5:00 PM", title: "Partner Introduction", icon: Users },
           { time: "5:00 - 5:40 PM", title: "Sustainability & Future Vision Discussion", icon: MessageSquare },

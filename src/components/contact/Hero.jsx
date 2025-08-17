@@ -152,7 +152,7 @@ const Hero = ({ onContactUs }) => {
 
         <div className="w-full bg-[url('/images/agenda/img_image1_1.png')] bg-cover bg-center">
           <motion.div 
-            className="w-full bg-[url('/images/agenda/Vector_70.png')] bg-cover bg-center"
+            className="w-full bg-[url('/images/agenda/img_vector_60.png')] bg-cover bg-center"
 
           >
             <div className="w-full pt-[53px] pr-[28px] pb-[53px] pl-[28px] sm:pt-[79px] sm:pr-[42px] sm:pb-[79px] sm:pl-[42px] md:pt-[106px] md:pr-[56px] md:pb-[106px] md:pl-[56px]">

@@ -224,7 +224,7 @@ const Hero = ({ onSelectOne, onContactUs }) => {
                           transition: { duration: 0.2 }
                         }}
                       >
-                        XYZ Conferenss Hall, India
+                        Trident Hotel, BKC, Mumbai
                       </motion.p>
                     </motion.div>
                   </motion.div>

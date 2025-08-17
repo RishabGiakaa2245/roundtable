@@ -6,11 +6,11 @@ export const viewport = {
 };
 
 export const metadata = {
-  title: 'Next.js with Tailwind CSS',
+  title: 'Roundtable - Giakaa Capital',
   description: 'A boilerplate project with Next.js 15 and Tailwind CSS 3.4.17',
   icons: {
     icon: [
-      { url: '/favicon.ico', type: 'image/x-icon' }
+      { url: '/images/favicon.ico', type: 'image/x-icon' }
     ],
   },
 };

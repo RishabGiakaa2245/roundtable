@@ -3,6 +3,18 @@ import { motion } from 'framer-motion'
 import Button from '@/components/ui/Button'
 
 const Hero = ({ onSelectOne, onContactUs }) => {
+
+    const handleContactUs = () => {
+    if (typeof window !== 'undefined' && window.lenisScroll) {
+      const footer = document.getElementById('footer-section');
+      if (footer) {
+        window.lenisScroll(footer, {
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        });
+      }
+    }
+  };
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -224,7 +236,7 @@ const Hero = ({ onSelectOne, onContactUs }) => {
                           transition: { duration: 0.2 }
                         }}
                       >
-                        XYZ Conferenss Hall, India
+                        Trident Hotel, BKC, Mumbai
                       </motion.p>
                     </motion.div>
                   </motion.div>
@@ -242,7 +254,7 @@ const Hero = ({ onSelectOne, onContactUs }) => {
                       animate="animate"
                     >
                       <Button
-                        onClick={() => console.log('Contact Us clicked')}
+                        onClick={handleContactUs}
                         variant="secondary" 
                         size="md"
                         className="relative overflow-hidden group"

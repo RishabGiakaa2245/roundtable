@@ -47,7 +47,7 @@ const cardsData = [
     borderColor: '#5336f8',
     textColor: '#5336f8',
     buttons: [
-      { icon: 'clock', text: '4:30 PM' },
+      { icon: 'clock', text: '4:30 PM PM' },
       { icon: 'location', text: 'Trident Hotel, BKC, Mumbai' },
       { icon: 'calendar', text: '7 Oct. 2025' },
     ],
