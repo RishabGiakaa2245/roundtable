@@ -727,6 +727,7 @@ const Footer = () => {
                     { icon: '/images/img_frame_1707482311.svg', url: 'https://www.linkedin.com/company/giakaa-capital/' },
                     { icon: '/images/img_frame_1707482312.svg', url: 'https://twitter.com/Giakaa_Capital' },
                     { icon: '/images/img_frame_1707482314.svg', url: 'https://t.me/GiakaaCapital' },
+                    { icon: '/images/img_frame_1707482315.svg', url: 'https://calendly.com/omika-giakaacapital/roundtable-giakaa-capital' },
                   ].map(({ icon, url }, index) => (
                     <motion.a
                       key={index}
